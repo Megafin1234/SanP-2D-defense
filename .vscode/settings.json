@@ -10,7 +10,6 @@
         "**/*.suo": true,
         "**/*.user": true,
         "**/*.userprefs": true,
-        "**/*.unityproj": true,
         "**/*.dll": true,
         "**/*.exe": true,
         "**/*.pdf": true,
