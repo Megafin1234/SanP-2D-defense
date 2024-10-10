@@ -8,6 +8,7 @@ public class HUD : MonoBehaviour
 
     Text myText;
     Slider mySlider;
+    public Button nextWaveButton;
 
     void Awake()
     {
