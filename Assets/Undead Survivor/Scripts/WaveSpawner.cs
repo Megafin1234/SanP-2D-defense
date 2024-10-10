@@ -18,14 +18,11 @@ public class WaveSpawner : MonoBehaviour
     void Awake()
     {
         spawnPoint = GetComponentsInChildren<Transform>();
-        if (nextWaveButton != null)
-        {
-            nextWaveButton.onClick.AddListener(StartWave); // 버튼에 StartWave 연결
-        }
+        
     waveDirectionText.gameObject.SetActive(false); // 텍스트 초기 비활성화    
     }
 
-    void StartWave()
+    public void StartWave()
     {
         if (!isSpawning && currentWave < monstersPerWave.Length)
         {
