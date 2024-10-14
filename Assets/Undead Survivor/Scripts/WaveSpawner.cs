@@ -9,7 +9,7 @@ public class WaveSpawner : MonoBehaviour
     public int[] monstersPerWave; // 각 웨이브에서 생성할 몬스터 수
     public Button nextWaveButton; // 웨이브 시작 버튼
     public Text waveDirectionText; // 웨이브 방향 표시 텍스트
-
+    public Reposition reposition; // Reposition 스크립트 참조
     private int currentWave = 0; // 현재 웨이브 인덱스
     private bool isSpawning = false; // 웨이브가 진행 중인지 확인
     private int currentSpawnIndex; // 현재 웨이브에서 사용할 스폰 포인트 인덱스
@@ -46,7 +46,10 @@ public class WaveSpawner : MonoBehaviour
 
         isSpawning = false;
         currentWave++;
-
+        if (currentWave % 2 == 0)
+        {
+            reposition.ToggleTilemapLayers(); // 타일맵 레이어 전환
+        }
         if (currentWave < monstersPerWave.Length)
         {
             nextWaveButton.gameObject.SetActive(true); // 웨이브 종료 후 버튼 활성화

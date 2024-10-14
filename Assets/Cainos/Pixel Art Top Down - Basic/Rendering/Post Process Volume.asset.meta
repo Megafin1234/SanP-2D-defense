@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5960e15bb1c9f9b47a5e1c4d9aa147bb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 187605
+  packageName: Pixel Art Top Down - Basic
+  packageVersion: 1.0.1
+  assetPath: Assets/Cainos/Pixel Art Top Down - Basic/Rendering/Post Process Volume.asset
+  uploadId: 699515

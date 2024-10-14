@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d8f4eff65fdc4c5488fdb8a3a51b6393
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 187605
+  packageName: Pixel Art Top Down - Basic
+  packageVersion: 1.0.1
+  assetPath: Assets/Cainos/Pixel Art Top Down - Basic/Shader/ASE Sprite 2D Lit -
+    Shadow Mask.shader
+  uploadId: 699515

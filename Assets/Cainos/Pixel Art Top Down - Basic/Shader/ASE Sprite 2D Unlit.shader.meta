@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 38a726bfd24c0094aa44db589fd17eb6
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 187605
+  packageName: Pixel Art Top Down - Basic
+  packageVersion: 1.0.1
+  assetPath: Assets/Cainos/Pixel Art Top Down - Basic/Shader/ASE Sprite 2D Unlit.shader
+  uploadId: 699515
