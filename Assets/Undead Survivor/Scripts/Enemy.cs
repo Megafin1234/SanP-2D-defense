@@ -41,6 +41,8 @@ void FixedUpdate(){
     if (hit.collider != null && hit.collider.CompareTag("Terrain")) {
         // 회피 방향으로 Force 추가
         Debug.Log("Raycast 감지됨: " + hit.collider.gameObject.name); // 감지된 물체 이름 출력
+        Debug.DrawRay(rigid.position, dirVec * 3f, Color.red); // Ray 방향 시각화
+
         Vector2 avoidDir = Vector2.Perpendicular(dirVec).normalized * (Random.value > 0.5f ? 1 : -1);
         rigid.AddForce(avoidDir * speed * 3f, ForceMode2D.Impulse); // 회피 강도 증가
         lastDodgeTime = Time.time; // 회피 발생 시간 갱신
