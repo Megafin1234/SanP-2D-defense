@@ -57,12 +57,15 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    void Spawn(int waveIndex)
-    {
-        GameObject enemy = GameManager.instance.pool.Get(0);
-        enemy.transform.position = spawnPoint[currentSpawnIndex].position;
-        enemy.GetComponent<Enemy>().Init(waveSpawnData[waveIndex].ToSpawnData());
-    }
+void Spawn(int waveIndex)
+{
+    GameObject enemy = GameManager.instance.pool.Get(0);
+    Vector3 spawnPosition = spawnPoint[currentSpawnIndex].position;
+    float randomOffsetX = Random.Range(-1f, 1f); 
+    float randomOffsetY = Random.Range(-1f, 1f); 
+    enemy.transform.position = spawnPosition + new Vector3(randomOffsetX, randomOffsetY, 0);
+    enemy.GetComponent<Enemy>().Init(waveSpawnData[waveIndex].ToSpawnData());
+}
      void UpdateWaveDirectionText(int spawnIndex)
     {
         string direction = "";

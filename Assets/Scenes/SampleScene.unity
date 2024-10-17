@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 4200419}
   m_Layer: 0
   m_Name: TerrainLayer
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9001,7 +9001,7 @@ GameObject:
   - component: {fileID: 698032236}
   m_Layer: 0
   m_Name: TerrainLayer Foward
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10951,7 +10951,7 @@ GameObject:
   - component: {fileID: 916599217}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16002,7 +16002,7 @@ GameObject:
   - component: {fileID: 1046885805}
   m_Layer: 0
   m_Name: TerrainObject
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38780,11 +38780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b2b33bb341fab45a803f14e7fa454a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundSet1:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  groundSet1: []
   groundSet2: []
 --- !u!66 &2077368296
 CompositeCollider2D:

@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Ground
   - GroundA
+  - Area
+  - Terrain
   layers:
   - Default
   - TransparentFX

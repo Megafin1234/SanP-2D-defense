@@ -22,17 +22,31 @@ public class Enemy : MonoBehaviour
         wait = new WaitForFixedUpdate();
         coll = GetComponent<Collider2D>();
     }
-    void FixedUpdate(){
-        if (!GameManager.instance.isLive)
-            return;
-        if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit")){
-            return;
-        }
-        Vector2 dirVec = target.position - rigid.position;
-        Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
-        rigid.MovePosition(rigid.position + nextVec);
-        rigid.linearVelocity= Vector2.zero;
-    }    
+
+private float lastDodgeTime = 0f;
+private float dodgeDuration = 2f;
+
+void FixedUpdate(){
+    if (!GameManager.instance.isLive || !isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+        return;
+
+    Vector2 dirVec = (target.position - rigid.position).normalized;
+
+    // dodgeDuration이 지나지 않았다면, 회피 방향으로 계속 이동
+    if (Time.time - lastDodgeTime > dodgeDuration) {
+        rigid.linearVelocity = dirVec * speed; // 목표 방향으로 기본 이동
+    }
+
+    RaycastHit2D hit = Physics2D.Raycast(rigid.position, dirVec, 3f, LayerMask.GetMask("Default"));
+    if (hit.collider != null && hit.collider.CompareTag("Terrain")) {
+        // 회피 방향으로 Force 추가
+        Debug.Log("Raycast 감지됨: " + hit.collider.gameObject.name); // 감지된 물체 이름 출력
+        Vector2 avoidDir = Vector2.Perpendicular(dirVec).normalized * (Random.value > 0.5f ? 1 : -1);
+        rigid.AddForce(avoidDir * speed * 3f, ForceMode2D.Impulse); // 회피 강도 증가
+        lastDodgeTime = Time.time; // 회피 발생 시간 갱신
+    }
+}
+   
 
     void LateUpdate()
     {
