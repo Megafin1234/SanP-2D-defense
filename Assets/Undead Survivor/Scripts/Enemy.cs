@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Enemy : MonoBehaviour
     public float maxHealth;
     public RuntimeAnimatorController[] animCon;
     public Rigidbody2D target;
+    private NavMeshAgent navMeshAgent;
     bool isLive;
 
     Rigidbody2D rigid;
@@ -15,51 +17,23 @@ public class Enemy : MonoBehaviour
     Animator anim;
     SpriteRenderer spriter;
     WaitForFixedUpdate wait;
-    void Awake(){
+    NavMeshAgent agent;
+
+    void Awake()
+    {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriter = GetComponent<SpriteRenderer>();
         wait = new WaitForFixedUpdate();
         coll = GetComponent<Collider2D>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+
+    
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
     }
 
-private float lastDodgeTime = 0f;
-private float dodgeDuration = 2f;
-
-void FixedUpdate(){
-    if (!GameManager.instance.isLive || !isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
-        return;
-
-    Vector2 dirVec = (target.position - rigid.position).normalized;
-
-    // dodgeDuration이 지나지 않았다면, 회피 방향으로 계속 이동
-    if (Time.time - lastDodgeTime > dodgeDuration) {
-        rigid.linearVelocity = dirVec * speed; // 목표 방향으로 기본 이동
-    }
-
-    RaycastHit2D hit = Physics2D.Raycast(rigid.position, dirVec, 3f, LayerMask.GetMask("Default"));
-    if (hit.collider != null && hit.collider.CompareTag("Terrain")) {
-        // 회피 방향으로 Force 추가
-        Debug.Log("Raycast 감지됨: " + hit.collider.gameObject.name); // 감지된 물체 이름 출력
-        Debug.DrawRay(rigid.position, dirVec * 3f, Color.red); // Ray 방향 시각화
-
-        Vector2 avoidDir = Vector2.Perpendicular(dirVec).normalized * (Random.value > 0.5f ? 1 : -1);
-        rigid.AddForce(avoidDir * speed * 3f, ForceMode2D.Impulse); // 회피 강도 증가
-        lastDodgeTime = Time.time; // 회피 발생 시간 갱신
-    }
-}
-   
-
-    void LateUpdate()
-    {
-        if (!GameManager.instance.isLive)
-            return;
-        if(!isLive){
-            return;
-        }
-        spriter.flipX = target.position.x < rigid.position.x;
-    }
-    void OnEnable() 
+    void OnEnable()
     {
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
         isLive = true;
@@ -68,26 +42,47 @@ void FixedUpdate(){
         spriter.sortingOrder = 2;
         anim.SetBool("Dead", false);
         health = maxHealth;
+
+        navMeshAgent.enabled = true;  
+        navMeshAgent.speed = speed;   
     }
-    public void Init(SpawnData data){
+
+    void Update()
+    {
+        if (!GameManager.instance.isLive || !isLive) 
+            return;
+
+        navMeshAgent.SetDestination(target.position);
+        spriter.flipX = target.position.x < transform.position.x;
+    }
+
+    public void Init(SpawnData data)
+    {
         anim.runtimeAnimatorController = animCon[data.spriteType];
         speed = data.speed;
         maxHealth = data.health;
         health = data.health;
+
+         // NavMeshAgent의 속도 동기화
+    if (navMeshAgent != null) {
+        navMeshAgent.speed = speed;
+    }
     }
 
-    void OnTriggerEnter2D(Collider2D collision) {
-        if (!collision.CompareTag("Bullet") || !isLive)
-            return;
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Bullet") || !isLive) return;
+        
         health -= collision.GetComponent<Bullet>().damage;
         StartCoroutine(KnockBack());
 
-        if (health> 0){
+        if (health > 0)
+        {
             anim.SetTrigger("Hit");
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.Hit);
-
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Hit);
         }
-        else{
+        else
+        {
             isLive = false;
             coll.enabled = false;
             rigid.simulated = false;
@@ -95,6 +90,7 @@ void FixedUpdate(){
             anim.SetBool("Dead", true);
             GameManager.instance.kill++;
             GameManager.instance.GetExp();
+
             if (GameManager.instance.isLive)
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.Dead);
         }
@@ -102,11 +98,21 @@ void FixedUpdate(){
 
     IEnumerator KnockBack()
     {
-        yield return wait; //물리프레임 딜레이
-        Vector3 playerPos = GameManager.instance.player.transform.position;
-        Vector3 dirVec = transform.position - playerPos;
-        rigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
+    if (agent != null) 
+        agent.enabled = false; // 넉백 동안 NavMeshAgent 비활성화
+
+    yield return new WaitForFixedUpdate(); // 물리 프레임 딜레이
+    Vector3 playerPos = GameManager.instance.player.transform.position;
+    Vector3 dirVec = transform.position - playerPos;
+    rigid.AddForce(dirVec.normalized * 2, ForceMode2D.Impulse);
+
+    yield return new WaitForSeconds(0.5f); // 넉백 지속 시간
+
+    if (agent != null)
+        agent.enabled = true; // 넉백이 끝난 후 NavMeshAgent 재활성화
     }
+
+
     void Dead()
     {
         gameObject.SetActive(false);

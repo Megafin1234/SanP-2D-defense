@@ -19,18 +19,18 @@ public class WaveSpawner : MonoBehaviour
     {
         spawnPoint = GetComponentsInChildren<Transform>();
         
-    waveDirectionText.gameObject.SetActive(false); // 텍스트 초기 비활성화    
+    waveDirectionText.gameObject.SetActive(false);    
     }
 
     public void StartWave()
     {
         if (!isSpawning && currentWave < monstersPerWave.Length)
         {
-            currentSpawnIndex = Random.Range(1, spawnPoint.Length); //방향랜덤선택
-            UpdateWaveDirectionText(currentSpawnIndex); // 방향 텍스트 업데이트
+            currentSpawnIndex = Random.Range(1, spawnPoint.Length); 
+            UpdateWaveDirectionText(currentSpawnIndex); 
             StartCoroutine(SpawnWave(currentWave));
-            nextWaveButton.gameObject.SetActive(false); // 웨이브 중 버튼 비활성화
-            waveDirectionText.gameObject.SetActive(true); // 방향 텍스트 활성화
+            nextWaveButton.gameObject.SetActive(false); 
+            waveDirectionText.gameObject.SetActive(true); 
         }
     }
 
@@ -46,14 +46,14 @@ public class WaveSpawner : MonoBehaviour
 
         isSpawning = false;
         currentWave++;
-        if (currentWave % 2 == 0)
+        if (currentWave % 3 == 0)
         {
             reposition.ToggleTilemapLayers(); // 타일맵 레이어 전환
         }
         if (currentWave < monstersPerWave.Length)
         {
-            nextWaveButton.gameObject.SetActive(true); // 웨이브 종료 후 버튼 활성화
-            waveDirectionText.gameObject.SetActive(false); // 웨이브 종료 후 방향 텍스트 비활성화
+            nextWaveButton.gameObject.SetActive(true); 
+            waveDirectionText.gameObject.SetActive(false); 
         }
     }
 
@@ -70,7 +70,6 @@ void Spawn(int waveIndex)
     {
         string direction = "";
 
-        // spawnIndex에 따라 방향 텍스트 설정
         switch (spawnIndex)
         {
             case 1:

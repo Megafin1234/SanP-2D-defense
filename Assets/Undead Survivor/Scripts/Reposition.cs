@@ -18,14 +18,9 @@ public class Reposition : MonoBehaviour
     }
     public void ToggleTilemapLayers()
     {
-        // 현재 타일맵세트 비활성화
         SetActiveTilemapSet(currentSetIndex, false);
-
-        // 다음 타일맵세트 인덱스로 전환 
         currentSetIndex = (currentSetIndex + 1) % tilemapSets.Length;
-
-        // 새로운 타일맵세트 활성화
-         SetActiveTilemapSet(currentSetIndex, true);
+        SetActiveTilemapSet(currentSetIndex, true);
     }
 
     private void SetActiveTilemapSet(int setIndex, bool isActive = true)
