@@ -69,6 +69,7 @@
     <Compile Include="Assets\Undead Survivor\Scripts\Reposition.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\SpriteColorAnimation.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\ItemData.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\Tower.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Enemy.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Item.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Result.cs" />
@@ -1086,6 +1087,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="NavMeshPlus">
+      <HintPath>Library\ScriptAssemblies\NavMeshPlus.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="PsdPlugin">
       <HintPath>Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
       <Private>False</Private>
@@ -1110,8 +1115,8 @@
       <HintPath>Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.2D.IK.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
+    <Reference Include="NavMeshPlusEditor">
+      <HintPath>Library\ScriptAssemblies\NavMeshPlusEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Cinemachine.Editor">
@@ -1120,6 +1125,10 @@
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.2D.IK.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">

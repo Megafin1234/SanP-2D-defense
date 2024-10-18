@@ -55,6 +55,12 @@ public class Enemy : MonoBehaviour
         navMeshAgent.SetDestination(target.position);
         spriter.flipX = target.position.x < transform.position.x;
     }
+    void FixedUpdate() {
+    if (!GameManager.instance.isLive || !isLive) {
+        navMeshAgent.enabled = false; 
+        return;
+        }
+    }
 
     public void Init(SpawnData data)
     {

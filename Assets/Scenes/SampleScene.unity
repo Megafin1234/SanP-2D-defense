@@ -2263,10 +2263,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2667f19f404aac498a0b6a54359ab08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanRange: 5
+  scanRange: 7
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   nearestTarget: {fileID: 0}
 --- !u!1 &59209319
 GameObject:
@@ -2934,7 +2934,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &186928407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9343,6 +9343,7 @@ MonoBehaviour:
   - {fileID: 305764523855987178, guid: 23b90fe9af6dbfc4a801226f6a51fef0, type: 3}
   - {fileID: 9185359611686167877, guid: f85f8054ef5285748a0da2ea912f33bf, type: 3}
   - {fileID: 4573835163827785914, guid: 609580bbae78379429c7ab2cede50f61, type: 3}
+  - {fileID: 2722702167468524357, guid: 8d461b2058a287c4a85bfc21858f827f, type: 3}
 --- !u!4 &645818181
 Transform:
   m_ObjectHideFlags: 0
@@ -22664,6 +22665,74 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1039183405}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1288659480
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 209392701769750863, guid: b53b4864e8b8dc24895ce8abf2d77fcd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.1227474
+      objectReference: {fileID: 0}
+    - target: {fileID: 209392701769750863, guid: b53b4864e8b8dc24895ce8abf2d77fcd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.7979877
+      objectReference: {fileID: 0}
+    - target: {fileID: 209392701769750863, guid: b53b4864e8b8dc24895ce8abf2d77fcd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 209392701769750863, guid: b53b4864e8b8dc24895ce8abf2d77fcd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 209392701769750863, guid: b53b4864e8b8dc24895ce8abf2d77fcd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 209392701769750863, guid: b53b4864e8b8dc24895ce8abf2d77fcd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 209392701769750863, guid: b53b4864e8b8dc24895ce8abf2d77fcd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 209392701769750863, guid: b53b4864e8b8dc24895ce8abf2d77fcd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 209392701769750863, guid: b53b4864e8b8dc24895ce8abf2d77fcd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 209392701769750863, guid: b53b4864e8b8dc24895ce8abf2d77fcd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5921402979282604839, guid: b53b4864e8b8dc24895ce8abf2d77fcd,
+        type: 3}
+      propertyPath: m_Name
+      value: PF Props Stone Lantern
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b53b4864e8b8dc24895ce8abf2d77fcd, type: 3}
 --- !u!4 &1387828729 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8228059593326255414, guid: 84d669757910f1f488023c92e71fcad5,
@@ -48107,3 +48176,4 @@ SceneRoots:
   - {fileID: 134597330}
   - {fileID: 1594706797}
   - {fileID: 186928409}
+  - {fileID: 1288659480}
