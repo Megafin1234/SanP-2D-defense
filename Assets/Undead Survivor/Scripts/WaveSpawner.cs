@@ -46,7 +46,7 @@ public class WaveSpawner : MonoBehaviour
 
         isSpawning = false;
         currentWave++;
-        if (currentWave % 3 == 0)
+        if (currentWave % 2 == 0)
         {
             reposition.ToggleTilemapLayers(); // 타일맵 레이어 전환
         }

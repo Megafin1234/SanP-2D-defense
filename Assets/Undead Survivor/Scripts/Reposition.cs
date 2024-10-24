@@ -7,14 +7,17 @@ public class Reposition : MonoBehaviour
     Collider2D coll;
     public GameObject[] groundSet1;
     public GameObject[] groundSet2;
+    public GameObject[] groundSet3;
     private GameObject[][] tilemapSets;
     private int currentSetIndex = 0;
 
     void Awake()
     {
-        tilemapSets = new GameObject[][] { groundSet1, groundSet2 }; // 배열에 세트 추가
+        tilemapSets = new GameObject[][] { groundSet1, groundSet2, groundSet3 }; // 배열에 세트 추가
         coll = GetComponent<Collider2D>();
         SetActiveTilemapSet(currentSetIndex);
+        SetActiveTilemapSet(currentSetIndex + 1, false);
+        SetActiveTilemapSet(currentSetIndex + 2, false);
     }
     public void ToggleTilemapLayers()
     {
@@ -52,6 +55,20 @@ public class Reposition : MonoBehaviour
                 }
                 break;
             case "GroundA":
+                diffX = playerPos.x - myPos.x;
+                diffY = playerPos.y - myPos.y;
+                dirX = diffX <0 ? -1 : 1;
+                dirY = diffY <0 ? -1 : 1;
+                diffX = Mathf.Abs(diffX);
+                diffY = Mathf.Abs(diffY);
+                if(diffX>diffY){
+                    transform.Translate(Vector3.right*dirX*40);
+                }
+                else if(diffX<diffY){
+                    transform.Translate(Vector3.up*dirY*40);
+                }
+                break;
+            case "GroundB":
                 diffX = playerPos.x - myPos.x;
                 diffY = playerPos.y - myPos.y;
                 dirX = diffX <0 ? -1 : 1;
