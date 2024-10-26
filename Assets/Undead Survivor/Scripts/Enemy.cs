@@ -77,10 +77,22 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Bullet") || !isLive) return;
-        
-        health -= collision.GetComponent<Bullet>().damage;
-        StartCoroutine(KnockBack());
+        if (!isLive) return; // 에너미가 살아있을 때만 반응
+        if (collision.CompareTag("Bullet")) // 총알과 충돌했을 때
+        {
+            // Bullet 컴포넌트에서 damage 가져오기
+            float bulletDamage = collision.GetComponent<Bullet>().damage;
+
+            // TakeDamage 메서드를 통해 피해 처리
+            TakeDamage(bulletDamage);
+            StartCoroutine(KnockBack());
+        }
+    }
+
+    public void TakeDamage(float damage)    
+    {
+        health -= damage; // 체력 감소
+
 
         if (health > 0)
         {
