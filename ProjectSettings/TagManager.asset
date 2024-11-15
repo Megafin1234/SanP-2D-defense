@@ -10,6 +10,7 @@ TagManager:
   - GroundA
   - Area
   - Terrain
+  - GroundB
   layers:
   - Default
   - TransparentFX
