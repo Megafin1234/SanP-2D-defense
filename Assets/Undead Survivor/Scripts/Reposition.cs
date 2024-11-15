@@ -33,6 +33,8 @@ public class Reposition : MonoBehaviour
             tilemap.SetActive(isActive);
         }
     }
+
+    /*
     private void OnTriggerExit2D(Collider2D collision){ 
         if (!collision.CompareTag("Area"))
             return;
@@ -87,9 +89,8 @@ public class Reposition : MonoBehaviour
                     Vector3 dist = playerPos - myPos;
                     Vector3 ran = new Vector3(Random.Range(-3,3), Random.Range(-3,3),0);
                     transform.Translate(ran + dist * 2);
-
                 }
                 break;
         }
-    }
+    } */
 }
