@@ -124,4 +124,6 @@ public class Weapon : MonoBehaviour
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Range);
 
     }
+
+    
 }
