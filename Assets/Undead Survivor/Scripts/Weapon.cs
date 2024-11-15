@@ -34,10 +34,6 @@ public class Weapon : MonoBehaviour
                     Fire();
                 }
                 break;
-        }     
-        //임시코드
-        if(Input.GetButtonDown("Jump")){
-            LevelUp(10,1);
         }
     }
     public void LevelUp(float damage, int count)
@@ -125,5 +121,15 @@ public class Weapon : MonoBehaviour
 
     }
 
-    
+    public void MouseFire(){
+        Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 dir = targetPos - transform.position;
+        dir.z = 0;
+        dir = dir.normalized;
+
+        Transform bullet = GameManager.instance.pool.Get(prefabId).transform;
+        bullet.position = transform.position;
+        bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
+        bullet.GetComponent<Bullet>().Init(damage, count, dir);
+    }
 }
