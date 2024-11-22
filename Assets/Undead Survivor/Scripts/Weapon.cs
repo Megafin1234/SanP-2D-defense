@@ -121,7 +121,7 @@ public class Weapon : MonoBehaviour
 
     }
 
-    public void MouseFire(){
+    public void MouseFire(){//근거리면 휘두르도록 수정하기. 
         Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 dir = targetPos - transform.position;
         dir.z = 0;

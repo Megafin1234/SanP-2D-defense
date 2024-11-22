@@ -88,6 +88,7 @@
     <Compile Include="Assets\Undead Survivor\Scripts\PoolManager.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\PropsAltar.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\LayerTrigger.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\Unit\UnitManager.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Bullet.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Character.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Follow.cs" />
