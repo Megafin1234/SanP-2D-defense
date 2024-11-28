@@ -4,22 +4,21 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public Transform[] spawnPoint; // 적 생성 위치들
-    public WaveSpawnData[] waveSpawnData; // 웨이브마다 사용할 스폰 데이터
-    public int[] monstersPerWave; // 각 웨이브에서 생성할 몬스터 수
-    public Button nextWaveButton; // 웨이브 시작 버튼
-    public Text waveDirectionText; // 웨이브 방향 표시 텍스트
-    public Reposition reposition; // Reposition 스크립트 참조
-    private int currentWave = 0; // 현재 웨이브 인덱스
-    private bool isSpawning = false; // 웨이브가 진행 중인지 확인
-    private int currentSpawnIndex; // 현재 웨이브에서 사용할 스폰 포인트 인덱스
-
+    public Transform[] spawnPoint; 
+    public WaveSpawnData[] waveSpawnData;
+    public int[] monstersPerWave; 
+    public Button nextWaveButton; 
+    public Text waveDirectionText; 
+    public Reposition reposition; 
+    private int currentWave = 0;
+    private bool isSpawning = false; 
+    private int currentSpawnIndex; 
+    private int currentWaveKillCount = 0; 
 
     void Awake()
     {
         spawnPoint = GetComponentsInChildren<Transform>();
-        
-    waveDirectionText.gameObject.SetActive(false);    
+        waveDirectionText.gameObject.SetActive(false);    
     }
 
     public void StartWave()
@@ -27,6 +26,7 @@ public class WaveSpawner : MonoBehaviour
         if (!isSpawning && currentWave < monstersPerWave.Length)
         {
             currentSpawnIndex = Random.Range(1, spawnPoint.Length); 
+            currentWaveKillCount = 0; 
             UpdateWaveDirectionText(currentSpawnIndex); 
             StartCoroutine(SpawnWave(currentWave));
             nextWaveButton.gameObject.SetActive(false); 
@@ -41,14 +41,17 @@ public class WaveSpawner : MonoBehaviour
         for (int i = 0; i < monstersPerWave[waveIndex]; i++)
         {
             Spawn(waveIndex);
-            yield return new WaitForSeconds(waveSpawnData[waveIndex].spawnTime); // 각 적의 생성 간격
+            yield return new WaitForSeconds(waveSpawnData[waveIndex].spawnTime); 
         }
+
+    
+        yield return new WaitUntil(() => currentWaveKillCount >= monstersPerWave[waveIndex]);
 
         isSpawning = false;
         currentWave++;
         if (currentWave % 2 == 0)
         {
-            reposition.ToggleTilemapLayers(); // 타일맵 레이어 전환
+            reposition.ToggleTilemapLayers(); 
         }
         if (currentWave < monstersPerWave.Length)
         {
@@ -57,16 +60,17 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-void Spawn(int waveIndex)
-{
-    GameObject enemy = GameManager.instance.pool.Get(0);
-    Vector3 spawnPosition = spawnPoint[currentSpawnIndex].position;
-    float randomOffsetX = Random.Range(-1f, 1f); 
-    float randomOffsetY = Random.Range(-1f, 1f); 
-    enemy.transform.position = spawnPosition + new Vector3(randomOffsetX, randomOffsetY, 0);
-    enemy.GetComponent<Enemy>().Init(waveSpawnData[waveIndex].ToSpawnData());
-}
-     void UpdateWaveDirectionText(int spawnIndex)
+    void Spawn(int waveIndex)
+    {
+        GameObject enemy = GameManager.instance.pool.Get(0);
+        Vector3 spawnPosition = spawnPoint[currentSpawnIndex].position;
+        float randomOffsetX = Random.Range(-1f, 1f); 
+        float randomOffsetY = Random.Range(-1f, 1f); 
+        enemy.transform.position = spawnPosition + new Vector3(randomOffsetX, randomOffsetY, 0);
+        enemy.GetComponent<Enemy>().Init(waveSpawnData[waveIndex].ToSpawnData());
+    }
+
+    void UpdateWaveDirectionText(int spawnIndex)
     {
         string direction = "";
 
@@ -92,6 +96,8 @@ void Spawn(int waveIndex)
         waveDirectionText.text = $"{direction}";
     }
 }
+
+
 
 [System.Serializable]
 public class WaveSpawnData
