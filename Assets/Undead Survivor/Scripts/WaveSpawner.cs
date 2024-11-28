@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public static WaveSpawner instance;
     public Transform[] spawnPoint; 
     public WaveSpawnData[] waveSpawnData;
     public int[] monstersPerWave; 
@@ -13,10 +14,18 @@ public class WaveSpawner : MonoBehaviour
     private int currentWave = 0;
     private bool isSpawning = false; 
     private int currentSpawnIndex; 
-    private int currentWaveKillCount = 0; 
+    public int currentWaveKillCount = 0; 
 
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject); 
+        }
         spawnPoint = GetComponentsInChildren<Transform>();
         waveDirectionText.gameObject.SetActive(false);    
     }
