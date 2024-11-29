@@ -49,7 +49,6 @@ public class UIManager : MonoBehaviour
         Invoke("OnFadeOutComplete", 1f);
     }
 
-    // 밤 -> 낮 전환시 화면 페이드 인
     public void FadeIn()
     {
         fadeImage.gameObject.SetActive(true);
@@ -57,13 +56,12 @@ public class UIManager : MonoBehaviour
         Invoke("OnFadeInComplete", 1f);
     }
 
-    // 페이드 아웃 완료 후 실행되는 함수
     private void OnFadeOutComplete()
     {
         // 페이드 아웃이 끝난 후 처리할 작업
     }
 
-    // 페이드 인 완료 후 실행되는 함수
+
     private void OnFadeInComplete()
     {
         // 페이드 인이 끝난 후 처리할 작업
@@ -71,17 +69,15 @@ public class UIManager : MonoBehaviour
 
     }
 
-
-    // 낮/밤 전환 텍스트 보여주기
     public void ShowDayPhaseText()
     {
-        dayPhaseText.SetActive(true);
-        Invoke("HidePhaseText", 2f);  // 2초 후 텍스트 숨기기
+        dayPhaseText.gameObject.SetActive(true);
+        Invoke("HidePhaseText", 2f); 
     }
 
     public void ShowNightPhaseText()
     {
-        nightPhaseText.SetActive(true);
+        nightPhaseText.gameObject.SetActive(true);
         Invoke("HidePhaseText", 2f);  
     }
 
