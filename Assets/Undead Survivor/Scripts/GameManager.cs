@@ -9,7 +9,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     [Header("#Game Control")]
     public bool isLive;
-    public float gameTime;
+    public float dayPhaseTimer;  
+    public float nightPhaseTimer; 
+    public float dayPhaseDuration = 180f; 
+    public float nightPhaseDuration = 120f; 
     
     public float maxGameTime =2*10f;   
     [Header("#Player Info")]
@@ -29,6 +32,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemyCleaner;
     public Weapon weapon;
 
+    private bool isDayPhase = true;
 
     void Awake(){
         instance = this;
@@ -42,6 +46,7 @@ public class GameManager : MonoBehaviour
         Resume();
         AudioManager.instance.PlayBgm(true);
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
+        dayPhaseTimer = dayPhaseDuration;
     }
     public void GameOver()
     {
@@ -84,13 +89,60 @@ public class GameManager : MonoBehaviour
     void Update(){
         if (!isLive)
             return;
-        gameTime += Time.deltaTime;
+        /*gameTime += Time.deltaTime;
 
         if(gameTime > maxGameTime){
             gameTime = maxGameTime;
             GameVictory();
+        } */
+        if (isDayPhase)
+        {
+            dayPhaseTimer -= Time.deltaTime;
+            if (dayPhaseTimer <= 0)
+            {
+                DayToNight();
+            }
         }
+        else
+        {
+            nightPhaseTimer -= Time.deltaTime;
+            if (nightPhaseTimer <= 0)
+            {
+                NightToDay();
+            }
+        }
+
     }
+
+private void DayToNight()
+    {
+        isDayPhase = false;
+        nightPhaseTimer = nightPhaseDuration; // 밤 타이머 초기화
+        // 화면 페이드 아웃
+        UIManager.instance.FadeOut(() =>
+        {
+            // 밤 전환 시 실행할 코드
+            UIManager.instance.ShowNightPhaseText();
+            // 화면 페이드 인
+            UIManager.instance.FadeIn();
+        });
+    }
+
+    // 밤 -> 낮으로 전환
+    private void NightToDay()
+    {
+        isDayPhase = true;
+        dayPhaseTimer = dayPhaseDuration; // 낮 타이머 초기화
+        // 화면 페이드 아웃
+        UIManager.instance.FadeOut(() =>
+        {
+            // 낮 전환 시 실행할 코드
+            UIManager.instance.ShowDayPhaseText();
+            // 화면 페이드 인
+            UIManager.instance.FadeIn();
+        });
+    }
+
     public void GetExp()
     {   
         if (!isLive)

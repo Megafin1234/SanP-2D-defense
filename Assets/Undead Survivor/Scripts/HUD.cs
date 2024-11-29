@@ -30,7 +30,7 @@ public class HUD : MonoBehaviour
                 myText.text = string.Format("{0:F0}", GameManager.instance.kill);
                 break;
             case InfoType.Time:
-                float remainTime = GameManager.instance.maxGameTime - GameManager.instance.gameTime;
+                float remainTime = GameManager.instance.dayPhaseTimer;
                 int min = Mathf.FloorToInt(remainTime/60);
                 int sec = Mathf.FloorToInt(remainTime%60);
                 myText.text = string.Format("{0:D2}: {1:D2}", min, sec);    
