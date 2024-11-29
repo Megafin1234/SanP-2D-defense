@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,20 +10,24 @@ public class UIManager : MonoBehaviour
     public Button storyButton;    
     public Button storyEndButton;  
     public Button goBackButton;    
-     public GameObject nightPhaseText;  // 밤 페이즈 텍스트 UI
-    public GameObject dayPhaseText;    // 낮 페이즈 텍스트 UI
-    public Image fadeImage;            // 페이드 아웃/인 이미지  
+     public GameObject nightPhaseText; 
+    public GameObject dayPhaseText;    
+    public Image fadeImage;     
 
-    void Start()
+    void Awake()
     {
-        nightPhaseText.SetActive(false);
-        dayPhaseText.SetActive(false);
-        fadeImage.gameObject.SetActive(false);
-        ShowMainMenu(); 
+        instance = this;
+    }
+
+    public void GameStart()
+    {
         storyButton.onClick.AddListener(ShowTutorial);
         storyEndButton.onClick.AddListener(TutorialEnd);
         goBackButton.onClick.AddListener(ShowMainMenu);
-    }
+        nightPhaseText.gameObject.SetActive(false);
+        dayPhaseText.gameObject.SetActive(false);
+        fadeImage.gameObject.SetActive(false);  
+    } 
 
 
     public void ShowMainMenu()
@@ -42,19 +47,26 @@ public class UIManager : MonoBehaviour
         mainMenuPanel.SetActive(false);
         tutorialPanel.SetActive(false);
     }
-     public void FadeOut(System.Action callback)
-    {
-        fadeImage.gameObject.SetActive(true);
-        fadeImage.CrossFadeAlpha(1, 1f, false); 
-        Invoke("OnFadeOutComplete", 1f);
-    }
+    public void FadeOut(System.Action callback)
+{
+    fadeImage.gameObject.SetActive(true);
+    fadeImage.CrossFadeAlpha(1, 1f, false);
+    StartCoroutine(FadeComplete(callback));
+}
 
-    public void FadeIn()
-    {
-        fadeImage.gameObject.SetActive(true);
-        fadeImage.CrossFadeAlpha(0, 1f, false); 
-        Invoke("OnFadeInComplete", 1f);
-    }
+    public void FadeIn(System.Action callback)
+{
+    fadeImage.CrossFadeAlpha(0, 1f, false);
+    StartCoroutine(FadeComplete(callback));
+    fadeImage.gameObject.SetActive(false);
+}
+
+    private IEnumerator FadeComplete(System.Action callback)
+{
+    yield return new WaitForSeconds(1f); // 페이드 완료 대기
+    callback?.Invoke(); // 콜백 실행
+}
+
 
     private void OnFadeOutComplete()
     {

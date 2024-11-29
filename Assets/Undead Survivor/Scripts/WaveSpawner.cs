@@ -32,6 +32,8 @@ public class WaveSpawner : MonoBehaviour
 
     public void StartWave()
     {
+        GameManager.instance.DayToNight();
+
         if (!isSpawning && currentWave < monstersPerWave.Length)
         {
             currentSpawnIndex = Random.Range(1, spawnPoint.Length); 
@@ -58,6 +60,7 @@ public class WaveSpawner : MonoBehaviour
 
         isSpawning = false;
         currentWave++;
+        GameManager.instance.NightToDay();
         if (currentWave % 2 == 0)
         {
             reposition.ToggleTilemapLayers(); 
