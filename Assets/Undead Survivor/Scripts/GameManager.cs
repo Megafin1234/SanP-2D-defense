@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
     public int kill;
     public int exp;
     public int[] nextExp = { 3, 5, 10, 100, 150, 210, 360, 450, 600};
+
+    [Header("#HUD References")]
+    public GameObject dayTimerHUD; 
+    public GameObject nightTimerHUD; 
+
     [Header("#Game Object")]
 
     public Player player;
@@ -154,14 +159,27 @@ public class GameManager : MonoBehaviour
     private void StartDayPhase()
     {
         UIManager.instance.DayEffect();
+        ActivateDayTimer();
         stageLevelUp.Show();
     }
 
     private void StartNightPhase()
     {
+        ActivateNightTimer();
         WaveSpawner.instance.StartWave();
     }
 
+public void ActivateDayTimer()
+{
+    dayTimerHUD.SetActive(true);   
+    nightTimerHUD.SetActive(false); 
+}
+
+public void ActivateNightTimer()
+{
+    dayTimerHUD.SetActive(false);  
+    nightTimerHUD.SetActive(true); 
+}
 
     public void GetExp()
     {   
