@@ -59,7 +59,7 @@
     <UnityVersion>6000.0.23f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\eric0\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.0.4\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\Oh Seung Hun\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.0.4\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
@@ -81,7 +81,6 @@
     <Compile Include="Assets\Undead Survivor\Scripts\WaveSpawner.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\TopDownCharacterController.cs" />
-    <Compile Include="Assets\Undead Survivor\Scripts\UiManager.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Spawner.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Weapon.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Hand.cs" />
@@ -93,6 +92,7 @@
     <Compile Include="Assets\Undead Survivor\Scripts\Character.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Follow.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Player.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\UIManager.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\HUD.cs" />
   </ItemGroup>
   <ItemGroup>

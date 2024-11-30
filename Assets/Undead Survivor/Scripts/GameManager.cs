@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public float dayPhaseDuration = 180f; 
     public float nightPhaseDuration = 120f; 
     
-    public float maxGameTime =2*10f;   
+      
     [Header("#Player Info")]
     public int playerId;
     public float health;
@@ -114,34 +114,55 @@ public class GameManager : MonoBehaviour
 
     }
 
-private void DayToNight()
-    {
-        isDayPhase = false;
-        nightPhaseTimer = nightPhaseDuration; // 밤 타이머 초기화
-        // 화면 페이드 아웃
-        UIManager.instance.FadeOut(() =>
-        {
-            // 밤 전환 시 실행할 코드
-            UIManager.instance.ShowNightPhaseText();
-            // 화면 페이드 인
-            UIManager.instance.FadeIn();
-        });
-    }
+public void DayToNight()
+{
+    isDayPhase = false;
+    nightPhaseTimer = nightPhaseDuration;
+    isLive = false;
 
-    // 밤 -> 낮으로 전환
-    private void NightToDay()
+    UIManager.instance.FadeOut(() =>
     {
-        isDayPhase = true;
-        dayPhaseTimer = dayPhaseDuration; // 낮 타이머 초기화
-        // 화면 페이드 아웃
-        UIManager.instance.FadeOut(() =>
+        Debug.Log("페이드 아웃 완료 후 작업 실행");
+        UIManager.instance.ShowNightPhaseText();
+        UIManager.instance.FadeIn(() =>
         {
-            // 낮 전환 시 실행할 코드
-            UIManager.instance.ShowDayPhaseText();
-            // 화면 페이드 인
-            UIManager.instance.FadeIn();
+            Debug.Log("페이드 인 완료 후 작업 실행");
+            isLive = true;
+            StartNightPhase();
         });
-    }
+    });
+}
+
+public void NightToDay()
+{
+    isDayPhase = true;
+    isLive = false;
+    dayPhaseTimer = dayPhaseDuration;
+
+    UIManager.instance.FadeOut(() =>
+    {
+        UIManager.instance.ShowDayPhaseText();
+        UIManager.instance.FadeIn(() =>
+        {
+            isLive = true;
+            StartDayPhase();
+        });
+    });
+}
+
+// 낮/밤 페이즈 시작 로직
+private void StartDayPhase()
+{
+    Debug.Log("Day Phase Started");
+    // 낮 페이즈 관련 초기화 로직
+}
+
+private void StartNightPhase()
+{
+    Debug.Log("Night Phase Started");
+    // 밤 페이즈 관련 초기화 로직
+}
+
 
     public void GetExp()
     {   
