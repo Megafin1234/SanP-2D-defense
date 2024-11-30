@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public Player player;
     public PoolManager pool;
     public LevelUp uiLevelUp;
+    public LevelUp stageLevelUp;
     public Result uiResult;
     public GameObject enemyCleaner;
     public Weapon weapon;
@@ -119,10 +120,11 @@ public class GameManager : MonoBehaviour
         isDayPhase = false;
         nightPhaseTimer = nightPhaseDuration;
         isLive = false;
+        UIManager.instance.ShowNightPhaseText();
 
         UIManager.instance.FadeOut(() =>
         {
-
+            UIManager.instance.NightEffect();
             UIManager.instance.FadeIn(() =>
             {
                 
@@ -137,6 +139,7 @@ public class GameManager : MonoBehaviour
         isDayPhase = true;
         isLive = false;
         dayPhaseTimer = dayPhaseDuration;
+        UIManager.instance.ShowDayPhaseText();
 
         UIManager.instance.FadeOut(() =>
         {
@@ -151,14 +154,11 @@ public class GameManager : MonoBehaviour
     private void StartDayPhase()
     {
         UIManager.instance.DayEffect();
-        UIManager.instance.ShowDayPhaseText();
-        uiLevelUp.Show();
+        stageLevelUp.Show();
     }
 
     private void StartNightPhase()
     {
-        UIManager.instance.NightEffect();
-        UIManager.instance.ShowNightPhaseText();
         WaveSpawner.instance.StartWave();
     }
 
