@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
             nightPhaseTimer -= Time.deltaTime;
             if (nightPhaseTimer <= 0)
             {
-                NightToDay();
+                GameRetry();
             }
         }
 
@@ -150,11 +150,14 @@ public class GameManager : MonoBehaviour
 
     private void StartDayPhase()
     {
+        UIManager.instance.DayEffect();
         UIManager.instance.ShowDayPhaseText();
+        uiLevelUp.Show();
     }
 
     private void StartNightPhase()
     {
+        UIManager.instance.NightEffect();
         UIManager.instance.ShowNightPhaseText();
         WaveSpawner.instance.StartWave();
     }
