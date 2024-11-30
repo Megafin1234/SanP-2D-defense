@@ -114,54 +114,50 @@ public class GameManager : MonoBehaviour
 
     }
 
-public void DayToNight()
-{
-    isDayPhase = false;
-    nightPhaseTimer = nightPhaseDuration;
-    isLive = false;
-
-    UIManager.instance.FadeOut(() =>
+    public void DayToNight()
     {
-        Debug.Log("페이드 아웃 완료 후 작업 실행");
-        UIManager.instance.ShowNightPhaseText();
-        UIManager.instance.FadeIn(() =>
+        isDayPhase = false;
+        nightPhaseTimer = nightPhaseDuration;
+        isLive = false;
+
+        UIManager.instance.FadeOut(() =>
         {
-            Debug.Log("페이드 인 완료 후 작업 실행");
-            isLive = true;
-            StartNightPhase();
+
+            UIManager.instance.FadeIn(() =>
+            {
+                
+                isLive = true;
+                StartNightPhase();
+            });
         });
-    });
-}
+    }
 
-public void NightToDay()
-{
-    isDayPhase = true;
-    isLive = false;
-    dayPhaseTimer = dayPhaseDuration;
+    public void NightToDay()
+    {
+        isDayPhase = true;
+        isLive = false;
+        dayPhaseTimer = dayPhaseDuration;
 
-    UIManager.instance.FadeOut(() =>
+        UIManager.instance.FadeOut(() =>
+        {
+            UIManager.instance.FadeIn(() =>
+            {
+                isLive = true;
+                StartDayPhase();
+            });
+        });
+    }
+
+    private void StartDayPhase()
     {
         UIManager.instance.ShowDayPhaseText();
-        UIManager.instance.FadeIn(() =>
-        {
-            isLive = true;
-            StartDayPhase();
-        });
-    });
-}
+    }
 
-// 낮/밤 페이즈 시작 로직
-private void StartDayPhase()
-{
-    Debug.Log("Day Phase Started");
-    // 낮 페이즈 관련 초기화 로직
-}
-
-private void StartNightPhase()
-{
-    Debug.Log("Night Phase Started");
-    // 밤 페이즈 관련 초기화 로직
-}
+    private void StartNightPhase()
+    {
+        UIManager.instance.ShowNightPhaseText();
+        WaveSpawner.instance.StartWave();
+    }
 
 
     public void GetExp()
