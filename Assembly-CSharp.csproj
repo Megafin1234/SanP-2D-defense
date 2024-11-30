@@ -81,6 +81,7 @@
     <Compile Include="Assets\Undead Survivor\Scripts\WaveSpawner.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\TopDownCharacterController.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\UiManager.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Spawner.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Weapon.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Hand.cs" />
@@ -92,7 +93,6 @@
     <Compile Include="Assets\Undead Survivor\Scripts\Character.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Follow.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Player.cs" />
-    <Compile Include="Assets\Undead Survivor\Scripts\UIManager.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\HUD.cs" />
   </ItemGroup>
   <ItemGroup>

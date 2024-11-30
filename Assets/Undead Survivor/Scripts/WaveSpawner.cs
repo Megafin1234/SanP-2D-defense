@@ -30,9 +30,12 @@ public class WaveSpawner : MonoBehaviour
         waveDirectionText.gameObject.SetActive(false);    
     }
 
+    public void WaveStartButton(){
+        GameManager.instance.DayToNight();
+    }
+
     public void StartWave()
     {
-        GameManager.instance.DayToNight();
 
         if (!isSpawning && currentWave < monstersPerWave.Length)
         {

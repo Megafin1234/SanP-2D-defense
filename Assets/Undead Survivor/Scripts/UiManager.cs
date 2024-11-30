@@ -13,10 +13,13 @@ public class UIManager : MonoBehaviour
      public GameObject nightPhaseText; 
     public GameObject dayPhaseText;    
     public Image fadeImage;     
+    public CanvasGroup fadeCanvasGroup;   
+    public AnimationCurve fadeCurve;
 
     void Awake()
     {
         instance = this;
+        fadeCanvasGroup.alpha = 0;
     }
 
     public void GameStart()
@@ -47,50 +50,58 @@ public class UIManager : MonoBehaviour
         mainMenuPanel.SetActive(false);
         tutorialPanel.SetActive(false);
     }
+
     public void FadeOut(System.Action callback)
-{
-    fadeImage.gameObject.SetActive(true);
-    fadeImage.CrossFadeAlpha(1, 1f, false);
-    StartCoroutine(FadeComplete(callback));
-}
+    {
+        StartCoroutine(Fade(0, 1, 2f, callback)); 
+    }
 
     public void FadeIn(System.Action callback)
-{
-    fadeImage.CrossFadeAlpha(0, 1f, false);
-    StartCoroutine(FadeComplete(callback));
-    fadeImage.gameObject.SetActive(false);
-}
-
-    private IEnumerator FadeComplete(System.Action callback)
-{
-    yield return new WaitForSeconds(1f); // 페이드 완료 대기
-    callback?.Invoke(); // 콜백 실행
-}
-
-
-    private void OnFadeOutComplete()
     {
-        // 페이드 아웃이 끝난 후 처리할 작업
+        StartCoroutine(Fade(1, 0, 2f, callback)); 
     }
 
 
-    private void OnFadeInComplete()
+
+    private System.Collections.IEnumerator Fade(float startAlpha, float endAlpha, float duration, System.Action callback)
     {
-        // 페이드 인이 끝난 후 처리할 작업
+        float fadeTime = 0;
+
+        while (fadeTime < duration)
+        {
+            fadeTime += Time.deltaTime;
+            float t = fadeTime / duration;
+            float curveValue = fadeCurve.Evaluate(t);
+            fadeCanvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, curveValue); 
+            yield return null;
+        }
+
+        fadeCanvasGroup.alpha = endAlpha; 
+
+        if (endAlpha == 0)
+        {
+            fadeCanvasGroup.blocksRaycasts = true; 
+        }
+        else
+        {
+            fadeCanvasGroup.blocksRaycasts = false; 
+        }
+
+        callback?.Invoke(); 
+    } 
 
 
-    }
 
     public void ShowDayPhaseText()
     {
         dayPhaseText.gameObject.SetActive(true);
-        Invoke("HidePhaseText", 2f); 
+        Invoke("HidePhaseText", 5f); 
     }
 
     public void ShowNightPhaseText()
     {
         nightPhaseText.gameObject.SetActive(true);
-        Invoke("HidePhaseText", 2f);  
+        Invoke("HidePhaseText", 5f);  
     }
 
     private void HidePhaseText()
