@@ -10,19 +10,19 @@ public class UIManager : MonoBehaviour
     public Button storyButton;    
     public Button storyEndButton;  
     public Button goBackButton;    
-     public GameObject nightPhaseText; 
+    public GameObject nightPhaseText; 
     public GameObject dayPhaseText;    
     public Image fadeImage;     
     public CanvasGroup fadeCanvasGroup;   
     public AnimationCurve fadeCurve;
-
+    public Image nightEffect;
     void Awake()
     {
         instance = this;
         fadeCanvasGroup.alpha = 0;
     }
 
-    public void GameStart()
+    public void GameStart()  //작동안함. 수동으로 설정중
     {
         storyButton.onClick.AddListener(ShowTutorial);
         storyEndButton.onClick.AddListener(TutorialEnd);
@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
         nightPhaseText.gameObject.SetActive(false);
         dayPhaseText.gameObject.SetActive(false);
         fadeImage.gameObject.SetActive(false);  
+        nightEffect.gameObject.SetActive(false); 
     } 
 
 
@@ -103,11 +104,20 @@ public class UIManager : MonoBehaviour
         nightPhaseText.gameObject.SetActive(true);
         Invoke("HidePhaseText", 5f);  
     }
-
-    private void HidePhaseText()
+    public void HidePhaseText()
     {
-        dayPhaseText.SetActive(false);
-        nightPhaseText.SetActive(false);
+        nightPhaseText.gameObject.SetActive(false);  
+        dayPhaseText.gameObject.SetActive(false);
     }
+
+        public void NightEffect()
+    {
+        nightEffect.gameObject.SetActive(true);
+    }
+            public void DayEffect()
+    {
+        nightEffect.gameObject.SetActive(false);
+    }
+
 }
 
