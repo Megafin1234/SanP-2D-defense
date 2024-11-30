@@ -16,6 +16,9 @@ public class UIManager : MonoBehaviour
     public CanvasGroup fadeCanvasGroup;   
     public AnimationCurve fadeCurve;
     public Image nightEffect;
+    public GameObject clickEffectA;
+    public GameObject clickEffectB;
+    public GameObject clickEffectC;
     void Awake()
     {
         instance = this;
@@ -36,20 +39,40 @@ public class UIManager : MonoBehaviour
 
     public void ShowMainMenu()
     {
+        clickEffectB.SetActive(true);
+        StartCoroutine(BackDelay());
+    }
+    private IEnumerator BackDelay(){
+        yield return new WaitForSeconds(0.5f); 
         mainMenuPanel.SetActive(true);
         tutorialPanel.SetActive(false);
+        clickEffectB.SetActive(false);
     }
-
     public void ShowTutorial()
     {
+        clickEffectA.SetActive(true);
+        StartCoroutine(TutDelay());
+    }
+
+    private IEnumerator TutDelay()
+    {
+        yield return new WaitForSeconds(0.5f); 
         mainMenuPanel.SetActive(false);
         tutorialPanel.SetActive(true);
+        clickEffectA.SetActive(false);
     }
 
     public void TutorialEnd()
     {
+        clickEffectC.SetActive(true);
+        StartCoroutine(EndDelay());
+    }
+        private IEnumerator EndDelay()
+    {
+        yield return new WaitForSeconds(0.5f); 
         mainMenuPanel.SetActive(false);
         tutorialPanel.SetActive(false);
+        clickEffectC.SetActive(false);
     }
 
     public void FadeOut(System.Action callback)
