@@ -54,12 +54,12 @@ public class UIManager : MonoBehaviour
 
     public void FadeOut(System.Action callback)
     {
-        StartCoroutine(Fade(0, 1, 2f, callback)); 
+        StartCoroutine(Fade(0, 1, 4f, callback)); 
     }
 
     public void FadeIn(System.Action callback)
     {
-        StartCoroutine(Fade(1, 0, 2f, callback)); 
+        StartCoroutine(Fade(1, 0, 1f, callback)); 
     }
 
 
