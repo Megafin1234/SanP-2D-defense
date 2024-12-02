@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public enum InfoType { Exp, Level, Kill, DayTime, NightTime, Health}
+    public enum InfoType { Exp, Level, Kill,DayCount,NightCount, DayTime, NightTime, Health}
     public InfoType type;
 
     Text myText;
@@ -25,6 +25,12 @@ public class HUD : MonoBehaviour
                 break;
             case InfoType.Level:
                 myText.text = string.Format("Lv.{0:F0}", GameManager.instance.level);
+                break;
+            case InfoType.DayCount:
+                myText.text = string.Format("{0:F0}일차 낮", GameManager.instance.DayCount);
+                break;
+            case InfoType.NightCount:
+                myText.text = string.Format("{0:F0}일차 밤", GameManager.instance.NightCount);
                 break;
             case InfoType.Kill:
                 myText.text = string.Format("{0:F0}", GameManager.instance.kill);
