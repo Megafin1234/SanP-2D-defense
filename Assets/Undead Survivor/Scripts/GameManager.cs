@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public bool isLive;
     public float dayPhaseTimer;  
     public float nightPhaseTimer; 
+    public int DayCount = 1;
+    public int NightCount;
     public float dayPhaseDuration = 180f; 
     public float nightPhaseDuration = 120f; 
     
@@ -27,6 +29,9 @@ public class GameManager : MonoBehaviour
     [Header("#HUD References")]
     public GameObject dayTimerHUD; 
     public GameObject nightTimerHUD; 
+
+    public GameObject dayCountHUD; 
+    public GameObject nightCountHUD; 
 
     [Header("#Game Object")]
 
@@ -53,6 +58,8 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.PlayBgm(true);
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
         dayPhaseTimer = dayPhaseDuration;
+        DayCount = 1;
+        NightCount = 0;
     }
     public void GameOver()
     {
@@ -124,6 +131,7 @@ public class GameManager : MonoBehaviour
     {
         isDayPhase = false;
         nightPhaseTimer = nightPhaseDuration;
+        NightCount++;
         isLive = false;
         UIManager.instance.ShowNightPhaseText();
 
@@ -144,6 +152,7 @@ public class GameManager : MonoBehaviour
         isDayPhase = true;
         isLive = false;
         dayPhaseTimer = dayPhaseDuration;
+
         UIManager.instance.ShowDayPhaseText();
 
         UIManager.instance.FadeOut(() =>
@@ -151,6 +160,7 @@ public class GameManager : MonoBehaviour
             UIManager.instance.FadeIn(() =>
             {
                 isLive = true;
+                DayCount++;
                 StartDayPhase();
             });
         });
@@ -173,12 +183,16 @@ public void ActivateDayTimer()
 {
     dayTimerHUD.SetActive(true);   
     nightTimerHUD.SetActive(false); 
+    dayCountHUD.SetActive(true);
+    nightCountHUD.SetActive(false);
 }
 
 public void ActivateNightTimer()
 {
     dayTimerHUD.SetActive(false);  
     nightTimerHUD.SetActive(true); 
+    dayCountHUD.SetActive(false);
+    nightCountHUD.SetActive(true);
 }
 
     public void GetExp()
