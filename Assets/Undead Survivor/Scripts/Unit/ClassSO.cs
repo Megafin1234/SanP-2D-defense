@@ -38,5 +38,5 @@ public class Skill
 {
     public string skillName; //스킬이름
     public int requiredLevel; //요구레벨..? 여기서 처리할지 so자체에 리스트로 넣을지 고민중.
-
+    int skillType;
 }
