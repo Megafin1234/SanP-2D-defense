@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     SpriteRenderer spriter;
     Animator anim;
     float dashTime;
-    float dashWaiting=0;
+    public float dashWaiting=0;
     Vector2 dashVec;
     
     void Awake()
