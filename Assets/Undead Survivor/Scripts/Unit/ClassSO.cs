@@ -13,6 +13,7 @@ public class ClassSO : ScriptableObject
         Debuffer,
         Utility
     }
+    
 
     //패시브스킬 관련 정보들
     [Header("Class Information")]
