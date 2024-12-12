@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public enum InfoType { Exp, Level, Kill,DayCount,NightCount, DayTime, NightTime, Health}
+    public enum InfoType { Exp, Level, Kill,DayCount,NightCount, DayTime, NightTime, Health, DashCooldown}
     public InfoType type;
 
     Text myText;
@@ -51,7 +51,20 @@ public class HUD : MonoBehaviour
                 float curHealth = GameManager.instance.health;
                 float maxHealth = GameManager.instance.maxHealth;
                 mySlider.value = curHealth/maxHealth;
-                break;                
+                break;
+            case InfoType.DashCooldown:
+                float curCool = GameManager.instance.player.dashWaiting;
+                float maxCool = GameManager.instance.player.dashCoolDown;
+                mySlider.value = (maxCool-curCool)/maxCool;
+                Transform child = transform.Find("DashCoolTXT");
+                myText = child.GetComponent<Text>();
+                if(curCool<=0){
+                    myText.text = "";
+                }
+                else{
+                    myText.text = string.Format("{0:F1}s", curCool);
+                }
+                break;          
         }
     }
 }

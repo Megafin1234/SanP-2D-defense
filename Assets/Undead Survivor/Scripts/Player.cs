@@ -12,12 +12,13 @@ public class Player : MonoBehaviour
     public Scanner scanner;
     public Hand[] hands;
     public RuntimeAnimatorController[] animCon;
+    public float dragCoefficient;
 
     Rigidbody2D rigid;
     SpriteRenderer spriter;
     Animator anim;
     float dashTime;
-    float dashWaiting=0;
+    public float dashWaiting=0;
     Vector2 dashVec;
     
     void Awake()
@@ -45,6 +46,8 @@ public class Player : MonoBehaviour
         Vector2 nextVec;
         if (dashTime>0) // 대시 중이면 대시 속도로 이동
         {
+            Vector2 dragForce = -dashVec.normalized * dragCoefficient * dashVec.magnitude * Time.fixedDeltaTime;
+            dashVec += dragForce;
             nextVec = dashVec;
             dashTime -= Time.fixedDeltaTime;
         }
