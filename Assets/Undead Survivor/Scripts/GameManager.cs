@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     public Result uiResult;
     public GameObject enemyCleaner;
     public Weapon weapon;
+    public GameObject merchant;
+    public GameObject merchantInteraction;
 
     private bool isDayPhase = true;
 
@@ -132,6 +134,7 @@ public class GameManager : MonoBehaviour
         isDayPhase = false;
         nightPhaseTimer = nightPhaseDuration;
         NightCount++;
+        
         isLive = false;
         UIManager.instance.ShowNightPhaseText();
 
@@ -145,6 +148,7 @@ public class GameManager : MonoBehaviour
                 StartNightPhase();
             });
         });
+        merchant.SetActive(false);//유닛상인 비활성화
     }
 
     public void NightToDay()
@@ -152,7 +156,7 @@ public class GameManager : MonoBehaviour
         isDayPhase = true;
         isLive = false;
         dayPhaseTimer = dayPhaseDuration;
-
+        
         UIManager.instance.ShowDayPhaseText();
 
         UIManager.instance.FadeOut(() =>
@@ -164,6 +168,7 @@ public class GameManager : MonoBehaviour
                 StartDayPhase();
             });
         });
+        merchant.SetActive(true);//유닛상인 활성화
     }
 
     private void StartDayPhase()
