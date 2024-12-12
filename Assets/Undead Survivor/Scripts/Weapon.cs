@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour
     public float speed;
     float timer;
     Player player;
+    bool canFire;
 
     void Awake()
     {
@@ -31,7 +32,8 @@ public class Weapon : MonoBehaviour
 
                 if(timer>speed){
                     timer = 0f;
-                    Fire();
+                    //Fire();
+                    canFire = true;
                 }
                 break;
         }
@@ -122,6 +124,8 @@ public class Weapon : MonoBehaviour
     }
 
     public void MouseFire(){
+        if(!canFire) return;
+        canFire = false;
         Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 dir = targetPos - transform.position;
         dir.z = 0;
