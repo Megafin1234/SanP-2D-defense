@@ -107,6 +107,7 @@ public class Enemy : MonoBehaviour
             spriter.sortingOrder = 1;
             anim.SetBool("Dead", true);
             GameManager.instance.kill++;
+            GameManager.instance.coin += (3+(GameManager.instance.DayCount)*2);
             GameManager.instance.GetExp();
             WaveSpawner.instance.currentWaveKillCount++;
 

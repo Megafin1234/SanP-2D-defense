@@ -16,13 +16,14 @@ public class GameManager : MonoBehaviour
     public float dayPhaseDuration = 180f; 
     public float nightPhaseDuration = 120f; 
     
-      
+    
     [Header("#Player Info")]
     public int playerId;
     public float health;
     public float maxHealth = 100;
     public int level;
     public int kill;
+    public int coin;
     public int exp;
     public int[] nextExp = { 3, 5, 10, 100, 150, 210, 360, 450, 600};
 
