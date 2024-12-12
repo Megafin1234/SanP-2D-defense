@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public Player player;
     public PoolManager pool;
     public LevelUp uiLevelUp;
+    public GameObject UnitShopPanel;
     public LevelUp stageLevelUp;
     public Result uiResult;
     public GameObject enemyCleaner;
