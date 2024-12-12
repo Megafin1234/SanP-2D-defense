@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
         GameObject trail = new GameObject("Trail"); // 잔상 오브젝트 생성
         SpriteRenderer trailSprite = trail.AddComponent<SpriteRenderer>(); // SpriteRenderer 추가
         trailSprite.sprite = spriter.sprite; // 현재 스프라이트 복사
-        trailSprite.color = new Color(1f, 0.5f, 0.5f, 0.3f); // 반투명 색상으로 설정
+        trailSprite.color = new Color(1f, 0.5f, 0.5f, 0.3f); // 색상 설정
         trail.transform.position = transform.position;
         trail.transform.rotation = transform.rotation;
         trail.transform.localScale = transform.localScale;
