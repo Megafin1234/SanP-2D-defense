@@ -39,13 +39,23 @@ public class HUD : MonoBehaviour
                 float remainDayTime = GameManager.instance.dayPhaseTimer;
                 int min = Mathf.FloorToInt(remainDayTime/60);
                 int sec = Mathf.FloorToInt(remainDayTime%60);
-                myText.text = string.Format("{0:D2}: {1:D2}", min, sec);    
+                if(min<0 || sec<0){
+                    myText.text = string.Format("--: --");
+                }
+                else{
+                    myText.text = string.Format("{0:D2}: {1:D2}", min, sec);
+                }    
                 break;
             case InfoType.NightTime:
                 float remainNightTime = GameManager.instance.nightPhaseTimer;
                 int nmin = Mathf.FloorToInt(remainNightTime/60);
                 int nsec = Mathf.FloorToInt(remainNightTime%60);
-                myText.text = string.Format("{0:D2}: {1:D2}", nmin, nsec);    
+                if(nmin<0 || nsec<0){
+                    myText.text = string.Format("--: --");
+                }
+                else{
+                    myText.text = string.Format("{0:D2}: {1:D2}", nmin, nsec);
+                }     
                 break;
             case InfoType.Health:
                 float curHealth = GameManager.instance.health;
