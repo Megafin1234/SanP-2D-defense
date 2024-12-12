@@ -104,12 +104,10 @@ public class GameManager : MonoBehaviour
     void Update(){
         if (!isLive)
             return;
-        /*gameTime += Time.deltaTime;
 
-        if(gameTime > maxGameTime){
-            gameTime = maxGameTime;
+        if(DayCount > 3){
             GameVictory();
-        } */
+        } 
         if (isDayPhase)
         {
             dayPhaseTimer -= Time.deltaTime;
