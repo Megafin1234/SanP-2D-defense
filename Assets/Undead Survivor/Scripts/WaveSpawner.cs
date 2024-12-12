@@ -64,7 +64,7 @@ public class WaveSpawner : MonoBehaviour
         isSpawning = false;
         currentWave++;
         GameManager.instance.NightToDay();
-        if (currentWave % 2 == 0)
+        if (currentWave % 1 == 0)
         {
             reposition.ToggleTilemapLayers(); 
         }
