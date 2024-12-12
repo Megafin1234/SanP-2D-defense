@@ -69,6 +69,9 @@ public class Weapon : MonoBehaviour
                 speed = 150*Character.WeaponSpeed;
                 Batch();
                 break;
+            case 1: //총
+                speed = 0.5f* Character.WeaponRate;
+                break;
             default:
                 speed = 0.5f* Character.WeaponRate;
                 break;
