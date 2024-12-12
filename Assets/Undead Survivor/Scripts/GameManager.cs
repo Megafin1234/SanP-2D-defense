@@ -16,13 +16,14 @@ public class GameManager : MonoBehaviour
     public float dayPhaseDuration = 180f; 
     public float nightPhaseDuration = 120f; 
     
-      
+    
     [Header("#Player Info")]
     public int playerId;
     public float health;
     public float maxHealth = 100;
     public int level;
     public int kill;
+    public int coin;
     public int exp;
     public int[] nextExp = { 3, 5, 10, 100, 150, 210, 360, 450, 600};
 
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     public Player player;
     public PoolManager pool;
     public LevelUp uiLevelUp;
+    public GameObject UnitShopPanel;
     public LevelUp stageLevelUp;
     public Result uiResult;
     public GameObject enemyCleaner;
@@ -102,12 +104,10 @@ public class GameManager : MonoBehaviour
     void Update(){
         if (!isLive)
             return;
-        /*gameTime += Time.deltaTime;
 
-        if(gameTime > maxGameTime){
-            gameTime = maxGameTime;
+        if(DayCount > 3){
             GameVictory();
-        } */
+        } 
         if (isDayPhase)
         {
             dayPhaseTimer -= Time.deltaTime;

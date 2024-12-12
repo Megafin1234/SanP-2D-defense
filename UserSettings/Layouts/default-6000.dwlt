@@ -20,6 +20,7 @@ MonoBehaviour:
     height: 1037
   m_ShowMode: 4
   m_Title: Game
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -362,7 +363,6 @@ MonoBehaviour:
     m_KeySerializationHelper:
     - {fileID: -150013036866289500, guid: 15d62e2c581ee474d91a02ca89ed45d8, type: 2}
     - {fileID: 1250722460328533898, guid: f2855d618fc8d9c499189d3f39b9cbbc, type: 2}
-    - {fileID: -1608291883760811631, guid: f8b88084c0b21814f939ac6a3de5f557, type: 2}
     m_ValueSerializationHelper:
     - e00: 0.309375
       e01: 0
@@ -413,10 +413,10 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: f8b88084c0b21814f939ac6a3de5f557,
+  m_AnimatorController: {fileID: 9100000, guid: 15d62e2c581ee474d91a02ca89ed45d8,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -1608291883760811631, guid: f8b88084c0b21814f939ac6a3de5f557,
+  - m_Target: {fileID: -150013036866289500, guid: 15d62e2c581ee474d91a02ca89ed45d8,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -1181,7 +1181,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -1259,6 +1259,8 @@ MonoBehaviour:
         m_UserAcceptedRename: 0
         m_Name: 
         m_OriginalName: 
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
@@ -1266,8 +1268,10 @@ MonoBehaviour:
           width: 0
           height: 0
         m_UserData: 0
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
+        m_OriginalEventType: 11
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_TrimLeadingAndTrailingWhitespace: 0
