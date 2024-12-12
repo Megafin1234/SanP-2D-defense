@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public enum InfoType { Exp, Level, Kill,DayCount,NightCount, DayTime, NightTime, Health, DashCooldown}
+    public enum InfoType { Exp, Level, Kill, Coin, DayCount,NightCount, DayTime, NightTime, Health, DashCooldown}
     public InfoType type;
 
     Text myText;
@@ -34,6 +34,9 @@ public class HUD : MonoBehaviour
                 break;
             case InfoType.Kill:
                 myText.text = string.Format("{0:F0}", GameManager.instance.kill);
+                break;
+            case InfoType.Coin:
+                myText.text = string.Format("{0:F0}", GameManager.instance.coin);
                 break;
             case InfoType.DayTime:
                 float remainDayTime = GameManager.instance.dayPhaseTimer;
