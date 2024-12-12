@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public float dashSpeed;
     public float dashDuration;
     public float dashCoolDown;
+    public float trailInterval = 0.05f; // 잔상 생성 간격
+    public float trailLifetime = 0.3f; // 잔상 지속 시간
     public Scanner scanner;
     public Hand[] hands;
     public RuntimeAnimatorController[] animCon;
@@ -18,7 +20,9 @@ public class Player : MonoBehaviour
     SpriteRenderer spriter;
     Animator anim;
     float dashTime;
-    public float dashWaiting=0;
+    public float dashWaiting;
+    float trailTimer;
+    float trailIntervalReal;
     Vector2 dashVec;
     
     void Awake()
@@ -50,6 +54,13 @@ public class Player : MonoBehaviour
             dashVec += dragForce;
             nextVec = dashVec;
             dashTime -= Time.fixedDeltaTime;
+            trailTimer -= Time.fixedDeltaTime;
+            if (trailTimer <= 0)
+            {
+                CreateTrail();
+                trailTimer = trailIntervalReal;
+                trailIntervalReal += 0.01f;
+            }
         }
         else{
             nextVec = inputVec * speed * Time.fixedDeltaTime;
@@ -74,7 +85,23 @@ public class Player : MonoBehaviour
             dashWaiting = dashCoolDown;
             dashTime = dashDuration;
             dashVec = inputVec.normalized * dashSpeed * Time.fixedDeltaTime;
+            trailIntervalReal = trailInterval;
+            trailTimer = 0;
         }
+    }
+
+    void CreateTrail()
+    {
+        GameObject trail = new GameObject("Trail"); // 잔상 오브젝트 생성
+        SpriteRenderer trailSprite = trail.AddComponent<SpriteRenderer>(); // SpriteRenderer 추가
+        trailSprite.sprite = spriter.sprite; // 현재 스프라이트 복사
+        trailSprite.color = new Color(1f, 0.5f, 0.5f, 0.3f); // 반투명 색상으로 설정
+        trail.transform.position = transform.position;
+        trail.transform.rotation = transform.rotation;
+        trail.transform.localScale = transform.localScale;
+        trailSprite.flipX = spriter.flipX;
+
+        Destroy(trail, trailLifetime + trailInterval*2 - trailIntervalReal*2); // 일정 시간 후 잔상 제거
     }
 
     void LateUpdate()
