@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -46,6 +47,8 @@ public class GameManager : MonoBehaviour
     public Weapon weapon;
     public GameObject merchant;
     public GameObject merchantInteraction;
+
+    public List<Enemy> party;
 
     private bool isDayPhase = true;
 

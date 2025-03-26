@@ -11,6 +11,7 @@ TagManager:
   - Area
   - Terrain
   - GroundB
+  - Catch
   layers:
   - Default
   - TransparentFX

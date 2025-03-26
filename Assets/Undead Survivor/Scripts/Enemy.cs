@@ -87,6 +87,16 @@ public class Enemy : MonoBehaviour
             TakeDamage(bulletDamage);
             StartCoroutine(KnockBack());
         }
+        if (collision.CompareTag("Catch")) //포획툴에 맞을때
+        {
+            // Bullet 컴포넌트에서 damage 가져오기
+            float bulletDamage = collision.GetComponent<CatchTool>().damage;
+
+            // TakeDamage 메서드를 통해 피해 처리
+            TakeDamage(bulletDamage);
+            StartCoroutine(KnockBack());
+            Caught();
+        }
     }
 
     public void TakeDamage(float damage)    
@@ -130,6 +140,19 @@ public class Enemy : MonoBehaviour
 
     if (agent != null)
         agent.enabled = true; // 넉백이 끝난 후 NavMeshAgent 재활성화
+    }
+
+    public void Caught()
+    {
+        if (agent != null) 
+            agent.enabled = false; // 넉백 동안 NavMeshAgent 비활성화
+        //포획 판정
+        if(Random.Range(0,5)>=3){//확률은 추후 조정
+            GameManager.instance.party.Add(this);//게임매니저의 파티 목록에 얘를 추가한다.
+        }
+
+        if (agent != null)
+            agent.enabled = true; // 넉백이 끝난 후 NavMeshAgent 재활성화
     }
 
 

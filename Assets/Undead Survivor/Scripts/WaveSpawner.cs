@@ -8,6 +8,7 @@ public class WaveSpawner : MonoBehaviour
     public Transform[] spawnPoint; 
     public WaveSpawnData[] waveSpawnData;
     public int[] monstersPerWave; 
+    public int monsterSize;
     public Button nextWaveButton; 
     public Text waveDirectionText; 
     public Reposition reposition; 
@@ -27,7 +28,8 @@ public class WaveSpawner : MonoBehaviour
             Destroy(gameObject); 
         }
         spawnPoint = GetComponentsInChildren<Transform>();
-        waveDirectionText.gameObject.SetActive(false);    
+        waveDirectionText.gameObject.SetActive(false);
+        monsterSize = 7;
     }
 
     public void WaveStartButton(){
@@ -54,11 +56,11 @@ public class WaveSpawner : MonoBehaviour
 
         for (int i = 0; i < monstersPerWave[waveIndex]; i++)
         {
-            Spawn(waveIndex);
+            int nextMonster = Random.Range(0, monsterSize);
+            Spawn(nextMonster);
             yield return new WaitForSeconds(waveSpawnData[waveIndex].spawnTime); 
         }
 
-    
         yield return new WaitUntil(() => currentWaveKillCount >= monstersPerWave[waveIndex]);
 
         isSpawning = false;

@@ -10,9 +10,12 @@ public class Weapon : MonoBehaviour
     public float damage;
     public int count;
     public float speed;
+    public float catchCool;
     float timer;
+    float catchTimer;
     Player player;
     bool canFire;
+    bool canCatch;
 
     void Awake()
     {
@@ -34,6 +37,12 @@ public class Weapon : MonoBehaviour
                     timer = 0f;
                     //Fire();
                     canFire = true;
+                }
+
+                catchTimer += Time.deltaTime;
+                if(catchTimer>speed){
+                    catchTimer=0f;
+                    canCatch=true;
                 }
                 break;
         }
@@ -138,5 +147,20 @@ public class Weapon : MonoBehaviour
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().Init(damage, count, dir);
+    }
+
+    public void TryCatch(){
+        if(!canCatch) return;
+        canCatch = false;
+        Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 dir = targetPos - transform.position;
+        dir.z = 0;
+        dir = dir.normalized;
+
+        //bullet이 아니라 그물을 던져야 한다. 
+        Transform bullet = GameManager.instance.pool.Get(5).transform;
+        bullet.position = transform.position;
+        bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
+        bullet.GetComponent<CatchTool>().Init(damage, count, dir);
     }
 }

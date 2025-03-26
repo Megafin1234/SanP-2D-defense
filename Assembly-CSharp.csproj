@@ -59,8 +59,7 @@
     <UnityVersion>6000.0.23f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\eric0\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.0.5\Analyzers\Microsoft.Unity.Analyzers.dll" />
-
+    <Analyzer Include="C:\Users\hidde\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
@@ -73,6 +72,7 @@
     <Compile Include="Assets\Undead Survivor\Scripts\ItemData.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Tower.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\Unit\CatchManager.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Item.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\UnitMelee.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Wall.cs" />
@@ -96,6 +96,7 @@
     <Compile Include="Assets\Undead Survivor\Scripts\Bullet.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Character.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Follow.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\CatchTool.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Player.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\HUD.cs" />
   </ItemGroup>

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -25,6 +26,8 @@ public class Player : MonoBehaviour
     float trailIntervalReal;
     Vector2 dashVec;
     
+    public List<GameObject> party;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -80,6 +83,10 @@ public class Player : MonoBehaviour
         GameManager.instance.weapon.MouseFire();
     }
 
+    void OnCatch(){
+        GameManager.instance.weapon.TryCatch();
+    }
+
     void OnDash(){
         if (dashWaiting<=0 && inputVec != Vector2.zero) // 움직이고 있을 때만 대시 가능
         {
@@ -119,7 +126,9 @@ public class Player : MonoBehaviour
     {
         if (!GameManager.instance.isLive)
             return;
-        GameManager.instance.health -= Time.deltaTime * 10;
+        if (collision.gameObject.CompareTag("Enemy")) {
+            GameManager.instance.health -= Time.deltaTime * 10;
+        }
 
         if(GameManager.instance.health <0){
             for (int index=2;index < transform.childCount;index++){
