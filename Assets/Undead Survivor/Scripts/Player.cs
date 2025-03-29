@@ -122,6 +122,26 @@ public class Player : MonoBehaviour
             spriter.flipX = inputVec.x < 0;
         }
     }
+
+    public void TakeDamage(float amount)
+{
+    if (!GameManager.instance.isLive)
+        return;
+
+    GameManager.instance.health -= amount;
+
+    if (GameManager.instance.health < 0)
+    {
+        for (int index = 2; index < transform.childCount; index++)
+        {
+            transform.GetChild(index).gameObject.SetActive(false);
+        }
+
+        anim.SetTrigger("Dead");
+        GameManager.instance.GameOver();
+    }
+}
+
     void OnCollisionStay2D(Collision2D collision)
     {
         if (!GameManager.instance.isLive)

@@ -56,9 +56,11 @@ public class WaveSpawner : MonoBehaviour
 
         for (int i = 0; i < monstersPerWave[waveIndex]; i++)
         {
-            int nextMonster = Random.Range(0, monsterSize);
-            Spawn(nextMonster);
-            yield return new WaitForSeconds(waveSpawnData[waveIndex].spawnTime); 
+            int dataIndex = Random.Range(0, waveSpawnData.Length);
+            WaveSpawnData spawnData = waveSpawnData[dataIndex];
+
+            Spawn(spawnData);
+            yield return new WaitForSeconds(spawnData.spawnTime); 
         }
 
         yield return new WaitUntil(() => currentWaveKillCount >= monstersPerWave[waveIndex]);
@@ -77,14 +79,21 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    void Spawn(int waveIndex)
+    void Spawn(WaveSpawnData data)
     {
-        GameObject enemy = GameManager.instance.pool.Get(0);
+        int prefabIndex = GetEnemyPrefabIndex(data.type);
+        GameObject enemy = GameManager.instance.pool.Get(prefabIndex);
+
         Vector3 spawnPosition = spawnPoint[currentSpawnIndex].position;
-        float randomOffsetX = Random.Range(-1f, 1f); 
-        float randomOffsetY = Random.Range(-1f, 1f); 
-        enemy.transform.position = spawnPosition + new Vector3(randomOffsetX, randomOffsetY, 0);
-        enemy.GetComponent<Enemy>().Init(waveSpawnData[waveIndex].ToSpawnData());
+        Vector3 offset = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
+        enemy.transform.position = spawnPosition + offset;
+
+        enemy.GetComponent<EnemyBase>().Init(data.ToSpawnData());
+    }
+
+    int GetEnemyPrefabIndex(EnemyType type)
+    {
+    return 10 + (int)type; // Enemy 프리팹은 10번대부터 배치함 풀매니저 123번에 불렛이 자리하고 있음
     }
 
     void UpdateWaveDirectionText(int spawnIndex)
@@ -119,6 +128,7 @@ public class WaveSpawner : MonoBehaviour
 [System.Serializable]
 public class WaveSpawnData
 {
+    public EnemyType type; 
     public float spawnTime;
     public int spriteType;
     public int health;
@@ -134,4 +144,12 @@ public class WaveSpawnData
             speed = this.speed
         };
     }
+}
+public enum EnemyType
+{
+    Melee,
+    Ranged,
+    Suicide,
+    Buffer,
+    Boss
 }
