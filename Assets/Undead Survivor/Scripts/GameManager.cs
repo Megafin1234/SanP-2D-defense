@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     public GameObject merchant;
     public GameObject merchantInteraction;
 
-    public List<Enemy> party;
+    public List<EnemyBase> party;
 
     private bool isDayPhase = true;
 
