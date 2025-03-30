@@ -81,35 +81,40 @@ public abstract class EnemyBase : MonoBehaviour
             agent.speed = speed;
     }
 
-    public virtual void TakeDamage(float damage)
+public virtual void TakeDamage(float damage)
+{
+    if (isInvincible || !isLive)
+        return;
+
+    // 자폭형은 TakeDamage로 죽지 않도록 막음
+    if (this is EnemySuicide suicideEnemy && suicideEnemy.IsExploding())
+        return;
+
+    health -= damage;
+
+    if (health > 0)
     {
-        if (isInvincible) 
-            return;
+        anim.SetTrigger("Hit");
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Hit);
+    }
+    else
+    {
+        isLive = false;
+        coll.enabled = false;
+        rigid.simulated = false;
+        spriter.sortingOrder = 1;
+        anim.SetBool("Dead", true);
 
-        health -= damage;
-
-        if (health > 0)
-        {
-            anim.SetTrigger("Hit");
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.Hit);
-        }
-        else
-        {
-            isLive = false;
-            coll.enabled = false;
-            rigid.simulated = false;
-            spriter.sortingOrder = 1;
-            anim.SetBool("Dead", true);
-
-            GameManager.instance.kill++;
-            GameManager.instance.coin += (3 + GameManager.instance.DayCount * 2);
-            GameManager.instance.GetExp();
-            WaveSpawner.instance.currentWaveKillCount++;
+        GameManager.instance.kill++;
+        GameManager.instance.coin += (3 + GameManager.instance.DayCount * 2);
+        GameManager.instance.GetExp();
+        WaveSpawner.instance.currentWaveKillCount++;
 
         if (GameManager.instance.isLive)
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Dead);
-        }
     }
+}
+
 
     public void Caught()
     {

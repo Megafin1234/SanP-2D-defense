@@ -18,8 +18,9 @@ public class EnemyMelee : EnemyBase, EnemyBase.IAttackable
     {
         if (isTouchingPlayer && attackTimer <= 0f)
         {
+            Debug.Log(" Melee 공격 발동됨");
             anim.SetTrigger("AttackMelee");
-            GameManager.instance.health -= damage;
+            GameManager.instance.player.TakeDamage(damage);
             attackTimer = attackDelay;
         }
 
