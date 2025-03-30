@@ -97,6 +97,7 @@
     <Compile Include="Assets\Undead Survivor\Scripts\Character.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Follow.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\CatchTool.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\Pet.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Player.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\HUD.cs" />
   </ItemGroup>
