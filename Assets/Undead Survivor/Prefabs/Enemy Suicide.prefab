@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 39302083690742939}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.15, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -234,10 +234,16 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   spriteType: 0
+  isInvincible: 0
+  isLive: 0
+  agent: {fileID: 0}
   animCon:
   - {fileID: 22100000, guid: 618cffae628fbcf4481a052049a5b20c, type: 2}
-  explodeRange: 1.5
-  explodeDamage: 50
+  explodeRange: 2
+  explodeDamage: 30
+  attackCooldown: 0.5
+  ExplosionRangeIndicator: {fileID: 2354758503574482147, guid: 9a311efefe6fba742a1a12559af5dcbf,
+    type: 3}
 --- !u!1 &7435232360863110800
 GameObject:
   m_ObjectHideFlags: 0

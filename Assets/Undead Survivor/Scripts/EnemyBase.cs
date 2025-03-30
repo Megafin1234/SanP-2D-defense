@@ -13,6 +13,8 @@ public abstract class EnemyBase : MonoBehaviour
     public bool isLive;
     public NavMeshAgent agent;
     public RuntimeAnimatorController[] animCon;
+    public GameObject activeSpeedIcon;
+    public GameObject activeAttackIcon;
 
     public interface IAttackable
 {
@@ -81,35 +83,45 @@ public abstract class EnemyBase : MonoBehaviour
             agent.speed = speed;
     }
 
-    public virtual void TakeDamage(float damage)
+public virtual void TakeDamage(float damage)
+{
+    if (isInvincible || !isLive)
+        return;
+
+    // 자폭형은 TakeDamage로 죽지 않도록 막음
+    if (this is EnemySuicide suicideEnemy && suicideEnemy.IsExploding())
+        return;
+
+    health -= damage;
+
+    if (health > 0)
     {
-        if (isInvincible) 
-            return;
+        anim.SetTrigger("Hit");
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Hit);
+    }
+    else
+    {
+         Debug.Log($"{name} :: 사망 조건 진입");
+        isLive = false;
+        coll.enabled = false;
+        rigid.simulated = false;
+        spriter.sortingOrder = 1;
+        anim.ResetTrigger("AttackMelee");
+        anim.ResetTrigger("AttackMagic");
+        anim.ResetTrigger("Hit");
+        anim.SetBool("Dead", true);
+         anim.Play("Dead", 0, 0f); //버퍼 죽음 애니메이션 문제로 강제재생. 없어도 되야함
 
-        health -= damage;
-
-        if (health > 0)
-        {
-            anim.SetTrigger("Hit");
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.Hit);
-        }
-        else
-        {
-            isLive = false;
-            coll.enabled = false;
-            rigid.simulated = false;
-            spriter.sortingOrder = 1;
-            anim.SetBool("Dead", true);
-
-            GameManager.instance.kill++;
-            GameManager.instance.coin += (3 + GameManager.instance.DayCount * 2);
-            GameManager.instance.GetExp();
-            WaveSpawner.instance.currentWaveKillCount++;
+        GameManager.instance.kill++;
+        GameManager.instance.coin += (3 + GameManager.instance.DayCount * 2);
+        GameManager.instance.GetExp();
+        WaveSpawner.instance.currentWaveKillCount++;
 
         if (GameManager.instance.isLive)
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Dead);
-        }
     }
+}
+
 
     public void Caught()
     {
