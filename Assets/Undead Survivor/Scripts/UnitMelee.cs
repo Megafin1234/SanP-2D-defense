@@ -81,7 +81,7 @@ public class UnitMelee : MonoBehaviour
                 }
             }
 
-            target.GetComponent<Enemy>().TakeDamage(damage); 
+            target.GetComponent<EnemyBase>().TakeDamage(damage); 
             attackTimer = attackCooldown; 
             anim.SetBool("isMoving", false);
         }

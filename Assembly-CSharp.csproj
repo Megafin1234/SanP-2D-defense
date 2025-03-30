@@ -59,7 +59,7 @@
     <UnityVersion>6000.0.23f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\hidde\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\Oh Seung Hun\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
@@ -71,10 +71,11 @@
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\SpriteColorAnimation.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\ItemData.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Tower.cs" />
-    <Compile Include="Assets\Undead Survivor\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\EnemyBuffer.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Unit\CatchManager.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Item.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\UnitMelee.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\EnemyRanged.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Wall.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Result.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Scanner.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Assets\Undead Survivor\Scripts\Audio Manager.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\WaveSpawner.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Unit\ClassSO.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\EnemyMelee.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\TopDownCharacterController.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\UiManager.cs" />
@@ -91,7 +93,9 @@
     <Compile Include="Assets\Undead Survivor\Scripts\Gear.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\PoolManager.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\PropsAltar.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\EnemySuicide.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\LayerTrigger.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\EnemyBase.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Unit\ClassSO\ClassSO.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Bullet.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Character.cs" />
