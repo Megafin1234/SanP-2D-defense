@@ -8,15 +8,24 @@ public abstract class EnemyBase : MonoBehaviour
     public float health;
     public float maxHealth;
     public int spriteType;
+    public bool isInvincible = false;
+
+    public bool isLive;
+    public NavMeshAgent agent;
     public RuntimeAnimatorController[] animCon;
+
+    public interface IAttackable
+{
+    float GetAttackPower();
+    void SetAttackPower(float value);
+}
 
     protected Rigidbody2D rigid;
     protected Collider2D coll;
     protected Animator anim;
     protected SpriteRenderer spriter;
-    protected NavMeshAgent agent;
+
     protected Rigidbody2D target;
-    protected bool isLive;
 
     protected virtual void Awake()
     {
@@ -74,6 +83,9 @@ public abstract class EnemyBase : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        if (isInvincible) 
+            return;
+
         health -= damage;
 
         if (health > 0)

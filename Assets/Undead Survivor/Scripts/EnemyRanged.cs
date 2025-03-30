@@ -1,11 +1,17 @@
 using UnityEngine;
 
-public class EnemyRanged : EnemyBase
+public class EnemyRanged : EnemyBase, EnemyBase.IAttackable
 {
     public float attackRange = 5f;
     public float attackDelay = 2f;
     public float bulletSpeed = 12f;
     public float damage = 8f;
+    public float GetAttackPower(){
+        return damage;
+    }
+    public void SetAttackPower(float value){
+        damage = value;
+    }
 
     float attackTimer;
 

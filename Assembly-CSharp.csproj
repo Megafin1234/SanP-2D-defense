@@ -71,6 +71,7 @@
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\SpriteColorAnimation.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\ItemData.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Tower.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\EnemyBuffer.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Unit\CatchManager.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Item.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\UnitMelee.cs" />
