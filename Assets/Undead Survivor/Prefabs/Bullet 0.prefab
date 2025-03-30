@@ -149,3 +149,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   per: 0
+  owner: 0
