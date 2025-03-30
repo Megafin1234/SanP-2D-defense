@@ -29,7 +29,7 @@ public class WaveSpawner : MonoBehaviour
         }
         spawnPoint = GetComponentsInChildren<Transform>();
         waveDirectionText.gameObject.SetActive(false);
-        monsterSize = 7;
+        monsterSize = 8;
     }
 
     public void WaveStartButton(){

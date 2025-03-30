@@ -1,9 +1,15 @@
 using UnityEngine;
 
-public class EnemyMelee : EnemyBase
+public class EnemyMelee : EnemyBase, EnemyBase.IAttackable
 {
     public float attackDelay = 1f;
     public float damage = 10f;
+    public float GetAttackPower(){
+        return damage;
+    }
+    public void SetAttackPower(float value){
+        damage = value;
+    }
 
     float attackTimer;
     bool isTouchingPlayer;
