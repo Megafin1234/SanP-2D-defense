@@ -13,6 +13,8 @@ public abstract class EnemyBase : MonoBehaviour
     public bool isLive;
     public NavMeshAgent agent;
     public RuntimeAnimatorController[] animCon;
+    public GameObject activeSpeedIcon;
+    public GameObject activeAttackIcon;
 
     public interface IAttackable
 {
@@ -99,11 +101,16 @@ public virtual void TakeDamage(float damage)
     }
     else
     {
+         Debug.Log($"{name} :: 사망 조건 진입");
         isLive = false;
         coll.enabled = false;
         rigid.simulated = false;
         spriter.sortingOrder = 1;
+        anim.ResetTrigger("AttackMelee");
+        anim.ResetTrigger("AttackMagic");
+        anim.ResetTrigger("Hit");
         anim.SetBool("Dead", true);
+         anim.Play("Dead", 0, 0f); //버퍼 죽음 애니메이션 문제로 강제재생. 없어도 되야함
 
         GameManager.instance.kill++;
         GameManager.instance.coin += (3 + GameManager.instance.DayCount * 2);

@@ -238,17 +238,25 @@ MonoBehaviour:
   isLive: 0
   agent: {fileID: 0}
   animCon:
-  - {fileID: 0}
+  - {fileID: 22100000, guid: 421de20ed3f9a66449cd8824ca61e612, type: 2}
+  activeSpeedIcon: {fileID: 0}
+  activeAttackIcon: {fileID: 0}
   buffRange: 4
   buffInterval: 5
   buffDuration: 3
-  speedMultiplier: 1.5
+  speedMultiplier: 1.2
   damageMultiplier: 1.5
   enableSpeedBuff: 1
   enableAttackBuff: 1
   enableHealBuff: 1
   enableInvincibilityBuff: 0
-  healAmount: 5
+  healAmount: 30
+  buffHealIconPrefab: {fileID: 2056981359047889632, guid: 5e51bc5b54c58c447add89d7d46644b0,
+    type: 3}
+  buffSpeedIconPrefab: {fileID: 1462951370251904650, guid: c300827656a7a814dbc84bd3c0dadc23,
+    type: 3}
+  buffAttackIconPrefab: {fileID: 2466453723558050763, guid: 36747e0dd16ff474d8b9edec43c20209,
+    type: 3}
 --- !u!1 &4099359877133430287
 GameObject:
   m_ObjectHideFlags: 0

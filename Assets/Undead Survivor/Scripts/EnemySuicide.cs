@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class EnemySuicide : EnemyBase
 {
-    public float explodeRange = 1.5f;               // 폭발 범위
-    public float explodeDamage = 50f;               // 폭발 데미지
-    public float attackCooldown = 1.5f;             // 공격 간격
-    public GameObject ExplosionRangeIndicator;         // 범위 원 프리팹 (인스펙터에서 할당)
+    public float explodeRange = 1.2f;       
+    public float explodeDamage = 30f;         
+    public float attackCooldown = 1.5f;        //버그방지
+    public GameObject ExplosionRangeIndicator;         
 
-    private GameObject indicatorInstance;           // 생성된 원 이펙트 인스턴스
+    private GameObject indicatorInstance;        
     float attackTimer;
     private bool exploded = false;
     public bool IsExploding()
