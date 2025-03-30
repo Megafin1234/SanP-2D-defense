@@ -243,6 +243,8 @@ MonoBehaviour:
   - {fileID: 22100000, guid: 8d1d920724ffb8a409ce0e458dc4b7a9, type: 2}
   - {fileID: 22100000, guid: 25f7a818644b68042bb0c0c2a28d1550, type: 2}
   - {fileID: 22100000, guid: e73edfda31013cc42a44f353909b2368, type: 2}
+  activeSpeedIcon: {fileID: 0}
+  activeAttackIcon: {fileID: 0}
   attackDelay: 1
   damage: 10
 --- !u!1 &1598668819941263661
