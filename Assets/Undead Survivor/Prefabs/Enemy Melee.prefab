@@ -243,6 +243,10 @@ MonoBehaviour:
   - {fileID: 22100000, guid: 8d1d920724ffb8a409ce0e458dc4b7a9, type: 2}
   - {fileID: 22100000, guid: 25f7a818644b68042bb0c0c2a28d1550, type: 2}
   - {fileID: 22100000, guid: e73edfda31013cc42a44f353909b2368, type: 2}
+  - {fileID: 22100000, guid: 326b0ea40a9928944918880275db8c72, type: 2}
+  - {fileID: 22100000, guid: 9ff957559d1bc7047bdd9d81f361ec34, type: 2}
+  - {fileID: 22100000, guid: 90fd4d9dcd694f24091f036ff577d46e, type: 2}
+  - {fileID: 22100000, guid: 3122cdb7eb9515c469aabe47cad120f6, type: 2}
   activeSpeedIcon: {fileID: 0}
   activeAttackIcon: {fileID: 0}
   attackDelay: 1
