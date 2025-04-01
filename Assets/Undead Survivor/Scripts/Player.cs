@@ -74,8 +74,8 @@ public class Player : MonoBehaviour
     }
     void OnMove(InputValue value)
     {
-        if (!GameManager.instance.isLive)
-            return;
+        // if (!GameManager.instance.isLive) //이거 있으면 일시정지했다가 풀릴때 무빙 이상하게쳐서 지워용
+        //     return;
         inputVec = value.Get<Vector2>();
     }
 
