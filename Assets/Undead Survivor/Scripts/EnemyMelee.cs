@@ -26,6 +26,12 @@ public class EnemyMelee : EnemyBase, EnemyBase.IAttackable
 
         attackTimer -= Time.deltaTime;
     }
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        canCaught=true;
+        enemyIdx=0;
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {

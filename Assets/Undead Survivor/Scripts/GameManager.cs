@@ -47,8 +47,9 @@ public class GameManager : MonoBehaviour
     public Weapon weapon;
     public GameObject merchant;
     public GameObject merchantInteraction;
+    public List<GameObject> pets;
 
-    public List<EnemyBase> party;
+    public List<GameObject> party;
 
     private bool isDayPhase = true;
 
@@ -214,6 +215,14 @@ public void ActivateNightTimer()
             exp = 0;
             uiLevelUp.Show();
         }
+    }
+
+    public void GetPet(int idx, Transform originTransform){
+        GameObject newPet = Instantiate(pets[idx]); // 부모 없이 생성
+        newPet.transform.SetParent(player.transform); // 부모를 플레이어로 설정
+        newPet.transform.position = originTransform.position; // 위치를 originTransform과 동일하게 설정
+        party.Add(newPet);
+        newPet.SetActive(true);
     }
 
     public void Stop()

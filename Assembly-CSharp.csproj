@@ -76,6 +76,7 @@
     <Compile Include="Assets\Undead Survivor\Scripts\Item.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\UnitMelee.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\EnemyRanged.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\PetMelee.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Wall.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Result.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Scanner.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\TopDownCharacterController.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\UiManager.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Spawner.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\PetRange.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Weapon.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Hand.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Gear.cs" />

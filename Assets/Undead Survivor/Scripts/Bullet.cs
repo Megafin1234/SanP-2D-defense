@@ -8,7 +8,8 @@ public class Bullet : MonoBehaviour
     public enum BulletOwner
     {
         Player,
-        Enemy
+        Enemy,
+        Pet
     }
 
     public BulletOwner owner = BulletOwner.Player; // 기본은 플레이어 탄환
@@ -46,6 +47,9 @@ public class Bullet : MonoBehaviour
                     }
                 }
             }
+        }
+        else if (owner == BulletOwner.Enemy && collision.CompareTag("Pet")){
+            gameObject.SetActive(false);
         }
         else if (owner == BulletOwner.Enemy && collision.CompareTag("Player"))
         {

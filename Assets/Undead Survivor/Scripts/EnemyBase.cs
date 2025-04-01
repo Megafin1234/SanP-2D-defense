@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using System.Linq;
 
 public abstract class EnemyBase : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public abstract class EnemyBase : MonoBehaviour
     public bool isInvincible = false;
 
     public bool isLive;
+
+    public bool isPet;
+    public bool canCaught=false;
+
+    public int enemyIdx;
     public NavMeshAgent agent;
     public RuntimeAnimatorController[] animCon;
     public GameObject activeSpeedIcon;
@@ -27,7 +33,7 @@ public abstract class EnemyBase : MonoBehaviour
     protected Animator anim;
     protected SpriteRenderer spriter;
 
-    protected Rigidbody2D target;
+    public Rigidbody2D target;
 
     protected virtual void Awake()
     {
@@ -44,13 +50,13 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void OnEnable()
     {
         isLive = true;
+        isPet=false;
         coll.enabled = true;
         rigid.simulated = true;
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
         spriter.sortingOrder = 2;
         anim.SetBool("Dead", false);
         health = maxHealth;
-
         if (agent != null)
         {
             agent.enabled = true;
@@ -62,10 +68,9 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (!GameManager.instance.isLive || !isLive)
             return;
-
-        if (agent.enabled)
+        if (agent.enabled){
             agent.SetDestination(target.position);
-
+        }
         spriter.flipX = target.position.x < transform.position.x;
 
         Act(); // 하위 클래스에서 공격 로직 구현
@@ -85,7 +90,7 @@ public abstract class EnemyBase : MonoBehaviour
 
 public virtual void TakeDamage(float damage)
 {
-    if (isInvincible || !isLive)
+    if (isInvincible || !isLive || isPet)
         return;
 
     // 자폭형은 TakeDamage로 죽지 않도록 막음
@@ -101,7 +106,7 @@ public virtual void TakeDamage(float damage)
     }
     else
     {
-         Debug.Log($"{name} :: 사망 조건 진입");
+        Debug.Log($"{name} :: 사망 조건 진입");
         isLive = false;
         coll.enabled = false;
         rigid.simulated = false;
@@ -130,7 +135,8 @@ public virtual void TakeDamage(float damage)
 
         if (Random.Range(0, 5) >= 3)
         {
-            GameManager.instance.party.Add(this);
+            GameManager.instance.GetPet(enemyIdx, transform);
+            Dead();//나는 죽는다. 
         }
 
         if (agent != null)
@@ -170,11 +176,12 @@ protected virtual void OnTriggerEnter2D(Collider2D collision)
 
     if (collision.CompareTag("Catch"))
     {
-        float dmg = collision.GetComponent<CatchTool>().damage;
+        float dmg = 1f;
         TakeDamage(dmg);
         StartCoroutine(KnockBack(GameManager.instance.player.transform.position));
-        Caught();
+        if(canCaught)Caught();
     }
+
 }
 
 
