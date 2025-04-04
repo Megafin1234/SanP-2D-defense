@@ -30,24 +30,30 @@ public class EnemyRanged : EnemyBase, EnemyBase.IAttackable
 
         attackTimer -= Time.deltaTime;
     }
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        canCaught=true;
+        enemyIdx=1;
+    }
 
-void Shoot()
-{
-    if (target == null)
-        return;
+    void Shoot()
+    {
+        if (target == null)
+            return;
 
-    Vector3 dir = (GameManager.instance.player.transform.position - transform.position).normalized;
+        Vector3 dir = (GameManager.instance.player.transform.position - transform.position).normalized;
 
 
-    GameObject bulletObj = GameManager.instance.pool.Get(3);
-    bulletObj.transform.position = transform.position;
-    bulletObj.transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
+        GameObject bulletObj = GameManager.instance.pool.Get(3);
+        bulletObj.transform.position = transform.position;
+        bulletObj.transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
 
-    Bullet bullet = bulletObj.GetComponent<Bullet>();
-    bullet.owner = Bullet.BulletOwner.Enemy;
-    bullet.Init(damage, 0, dir); // 관통 없음
+        Bullet bullet = bulletObj.GetComponent<Bullet>();
+        bullet.owner = Bullet.BulletOwner.Enemy;
+        bullet.Init(damage, 0, dir); // 관통 없음
 
-}
+    }
 
 }
 

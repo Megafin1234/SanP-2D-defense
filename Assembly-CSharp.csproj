@@ -59,7 +59,7 @@
     <UnityVersion>6000.0.23f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\hidde\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\ziste\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
@@ -76,6 +76,7 @@
     <Compile Include="Assets\Undead Survivor\Scripts\Item.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\UnitMelee.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\EnemyRanged.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\PetMelee.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Wall.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Result.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Scanner.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\TopDownCharacterController.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\UiManager.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Spawner.cs" />
+    <Compile Include="Assets\Undead Survivor\Scripts\PetRange.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Weapon.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Hand.cs" />
     <Compile Include="Assets\Undead Survivor\Scripts\Gear.cs" />

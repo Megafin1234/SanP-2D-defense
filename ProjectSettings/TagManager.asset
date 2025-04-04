@@ -12,6 +12,7 @@ TagManager:
   - Terrain
   - GroundB
   - Catch
+  - Pet
   layers:
   - Default
   - TransparentFX

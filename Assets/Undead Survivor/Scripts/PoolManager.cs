@@ -6,6 +6,8 @@ public class PoolManager : MonoBehaviour
 {
     public GameObject[] prefabs;
 
+    public GameObject[] pets;
+
     List<GameObject>[] pools;
 
     void Awake()
