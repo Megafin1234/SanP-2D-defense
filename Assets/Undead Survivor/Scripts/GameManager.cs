@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
                 DayCount++;
                 if (WaveSpawner.instance.currentWave > 0 && WaveSpawner.instance.currentWave % 1 == 0)
                 {
-                    List<MapType> allMaps = new List<MapType> { MapType.평원, MapType.구릉지, MapType.동굴 };
+                    List<MapType> allMaps = System.Enum.GetValues(typeof(MapType)).Cast<MapType>().ToList();//맵타입을 가져와 배열로 전환
                     allMaps.Remove(Reposition.instance.currentMap);
                     List<MapType> options = allMaps.OrderBy(x => Random.value).Take(2).ToList();
 
