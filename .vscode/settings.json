@@ -54,6 +54,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "SanP-2D-defense.sln",
+    "dotnet.defaultSolution": "Undead-Survivor.sln",
     "git.ignoreLimitWarning": true
 }

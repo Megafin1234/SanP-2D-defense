@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour
 {
@@ -19,10 +20,21 @@ public class UIManager : MonoBehaviour
     public GameObject clickEffectA;
     public GameObject clickEffectB;
     public GameObject clickEffectC;
+    public GameObject mapChoicePanel;          
+    public Button[] mapChoiceButtons;       
+    
     void Awake()
     {
         instance = this;
         fadeCanvasGroup.alpha = 0;
+    }
+    void Start()
+    {
+        mapSpriteDict = new Dictionary<MapType, Sprite>();
+        foreach (var data in mapSprites)
+        {
+            mapSpriteDict[data.mapType] = data.mapSprite;
+        }
     }
 
     public void GameStart()  //작동안함. 수동으로 설정중
@@ -133,14 +145,59 @@ public class UIManager : MonoBehaviour
         dayPhaseText.gameObject.SetActive(false);
     }
 
-        public void NightEffect()
+    public void NightEffect()
     {
         nightEffect.gameObject.SetActive(true);
     }
-            public void DayEffect()
+    public void DayEffect()
     {
         nightEffect.gameObject.SetActive(false);
     }
+    public void ShowMapChoices(List<MapType> mapOptions)
+    {
+        mapChoicePanel.SetActive(true);
+
+        for (int i = 0; i < mapChoiceButtons.Length; i++)
+        {
+            var mapType = mapOptions[i];
+            mapChoiceButtons[i].GetComponentInChildren<Text>().text = mapType.ToString();
+            Image mapImage = mapChoiceButtons[i].transform.Find("MapImage").GetComponent<Image>();
+            if (mapSpriteDict.TryGetValue(mapType, out Sprite sprite))
+            {
+                mapImage.sprite = sprite;
+                mapImage.enabled = true;
+            }
+            else
+            {
+                mapImage.enabled = false;
+            }
+
+            mapChoiceButtons[i].onClick.RemoveAllListeners();
+            MapType localType = mapType;   // 익명 함수에서 발생하는 클로저 문제 때문에 이렇게 복잡하게 설계함
+            mapChoiceButtons[i].onClick.AddListener(() => {
+                OnMapSelected(localType);
+                    });
+        }
+    }
+
+    void OnMapSelected(MapType selected)
+    {
+        mapChoicePanel.SetActive(false);
+
+        if (Reposition.instance != null)
+            Reposition.instance.SetCurrentMap(selected);
+        GameManager.instance.Resume();
+        GameManager.instance.StartDayPhase();
+    }
+
+    [System.Serializable]
+    public class MapSpriteData{
+        public MapType mapType;
+        public Sprite mapSprite;
+    }
+
+    public MapSpriteData[] mapSprites; // Inspector에서 설정할 배열
+    private Dictionary<MapType, Sprite> mapSpriteDict;
 
 }
 
