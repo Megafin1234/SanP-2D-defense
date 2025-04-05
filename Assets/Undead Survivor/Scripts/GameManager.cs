@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -111,7 +112,7 @@ public class GameManager : MonoBehaviour
         if (!isLive)
             return;
 
-        if(DayCount > 3){
+        if(WaveSpawner.instance.currentWave >= WaveSpawner.instance.monstersPerWave.Length){
             GameVictory();
         } 
         if (isDayPhase)
@@ -167,19 +168,30 @@ public class GameManager : MonoBehaviour
         {
             UIManager.instance.FadeIn(() =>
             {
-                isLive = true;
                 DayCount++;
+                if (WaveSpawner.instance.currentWave > 0 && WaveSpawner.instance.currentWave % 1 == 0)
+                {
+                    List<MapType> allMaps = new List<MapType> { MapType.평원, MapType.구릉지, MapType.동굴 };
+                    allMaps.Remove(Reposition.instance.currentMap);
+                    List<MapType> options = allMaps.OrderBy(x => Random.value).Take(2).ToList();
+
+                    UIManager.instance.ShowMapChoices(options);
+                    return; // 선택 후에 Resume
+                }
+                isLive = true;
+                
                 StartDayPhase();
             });
         });
         merchant.SetActive(true);//유닛상인 활성화
     }
 
-    private void StartDayPhase()
+    public void StartDayPhase()
     {
         UIManager.instance.DayEffect();
         ActivateDayTimer();
         stageLevelUp.Show();
+        WaveSpawner.instance.NtoDbuttons();
     }
 
     private void StartNightPhase()

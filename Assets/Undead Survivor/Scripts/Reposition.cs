@@ -1,29 +1,50 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MapType { 평원, 구릉지, 동굴 }
+
 public class Reposition : MonoBehaviour
 {
+    public static Reposition instance; // 추가
+
     Collider2D coll;
+
     public GameObject[] groundSet1;
     public GameObject[] groundSet2;
     public GameObject[] groundSet3;
+
     private GameObject[][] tilemapSets;
+
+    public MapType currentMap = MapType.평원;
     private int currentSetIndex = 0;
 
     void Awake()
     {
-        tilemapSets = new GameObject[][] { groundSet1, groundSet2, groundSet3 }; // 배열에 세트 추가
-        coll = GetComponent<Collider2D>();
-        SetActiveTilemapSet(currentSetIndex);
-        SetActiveTilemapSet(currentSetIndex + 1, false);
-        SetActiveTilemapSet(currentSetIndex + 2, false);
+        instance = this; // 싱글톤화
+        tilemapSets = new GameObject[][] { groundSet1, groundSet2, groundSet3 };
     }
-    public void ToggleTilemapLayers()
+
+    public void SetCurrentMap(MapType type)
     {
-        SetActiveTilemapSet(currentSetIndex, false);
-        currentSetIndex = (currentSetIndex + 1) % tilemapSets.Length;
-        SetActiveTilemapSet(currentSetIndex, true);
+        currentMap = type;
+
+        switch (type)
+        {
+            case MapType.평원:
+                currentSetIndex = 0;
+                break;
+            case MapType.구릉지:
+                currentSetIndex = 1;
+                break;
+            case MapType.동굴:
+                currentSetIndex = 2;
+                break;
+        }
+
+        for (int i = 0; i < tilemapSets.Length; i++)
+        {
+            SetActiveTilemapSet(i, i == currentSetIndex);
+        }
     }
 
     private void SetActiveTilemapSet(int setIndex, bool isActive = true)

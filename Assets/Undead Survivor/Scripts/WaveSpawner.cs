@@ -12,9 +12,9 @@ public class WaveSpawner : MonoBehaviour
     public Button nextWaveButton; 
     public Text waveDirectionText; 
     public Reposition reposition; 
-    private int currentWave = 0;
+    public int currentWave = 0;
     private bool isSpawning = false; 
-    private int currentSpawnIndex; 
+    public int currentSpawnIndex; 
     public int currentWaveKillCount = 0; 
 
     void Awake()
@@ -68,15 +68,6 @@ public class WaveSpawner : MonoBehaviour
         isSpawning = false;
         currentWave++;
         GameManager.instance.NightToDay();
-        if (currentWave % 1 == 0)
-        {
-            reposition.ToggleTilemapLayers(); 
-        }
-        if (currentWave < monstersPerWave.Length)
-        {
-            nextWaveButton.gameObject.SetActive(true); 
-            waveDirectionText.gameObject.SetActive(false); 
-        }
     }
 
     void Spawn(WaveSpawnData data)
@@ -89,6 +80,14 @@ public class WaveSpawner : MonoBehaviour
         enemy.transform.position = spawnPosition + offset;
 
         enemy.GetComponent<EnemyBase>().Init(data.ToSpawnData());
+    }
+    public void NtoDbuttons() //밤> 낮 전환시 버튼이 안나오는 오류 해결 위해 gamemanager>startDayPhaze에서 아래 코드들을 통제
+    {
+        if (currentWave < monstersPerWave.Length)
+        {
+            nextWaveButton.gameObject.SetActive(true);
+            waveDirectionText.gameObject.SetActive(false);
+        }
     }
 
     int GetEnemyPrefabIndex(EnemyType type)
