@@ -153,14 +153,13 @@ public class UIManager : MonoBehaviour
     {
         nightEffect.gameObject.SetActive(false);
     }
-    public void ShowMapChoices(List<MapType> mapOptions)
-    {
+    public void ShowMapChoices(List<MapType> mapOptions){
         mapChoicePanel.SetActive(true);
 
         for (int i = 0; i < mapChoiceButtons.Length; i++)
         {
             var mapType = mapOptions[i];
-            mapChoiceButtons[i].GetComponentInChildren<Text>().text = mapType.ToString();
+            mapChoiceButtons[i].GetComponentInChildren<Text>().text = GetDisplayName(mapType);
             Image mapImage = mapChoiceButtons[i].transform.Find("MapImage").GetComponent<Image>();
             if (mapSpriteDict.TryGetValue(mapType, out Sprite sprite))
             {
@@ -177,6 +176,15 @@ public class UIManager : MonoBehaviour
             mapChoiceButtons[i].onClick.AddListener(() => {
                 OnMapSelected(localType);
                     });
+        }
+    }
+    private string GetDisplayName(MapType type){
+        switch (type)
+        {
+            case MapType.심연의정원:
+                return "심연의 정원";
+            default:
+                return type.ToString();
         }
     }
 
