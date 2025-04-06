@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -12,10 +14,12 @@ public class WaveSpawner : MonoBehaviour
     public Button nextWaveButton; 
     public Text waveDirectionText; 
     public Reposition reposition; 
-    private int currentWave = 0;
+    public int currentWave = 0;
     private bool isSpawning = false; 
-    private int currentSpawnIndex; 
+    public int currentSpawnIndex; 
     public int currentWaveKillCount = 0; 
+    public MapWaveFilter[] mapWaveFilters;  // 인스펙터에서 설정
+    private Dictionary<MapType, List<int>> mapWaveFilterDict;
 
     void Awake()
     {
@@ -29,7 +33,12 @@ public class WaveSpawner : MonoBehaviour
         }
         spawnPoint = GetComponentsInChildren<Transform>();
         waveDirectionText.gameObject.SetActive(false);
-        monsterSize = 14;
+        monsterSize = 17;
+
+        mapWaveFilterDict = new Dictionary<MapType, List<int>>();
+        foreach (var filter in mapWaveFilters){
+            mapWaveFilterDict[filter.mapType] = filter.allowedSpawnIndices;
+        }
     }
 
     public void WaveStartButton(){
@@ -53,30 +62,39 @@ public class WaveSpawner : MonoBehaviour
     IEnumerator SpawnWave(int waveIndex)
     {
         isSpawning = true;
+        List<int> allowedIndices = GetAllowedEnemyForCurrentMap();
+            if (allowedIndices == null || allowedIndices.Count == 0){
+        Debug.LogWarning($"[WaveSpawner] No valid spawn indices for wave {waveIndex} in map {Reposition.instance.currentMap}");
+        yield break;
+        }
 
         for (int i = 0; i < monstersPerWave[waveIndex]; i++)
         {
-            int dataIndex = Random.Range(0, waveSpawnData.Length);
-            WaveSpawnData spawnData = waveSpawnData[dataIndex];
-
-            Spawn(spawnData);
-            yield return new WaitForSeconds(spawnData.spawnTime); 
+            int dataIndex = allowedIndices[Random.Range(0, allowedIndices.Count)];
+        if (dataIndex < 0 || dataIndex >= waveSpawnData.Length)
+        {
+            Debug.LogWarning($"[WaveSpawner] Invalid spawn index {dataIndex} (waveSpawnData.Length = {waveSpawnData.Length})");
+            continue;
         }
+        WaveSpawnData spawnData = waveSpawnData[dataIndex];
+        Spawn(spawnData);
+        yield return new WaitForSeconds(spawnData.spawnTime); 
+    }
 
         yield return new WaitUntil(() => currentWaveKillCount >= monstersPerWave[waveIndex]);
 
         isSpawning = false;
         currentWave++;
         GameManager.instance.NightToDay();
-        if (currentWave % 1 == 0)
+    }
+    private List<int> GetAllowedEnemyForCurrentMap()
+    {
+        MapType map = Reposition.instance.currentMap;
+        if (mapWaveFilterDict.TryGetValue(map, out var list))
         {
-            reposition.ToggleTilemapLayers(); 
+            return list;
         }
-        if (currentWave < monstersPerWave.Length)
-        {
-            nextWaveButton.gameObject.SetActive(true); 
-            waveDirectionText.gameObject.SetActive(false); 
-        }
+        return new List<int>();
     }
 
     void Spawn(WaveSpawnData data)
@@ -89,6 +107,14 @@ public class WaveSpawner : MonoBehaviour
         enemy.transform.position = spawnPosition + offset;
 
         enemy.GetComponent<EnemyBase>().Init(data.ToSpawnData());
+    }
+    public void NtoDbuttons() //밤> 낮 전환시 버튼이 안나오는 오류 해결 위해 gamemanager>startDayPhaze에서 아래 코드들을 통제
+    {
+        if (currentWave < monstersPerWave.Length)
+        {
+            nextWaveButton.gameObject.SetActive(true);
+            waveDirectionText.gameObject.SetActive(false);
+        }
     }
 
     int GetEnemyPrefabIndex(EnemyType type)
@@ -152,4 +178,10 @@ public enum EnemyType
     Suicide,
     Buffer,
     Boss
+}
+[System.Serializable]
+public class MapWaveFilter
+{
+    public MapType mapType;
+    public List<int> allowedSpawnIndices; 
 }
