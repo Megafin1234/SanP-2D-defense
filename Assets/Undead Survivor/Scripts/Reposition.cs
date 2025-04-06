@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MapType { 평원, 구릉지, 동굴, 사막, 몰라 }
+public enum MapType { 평원, 구릉지, 동굴, 사막, 설산, 심연의정원 }
 
 public class Reposition : MonoBehaviour
 {
@@ -14,6 +14,7 @@ public class Reposition : MonoBehaviour
     public GameObject[] groundSet3;
     public GameObject[] groundSet4;
     public GameObject[] groundSet5;
+    public GameObject[] groundSet6;
 
     private GameObject[][] tilemapSets;
 
@@ -23,7 +24,7 @@ public class Reposition : MonoBehaviour
     void Awake()
     {
         instance = this; // 싱글톤화
-        tilemapSets = new GameObject[][] { groundSet1, groundSet2, groundSet3, groundSet4, groundSet5};
+        tilemapSets = new GameObject[][] { groundSet1, groundSet2, groundSet3, groundSet4, groundSet5, groundSet6};
     }
 
     public void SetCurrentMap(MapType type)
@@ -44,8 +45,11 @@ public class Reposition : MonoBehaviour
             case MapType.사막:
                 currentSetIndex = 3;
                 break;
-            case MapType.몰라:
-                currentSetIndex = 3;
+            case MapType.설산:
+                currentSetIndex = 4;
+                break;
+            case MapType.심연의정원:
+                currentSetIndex = 5;
                 break;
         }
 
