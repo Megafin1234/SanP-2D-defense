@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class WaveSpawner : MonoBehaviour
     private bool isSpawning = false; 
     public int currentSpawnIndex; 
     public int currentWaveKillCount = 0; 
+    public MapWaveFilter[] mapWaveFilters;  // 인스펙터에서 설정
+    private Dictionary<MapType, List<int>> mapWaveFilterDict;
 
     void Awake()
     {
@@ -30,6 +34,11 @@ public class WaveSpawner : MonoBehaviour
         spawnPoint = GetComponentsInChildren<Transform>();
         waveDirectionText.gameObject.SetActive(false);
         monsterSize = 14;
+
+        mapWaveFilterDict = new Dictionary<MapType, List<int>>();
+        foreach (var filter in mapWaveFilters){
+            mapWaveFilterDict[filter.mapType] = filter.allowedSpawnIndices;
+        }
     }
 
     public void WaveStartButton(){
@@ -53,21 +62,39 @@ public class WaveSpawner : MonoBehaviour
     IEnumerator SpawnWave(int waveIndex)
     {
         isSpawning = true;
+        List<int> allowedIndices = GetAllowedEnemyForCurrentMap();
+            if (allowedIndices == null || allowedIndices.Count == 0){
+        Debug.LogWarning($"[WaveSpawner] No valid spawn indices for wave {waveIndex} in map {Reposition.instance.currentMap}");
+        yield break;
+        }
 
         for (int i = 0; i < monstersPerWave[waveIndex]; i++)
         {
-            int dataIndex = Random.Range(0, waveSpawnData.Length);
-            WaveSpawnData spawnData = waveSpawnData[dataIndex];
-
-            Spawn(spawnData);
-            yield return new WaitForSeconds(spawnData.spawnTime); 
+            int dataIndex = allowedIndices[Random.Range(0, allowedIndices.Count)];
+        if (dataIndex < 0 || dataIndex >= waveSpawnData.Length)
+        {
+            Debug.LogWarning($"[WaveSpawner] Invalid spawn index {dataIndex} (waveSpawnData.Length = {waveSpawnData.Length})");
+            continue;
         }
+        WaveSpawnData spawnData = waveSpawnData[dataIndex];
+        Spawn(spawnData);
+        yield return new WaitForSeconds(spawnData.spawnTime); 
+    }
 
         yield return new WaitUntil(() => currentWaveKillCount >= monstersPerWave[waveIndex]);
 
         isSpawning = false;
         currentWave++;
         GameManager.instance.NightToDay();
+    }
+    private List<int> GetAllowedEnemyForCurrentMap()
+    {
+        MapType map = Reposition.instance.currentMap;
+        if (mapWaveFilterDict.TryGetValue(map, out var list))
+        {
+            return list;
+        }
+        return new List<int>();
     }
 
     void Spawn(WaveSpawnData data)
@@ -151,4 +178,10 @@ public enum EnemyType
     Suicide,
     Buffer,
     Boss
+}
+[System.Serializable]
+public class MapWaveFilter
+{
+    public MapType mapType;
+    public List<int> allowedSpawnIndices; 
 }
