@@ -33,7 +33,7 @@ public class WaveSpawner : MonoBehaviour
         }
         spawnPoint = GetComponentsInChildren<Transform>();
         waveDirectionText.gameObject.SetActive(false);
-        monsterSize = 14;
+        monsterSize = 17;
 
         mapWaveFilterDict = new Dictionary<MapType, List<int>>();
         foreach (var filter in mapWaveFilters){
