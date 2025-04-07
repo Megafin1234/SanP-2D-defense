@@ -98,7 +98,6 @@ public virtual void TakeDamage(float damage)
         return;
 
     health -= damage;
-
     if (health > 0)
     {
         anim.SetTrigger("Hit");
@@ -116,45 +115,36 @@ public virtual void TakeDamage(float damage)
         anim.ResetTrigger("Hit");
         anim.SetBool("Dead", true);
          anim.Play("Dead", 0, 0f); //버퍼 죽음 애니메이션 문제로 강제재생. 없어도 되야함
-
         GameManager.instance.kill++;
         GameManager.instance.coin += (3 + GameManager.instance.DayCount * 2);
         GameManager.instance.GetExp();
         WaveSpawner.instance.currentWaveKillCount++;
-
         if (GameManager.instance.isLive)
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Dead);
     }
 }
 
-
     public void Caught()
     {
         if (agent != null)
             agent.enabled = false;
-
         if (Random.Range(0, 5) >= 3)
         {
             GameManager.instance.GetPet(enemyIdx, transform);
+            WaveSpawner.instance.currentWaveKillCount++;
+            GameManager.instance.GetExp();
             Dead();//나는 죽는다. 
         }
-
         if (agent != null)
             agent.enabled = true;
     }
-
-
-
     protected IEnumerator KnockBack(Vector3 source)
     {
         if (agent != null)
             agent.enabled = false;
-
         Vector3 dir = transform.position - source;
         rigid.AddForce(dir.normalized * 2, ForceMode2D.Impulse);
-
         yield return new WaitForSeconds(0.5f);
-
         if (agent != null)
             agent.enabled = true;
     }
@@ -181,14 +171,10 @@ protected virtual void OnTriggerEnter2D(Collider2D collision)
         StartCoroutine(KnockBack(GameManager.instance.player.transform.position));
         if(canCaught)Caught();
     }
-
 }
-
-
     public virtual void Dead()
     {
         gameObject.SetActive(false);
     }
-
     protected abstract void Act(); // 공격 등 고유 행동을 하위 클래스에서 구현
 }

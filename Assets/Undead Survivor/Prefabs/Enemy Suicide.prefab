@@ -236,11 +236,15 @@ MonoBehaviour:
   spriteType: 0
   isInvincible: 0
   isLive: 0
+  isPet: 0
+  canCaught: 0
+  enemyIdx: 0
   agent: {fileID: 0}
   animCon:
   - {fileID: 22100000, guid: 618cffae628fbcf4481a052049a5b20c, type: 2}
   activeSpeedIcon: {fileID: 0}
   activeAttackIcon: {fileID: 0}
+  target: {fileID: 0}
   explodeRange: 2
   explodeDamage: 30
   attackCooldown: 0.5

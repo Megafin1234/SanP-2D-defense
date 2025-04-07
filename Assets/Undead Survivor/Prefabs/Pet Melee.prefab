@@ -242,6 +242,7 @@ MonoBehaviour:
   animCon: []
   activeSpeedIcon: {fileID: 0}
   activeAttackIcon: {fileID: 0}
+  target: {fileID: 0}
   attackDelay: 1
   damage: 10
 --- !u!1 &1598668819941263661

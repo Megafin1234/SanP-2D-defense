@@ -243,6 +243,7 @@ MonoBehaviour:
   animCon: []
   activeSpeedIcon: {fileID: 0}
   activeAttackIcon: {fileID: 0}
+  target: {fileID: 0}
   attackRange: 5
   attackDelay: 2
   bulletSpeed: 12
