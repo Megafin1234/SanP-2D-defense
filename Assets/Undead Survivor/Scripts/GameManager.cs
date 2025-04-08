@@ -139,8 +139,12 @@ public class GameManager : MonoBehaviour
         isDayPhase = false;
         nightPhaseTimer = nightPhaseDuration;
         NightCount++;
-        
         isLive = false;
+        
+        player.inputVec = Vector2.zero;
+        player.GetComponent<Animator>().SetFloat("Speed", 0f);
+        player.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+
         UIManager.instance.ShowNightPhaseText();
 
         UIManager.instance.FadeOut(() =>
@@ -161,6 +165,10 @@ public class GameManager : MonoBehaviour
         isDayPhase = true;
         isLive = false;
         dayPhaseTimer = dayPhaseDuration;
+
+        player.inputVec = Vector2.zero;
+        player.GetComponent<Animator>().SetFloat("Speed", 0f);
+        player.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         
         UIManager.instance.ShowDayPhaseText();
 

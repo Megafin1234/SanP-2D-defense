@@ -54,7 +54,6 @@
         "temp/": true,
         "Temp/": true
     },
-
-    "dotnet.defaultSolution": "Undead-Survivor.sln",
+    "dotnet.defaultSolution": "undeadsurvivor.sln",
     "git.ignoreLimitWarning": true
 }
