@@ -37,12 +37,12 @@ public class Player : MonoBehaviour
         hands = GetComponentsInChildren<Hand>(true);
         dashWaiting = 0;
     }
-    void OnEnable()
-    {
-        speed *= Character.Speed;
-        anim.runtimeAnimatorController = animCon[GameManager.instance.playerId];
-        //anim.SetInteger("Player", GameManager.instance.playerId);
-    }
+void OnEnable()
+{
+    speed *= Character.Speed;
+    anim.runtimeAnimatorController = animCon[GameManager.instance.playerId];
+
+}
     void Update(){
         if(!GameManager.instance.isLive)
             return;
