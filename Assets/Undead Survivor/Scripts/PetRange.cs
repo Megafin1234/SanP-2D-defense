@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PetRange : EnemyBase, EnemyBase.IAttackable
 {
@@ -63,6 +64,11 @@ public class PetRange : EnemyBase, EnemyBase.IAttackable
         base.OnEnable();
         isPet=true;
         speed = 2;
+        agent = GetComponent<NavMeshAgent>();
+        if (agent != null)//근접펫은 이속 3
+        {
+            agent.speed = 2.5f;
+        }
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

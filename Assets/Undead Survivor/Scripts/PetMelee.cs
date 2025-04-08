@@ -92,6 +92,11 @@ public class PetMelee : EnemyBase, EnemyBase.IAttackable
         isPet = true;
         speed = 2;
         target = null;
+        agent = GetComponent<NavMeshAgent>();
+        if (agent != null)//근접펫은 이속 3
+        {
+            agent.speed = 3.5f;
+        }
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
