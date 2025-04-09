@@ -439,7 +439,7 @@
                 {
                     "name": "",
                     "id": "a9ada231-7116-4762-9095-69185f4ab882",
-                    "path": "<Keyboard>/space",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
