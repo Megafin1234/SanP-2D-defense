@@ -95,6 +95,7 @@ void OnEnable()
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);//마우스 위치 챙기기
             Vector2 dashDir = (mouseWorldPos - (Vector2)transform.position).normalized; //대시할 방향 잡기
             dashVec = dashDir * dashSpeed * Time.fixedDeltaTime;                        //삐쓩
+            spriter.flipX = dashDir.x < 0;
             //dashVec = inputVec.normalized * dashSpeed * Time.fixedDeltaTime;
             trailIntervalReal = trailInterval;
             trailTimer = 0;
@@ -121,7 +122,7 @@ void OnEnable()
             return;
         anim.SetFloat("Speed",inputVec.magnitude);
         
-        if (inputVec.x != 0){
+        if (inputVec.x != 0 && dashTime<=0){
             spriter.flipX = inputVec.x < 0;
         }
     }
