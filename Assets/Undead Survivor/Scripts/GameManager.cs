@@ -219,7 +219,7 @@ public void ActivateDayTimer()
 public void ActivateNightTimer()
 {
     dayTimerHUD.SetActive(false);  
-    nightTimerHUD.SetActive(true); 
+    nightTimerHUD.SetActive(true);// 
     dayCountHUD.SetActive(false);
     nightCountHUD.SetActive(true);
 }
