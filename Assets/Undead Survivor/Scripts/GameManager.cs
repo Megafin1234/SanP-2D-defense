@@ -52,10 +52,14 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> party;
 
+    public Texture2D crosshair;
+    public Vector2 hotspot = new Vector2(16, 16);
+
     private bool isDayPhase = true;
 
     void Awake(){
         instance = this;
+        Cursor.SetCursor(crosshair, hotspot, CursorMode.Auto); 
     }
     public void GameStart(int id)
     {
@@ -219,7 +223,7 @@ public void ActivateDayTimer()
 public void ActivateNightTimer()
 {
     dayTimerHUD.SetActive(false);  
-    nightTimerHUD.SetActive(true); 
+    nightTimerHUD.SetActive(true);// 
     dayCountHUD.SetActive(false);
     nightCountHUD.SetActive(true);
 }

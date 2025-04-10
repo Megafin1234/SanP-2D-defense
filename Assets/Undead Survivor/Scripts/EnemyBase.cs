@@ -21,20 +21,16 @@ public abstract class EnemyBase : MonoBehaviour
     public RuntimeAnimatorController[] animCon;
     public GameObject activeSpeedIcon;
     public GameObject activeAttackIcon;
-
     public interface IAttackable
 {
     float GetAttackPower();
     void SetAttackPower(float value);
 }
-
     protected Rigidbody2D rigid;
     protected Collider2D coll;
     protected Animator anim;
     protected SpriteRenderer spriter;
-
     public Rigidbody2D target;
-
     protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -42,7 +38,6 @@ public abstract class EnemyBase : MonoBehaviour
         spriter = GetComponent<SpriteRenderer>();
         coll = GetComponent<Collider2D>();
         agent = GetComponent<NavMeshAgent>();
-
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
@@ -63,7 +58,6 @@ public abstract class EnemyBase : MonoBehaviour
             agent.speed = speed;
         }
     }
-
     protected virtual void Update()
     {
         if (!GameManager.instance.isLive || !isLive)
@@ -72,10 +66,8 @@ public abstract class EnemyBase : MonoBehaviour
             agent.SetDestination(target.position);
         }
         spriter.flipX = target.position.x < transform.position.x;
-
         Act(); // 하위 클래스에서 공격 로직 구현
     }
-
     public virtual void Init(SpawnData data)
     {
         spriteType = data.spriteType;
@@ -83,20 +75,16 @@ public abstract class EnemyBase : MonoBehaviour
         speed = data.speed;
         maxHealth = data.health;
         health = data.health;
-
         if (agent != null)
             agent.speed = speed;
     }
-
 public virtual void TakeDamage(float damage)
 {
     if (isInvincible || !isLive || isPet)
         return;
-
     // 자폭형은 TakeDamage로 죽지 않도록 막음
     if (this is EnemySuicide suicideEnemy && suicideEnemy.IsExploding())
         return;
-
     health -= damage;
     if (health > 0)
     {
@@ -123,7 +111,6 @@ public virtual void TakeDamage(float damage)
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Dead);
     }
 }
-
     public void Caught()
     {
         if (agent != null)
@@ -148,11 +135,9 @@ public virtual void TakeDamage(float damage)
         if (agent != null)
             agent.enabled = true;
     }
-
 protected virtual void OnTriggerEnter2D(Collider2D collision)
 {
     if (!isLive) return;
-
     if (collision.CompareTag("Bullet"))
     {
         Bullet bullet = collision.GetComponent<Bullet>();
@@ -163,7 +148,6 @@ protected virtual void OnTriggerEnter2D(Collider2D collision)
             StartCoroutine(KnockBack(GameManager.instance.player.transform.position));
         }
     }
-
     if (collision.CompareTag("Catch"))
     {
         float dmg = 1f;
