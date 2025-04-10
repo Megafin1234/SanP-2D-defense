@@ -88,11 +88,14 @@ void OnEnable()
     }
 
     void OnDash(){
-        if (dashWaiting<=0 && inputVec != Vector2.zero) // 움직이고 있을 때만 대시 가능
+        if (dashWaiting<=0) // 이제 마우스로 대시하니까 안움직여도 대시 가능 ㅋㅋ
         {
             dashWaiting = dashCoolDown;
             dashTime = dashDuration;
-            dashVec = inputVec.normalized * dashSpeed * Time.fixedDeltaTime;
+            Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);//마우스 위치 챙기기
+            Vector2 dashDir = (mouseWorldPos - (Vector2)transform.position).normalized; //대시할 방향 잡기
+            dashVec = dashDir * dashSpeed * Time.fixedDeltaTime;                        //삐쓩
+            //dashVec = inputVec.normalized * dashSpeed * Time.fixedDeltaTime;
             trailIntervalReal = trailInterval;
             trailTimer = 0;
         }
