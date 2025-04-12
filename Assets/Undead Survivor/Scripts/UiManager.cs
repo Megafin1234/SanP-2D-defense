@@ -183,6 +183,8 @@ public class UIManager : MonoBehaviour
         {
             case MapType.심연의정원:
                 return "심연의 정원";
+            case MapType.수정해변:
+                return "수정 해변";
             default:
                 return type.ToString();
         }
