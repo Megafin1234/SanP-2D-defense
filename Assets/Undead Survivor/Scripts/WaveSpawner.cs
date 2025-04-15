@@ -19,7 +19,7 @@ public class WaveSpawner : MonoBehaviour
     public int currentSpawnIndex; 
     public int currentWaveKillCount = 0; 
     public MapWaveFilter[] mapWaveFilters;  
-        public BossEntry[] bossSpawnTable; 
+    public BossEntry[] bossWaveFilters; 
     private Dictionary<MapType, List<int>> mapWaveFilterDict;
 
     private Dictionary<MapType, WaveSpawnData> bossSpawnDataDict; // 실행 시 참조용
@@ -45,10 +45,10 @@ public class WaveSpawner : MonoBehaviour
             mapWaveFilterDict[filter.mapType] = filter.allowedSpawnIndices;
         }
         bossSpawnDataDict = new Dictionary<MapType, WaveSpawnData>();
-        foreach (var entry in bossSpawnTable)
+        foreach (var filter in bossWaveFilters)
         {
-            if (!bossSpawnDataDict.ContainsKey(entry.mapType))
-                bossSpawnDataDict.Add(entry.mapType, entry.bossData);
+            if (!bossSpawnDataDict.ContainsKey(filter.mapType))
+                bossSpawnDataDict.Add(filter.mapType, filter.bossData);
 }
     }
 

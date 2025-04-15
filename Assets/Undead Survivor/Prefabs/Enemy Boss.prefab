@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5219824451648427732}
   - component: {fileID: 3722383127708087111}
   - component: {fileID: 6414961797177503016}
-  - component: {fileID: -6401941826096015321}
+  - component: {fileID: 4492361152488148286}
   m_Layer: 6
   m_Name: Enemy Boss
   m_TagString: Enemy
@@ -202,7 +202,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-6401941826096015321
+--- !u!114 &4492361152488148286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3712332298700105895}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93afa7f0a2e6450428d4575256f23981, type: 3}
+  m_Script: {fileID: 11500000, guid: 696047adccd988e4a80ec9d63330bd2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
@@ -225,12 +225,14 @@ MonoBehaviour:
   enemyIdx: 0
   agent: {fileID: 0}
   animCon:
-  - {fileID: 22100000, guid: 5ccabb64fa3586e4eb83ca8006abcc88, type: 2}
+  - {fileID: 22100000, guid: 326b0ea40a9928944918880275db8c72, type: 2}
   activeSpeedIcon: {fileID: 0}
   activeAttackIcon: {fileID: 0}
   target: {fileID: 0}
-  attackDelay: 1
-  damage: 10
+  meleeDamage: 15
+  rangedDamage: 5
+  attackDelay: 2
+  bulletDelay: 1.5
 --- !u!1 &4099359877133430287
 GameObject:
   m_ObjectHideFlags: 0

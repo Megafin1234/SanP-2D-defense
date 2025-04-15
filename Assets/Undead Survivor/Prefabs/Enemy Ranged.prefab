@@ -227,6 +227,7 @@ MonoBehaviour:
   animCon:
   - {fileID: 22100000, guid: e17927ac41fc01c469fd108baf02f486, type: 2}
   - {fileID: 22100000, guid: 857bc66a68362434290e0a72867bcabe, type: 2}
+  - {fileID: 22100000, guid: 672cfb9b45e2b164796d6598dd911a59, type: 2}
   activeSpeedIcon: {fileID: 0}
   activeAttackIcon: {fileID: 0}
   target: {fileID: 0}
