@@ -237,6 +237,10 @@ MonoBehaviour:
   - {fileID: 22100000, guid: 9dd4449b04b4b804bb7ccadc180eb825, type: 2}
   - {fileID: 22100000, guid: 1182df31f789c204fa6f7195b2d92a8c, type: 2}
   - {fileID: 22100000, guid: 2e038cb92bae7ca439db7d509503f427, type: 2}
+  - {fileID: 22100000, guid: 0528fd4c2c33a9b489965a799f0b34c0, type: 2}
+  - {fileID: 22100000, guid: 0bd6419a795a5de4aadb16f9b213ceae, type: 2}
+  - {fileID: 22100000, guid: 68ae67847981c004490f0e94f2e6edaf, type: 2}
+  - {fileID: 22100000, guid: 44e102ac9a6f6224c822fd9311091f57, type: 2}
   activeSpeedIcon: {fileID: 0}
   activeAttackIcon: {fileID: 0}
   target: {fileID: 0}
