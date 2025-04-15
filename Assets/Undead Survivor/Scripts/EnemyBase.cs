@@ -77,6 +77,12 @@ public abstract class EnemyBase : MonoBehaviour
         health = data.health;
         if (agent != null)
             agent.speed = speed;
+        if (data.isBoss)
+        {
+            transform.localScale *= 3f;
+             //spriter.sortingOrder = 3;
+            // 혹시 보스 특유 애니메이션 추가도 가능
+        }
     }
 public virtual void TakeDamage(float damage)
 {

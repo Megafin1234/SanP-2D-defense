@@ -18,8 +18,13 @@ public class WaveSpawner : MonoBehaviour
     private bool isSpawning = false; 
     public int currentSpawnIndex; 
     public int currentWaveKillCount = 0; 
-    public MapWaveFilter[] mapWaveFilters;  // 인스펙터에서 설정
+    public MapWaveFilter[] mapWaveFilters;  
+        public BossEntry[] bossSpawnTable; 
     private Dictionary<MapType, List<int>> mapWaveFilterDict;
+
+    private Dictionary<MapType, WaveSpawnData> bossSpawnDataDict; // 실행 시 참조용
+    private bool bossSpawned = false;
+
 
     void Awake()
     {
@@ -39,6 +44,12 @@ public class WaveSpawner : MonoBehaviour
         foreach (var filter in mapWaveFilters){
             mapWaveFilterDict[filter.mapType] = filter.allowedSpawnIndices;
         }
+        bossSpawnDataDict = new Dictionary<MapType, WaveSpawnData>();
+        foreach (var entry in bossSpawnTable)
+        {
+            if (!bossSpawnDataDict.ContainsKey(entry.mapType))
+                bossSpawnDataDict.Add(entry.mapType, entry.bossData);
+}
     }
 
     public void WaveStartButton(){
@@ -62,26 +73,30 @@ public class WaveSpawner : MonoBehaviour
     IEnumerator SpawnWave(int waveIndex)
     {
         isSpawning = true;
+        bossSpawned = false;
+        
         List<int> allowedIndices = GetAllowedEnemyForCurrentMap();
-            if (allowedIndices == null || allowedIndices.Count == 0){
+            /*if (allowedIndices == null || allowedIndices.Count == 0){
         Debug.LogWarning($"[WaveSpawner] No valid spawn indices for wave {waveIndex} in map {Reposition.instance.currentMap}");
-        yield break;
-        }
+            yield break;
+        }*/
 
         for (int i = 0; i < monstersPerWave[waveIndex]; i++)
         {
             int dataIndex = allowedIndices[Random.Range(0, allowedIndices.Count)];
-        if (dataIndex < 0 || dataIndex >= waveSpawnData.Length)
-        {
-            Debug.LogWarning($"[WaveSpawner] Invalid spawn index {dataIndex} (waveSpawnData.Length = {waveSpawnData.Length})");
-            continue;
+            WaveSpawnData spawnData = waveSpawnData[dataIndex];
+            Spawn(spawnData);
+            yield return new WaitForSeconds(spawnData.spawnTime); 
         }
-        WaveSpawnData spawnData = waveSpawnData[dataIndex];
-        Spawn(spawnData);
-        yield return new WaitForSeconds(spawnData.spawnTime); 
-    }
 
-        yield return new WaitUntil(() => currentWaveKillCount >= monstersPerWave[waveIndex]);
+        if ((waveIndex + 1) % 4 == 0 && !bossSpawned)
+        {
+            yield return new WaitForSeconds(2f); // 약간 지연 효과
+            SpawnBoss(); 
+        }
+
+        int totalExpectedKills = monstersPerWave[waveIndex] + (bossSpawned ? 1 : 0);
+        yield return new WaitUntil(() => currentWaveKillCount >= totalExpectedKills);
 
         isSpawning = false;
         currentWave++;
@@ -108,6 +123,30 @@ public class WaveSpawner : MonoBehaviour
 
         enemy.GetComponent<EnemyBase>().Init(data.ToSpawnData());
     }
+
+    void SpawnBoss()
+    {
+        MapType currentMap = Reposition.instance.currentMap;
+
+        if (!bossSpawnDataDict.TryGetValue(currentMap, out WaveSpawnData bossData))
+        {
+            return;
+        }
+
+        int bossPrefabIndex = GetEnemyPrefabIndex(bossData.type); // 기존 EnemyType 사용
+        GameObject boss = GameManager.instance.pool.Get(bossPrefabIndex);
+
+        Vector3 spawnPosition = spawnPoint[currentSpawnIndex].position;
+        boss.transform.position = spawnPosition;
+
+        SpawnData spawnStruct = bossData.ToSpawnData();
+        //spawnStruct.isBoss = true; 
+
+        boss.GetComponent<EnemyBase>().Init(spawnStruct);
+
+        bossSpawned = true;
+    }
+
     public void NtoDbuttons() //밤> 낮 전환시 버튼이 안나오는 오류 해결 위해 gamemanager>startDayPhaze에서 아래 코드들을 통제
     {
         if (currentWave < monstersPerWave.Length)
@@ -159,6 +198,8 @@ public class WaveSpawnData
     public int spriteType;
     public int health;
     public float speed;
+    public bool isBoss; 
+
 
     public SpawnData ToSpawnData()
     {
@@ -167,7 +208,8 @@ public class WaveSpawnData
             spawnTime = this.spawnTime,
             spriteType = this.spriteType,
             health = this.health,
-            speed = this.speed
+            speed = this.speed,
+            isBoss = this.isBoss
         };
     }
 }
@@ -184,4 +226,9 @@ public class MapWaveFilter
 {
     public MapType mapType;
     public List<int> allowedSpawnIndices; 
+}
+[System.Serializable]
+public class BossEntry {
+    public MapType mapType;      
+    public WaveSpawnData bossData;  
 }
