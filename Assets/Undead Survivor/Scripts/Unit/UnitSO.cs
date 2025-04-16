@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UnitSO : ScriptableObject
 {
-    public enum UnitType//어느계열 직업인지에 대한 enum리스트
+    public enum UnitType//어느계열 유닛인지에 대한 enum리스트
     {
         Melee,
         Ranged,
@@ -13,6 +13,6 @@ public class UnitSO : ScriptableObject
 
     [Header("Class Information")]
     public string UnitName;
+    public RuntimeAnimatorController overrideController;//애니메이션컨트롤러
 
-    
 }
