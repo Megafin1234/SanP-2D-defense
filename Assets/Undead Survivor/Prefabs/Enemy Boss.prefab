@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -3131899431819038481, guid: 0e7ef665372475e4890e6171a6317282,
+  m_Sprite: {fileID: 4882861231229009523, guid: 6378bdd9a5c6ee747b87852c229901bf,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -225,14 +225,13 @@ MonoBehaviour:
   enemyIdx: 0
   agent: {fileID: 0}
   animCon:
-  - {fileID: 22100000, guid: 326b0ea40a9928944918880275db8c72, type: 2}
+  - {fileID: 22100000, guid: f068bafe5d14c7140bc853cf9b72e277, type: 2}
   activeSpeedIcon: {fileID: 0}
   activeAttackIcon: {fileID: 0}
   target: {fileID: 0}
   meleeDamage: 15
   rangedDamage: 5
   attackDelay: 2
-  bulletDelay: 1.5
 --- !u!1 &4099359877133430287
 GameObject:
   m_ObjectHideFlags: 0
