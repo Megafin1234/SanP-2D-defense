@@ -20,14 +20,17 @@ public class Bullet : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
     }
 
-    public void Init(float damage, int per, Vector3 dir)
+    public void Init(float damage, int per, Vector3 dir, float customSpeed = -1f)  //탄속은 bulletComp.Init(rangedDamage, 0, dir, 6f); 이걸 다른 스크립트에 추가해 조절하면됨
     {
         this.damage = damage;
         this.per = per;
 
+        float finalSpeed = (customSpeed > 0) ? customSpeed : 15f;
+
         if (per >= 0)
-            rigid.linearVelocity = dir * 15f;  // 15f = 총알 속도
+            rigid.linearVelocity = dir * finalSpeed;
     }
+
 
     void OnTriggerEnter2D(Collider2D collision)
     {

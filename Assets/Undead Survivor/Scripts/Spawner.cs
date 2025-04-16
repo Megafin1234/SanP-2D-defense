@@ -38,5 +38,5 @@ public class SpawnData
     public int spriteType;
     public int health;
     public float speed;
-
+    internal bool isBoss;
 }
