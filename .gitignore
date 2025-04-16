@@ -78,3 +78,6 @@ Assets/Undead Survivor/Fonts/neodgm SDF.asset
 
 # UserSettings 내의 특정 레이아웃 파일 무시
 UserSettings/Layouts/default-6000.dwlt
+
+#이거 뭔데 자꾸 merging 뜨지?
+Assembly-CSharp.csproj

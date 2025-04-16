@@ -57,5 +57,5 @@
     "<<<<<<<HEADdotnet.defaultSolution": "SanP-2D-defense.sln",
     "=======dotnet.defaultSolution": "undeadsurvivor.sln",
     ">>>>>>>235be9ae32501b3cf6ce25250262196d0f339122git.ignoreLimitWarning": true,
-    "dotnet.defaultSolution": "Undead-Survivor.sln"
+    "dotnet.defaultSolution": "SanP-2D-defense.sln"
 }
