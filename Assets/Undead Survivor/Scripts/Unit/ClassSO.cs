@@ -33,11 +33,3 @@ public class ClassSO : ScriptableObject
     [Header("Synergies")]
     public List<string> synergies = new List<string>();//시너지 시스템은 나중에 다른식으로 보완해서 구현할 것. 일단 스트링으로 구색만 맞추기.
 }
-
-[System.Serializable]
-public class Skill
-{
-    public string skillName; //스킬이름
-    public int requiredLevel; //요구레벨..? 여기서 처리할지 so자체에 리스트로 넣을지 고민중.
-    int skillType;
-}

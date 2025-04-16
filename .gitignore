@@ -9,6 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+/.[Vv]scode/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -81,3 +82,4 @@ UserSettings/Layouts/default-6000.dwlt
 
 #이거 뭔데 자꾸 merging 뜨지?
 Assembly-CSharp.csproj
+
