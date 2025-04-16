@@ -64,7 +64,9 @@ public class Bullet : MonoBehaviour
     }
 
 
-
+    public void BulletActive(bool b){
+        gameObject.SetActive(b);
+    }
 
     void OnTriggerExit2D(Collider2D collision)
     {
