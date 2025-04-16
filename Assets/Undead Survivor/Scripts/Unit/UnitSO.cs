@@ -12,10 +12,17 @@ public class UnitSO : ScriptableObject
         Utility
     }
 
-    [Header("Class Information")]
+    [Header("Unit Information")]
     public UnitType type;
     public string UnitName;
     public int level;
+    public float speed;
+    public float health;
+    public float maxHealth;
+    public float attackDelay = 1f;
+    public float damage = 10f;
+    private float attackTimer;
+    public Sprite sprite;
     public RuntimeAnimatorController overrideController;//애니메이션컨트롤러
 
     [Header("Passive Skills")]
