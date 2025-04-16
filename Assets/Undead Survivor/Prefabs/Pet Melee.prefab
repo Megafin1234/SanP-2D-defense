@@ -229,6 +229,7 @@ MonoBehaviour:
   target: {fileID: 0}
   attackDelay: 1
   damage: 10
+  returnToPlayer: 0
 --- !u!1 &4979414037438186127
 GameObject:
   m_ObjectHideFlags: 0

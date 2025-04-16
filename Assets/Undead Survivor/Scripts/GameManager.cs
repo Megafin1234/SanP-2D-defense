@@ -184,7 +184,7 @@ public class GameManager : MonoBehaviour
             UIManager.instance.FadeIn(() =>
             {
                 DayCount++;
-                if (WaveSpawner.instance.currentWave > 0 && WaveSpawner.instance.currentWave % 2 == 0)
+                if (WaveSpawner.instance.currentWave > 0 && WaveSpawner.instance.currentWave % 4 == 0)
                 {
                     List<MapType> allMaps = System.Enum.GetValues(typeof(MapType)).Cast<MapType>().ToList();//맵타입을 가져와 배열로 전환
                     allMaps.Remove(Reposition.instance.currentMap);
@@ -226,7 +226,7 @@ public void ActivateDayTimer()
 public void ActivateNightTimer()
 {
     dayTimerHUD.SetActive(false);  
-    nightTimerHUD.SetActive(true); 
+    nightTimerHUD.SetActive(true);// 
     dayCountHUD.SetActive(false);
     nightCountHUD.SetActive(true);
 }

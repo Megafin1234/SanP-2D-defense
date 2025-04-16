@@ -21,20 +21,16 @@ public abstract class EnemyBase : MonoBehaviour
     public RuntimeAnimatorController[] animCon;
     public GameObject activeSpeedIcon;
     public GameObject activeAttackIcon;
-
     public interface IAttackable
 {
     float GetAttackPower();
     void SetAttackPower(float value);
 }
-
     protected Rigidbody2D rigid;
     protected Collider2D coll;
     protected Animator anim;
     protected SpriteRenderer spriter;
-
     public Rigidbody2D target;
-
     protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -42,7 +38,6 @@ public abstract class EnemyBase : MonoBehaviour
         spriter = GetComponent<SpriteRenderer>();
         coll = GetComponent<Collider2D>();
         agent = GetComponent<NavMeshAgent>();
-
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
@@ -63,7 +58,6 @@ public abstract class EnemyBase : MonoBehaviour
             agent.speed = speed;
         }
     }
-
     protected virtual void Update()
     {
         if (!GameManager.instance.isLive || !isLive)
@@ -72,10 +66,8 @@ public abstract class EnemyBase : MonoBehaviour
             agent.SetDestination(target.position);
         }
         spriter.flipX = target.position.x < transform.position.x;
-
         Act(); // 하위 클래스에서 공격 로직 구현
     }
-
     public virtual void Init(SpawnData data)
     {
         spriteType = data.spriteType;
@@ -83,47 +75,47 @@ public abstract class EnemyBase : MonoBehaviour
         speed = data.speed;
         maxHealth = data.health;
         health = data.health;
-
         if (agent != null)
             agent.speed = speed;
+        if (data.isBoss)
+        {
+            transform.localScale *= 3f;
+            spriter.sortingOrder = 1;
+        }
     }
-
-public virtual void TakeDamage(float damage)
-{
-    if (isInvincible || !isLive || isPet)
-        return;
-
-    // 자폭형은 TakeDamage로 죽지 않도록 막음
-    if (this is EnemySuicide suicideEnemy && suicideEnemy.IsExploding())
-        return;
-
-    health -= damage;
-    if (health > 0)
+    public virtual void TakeDamage(float damage)
     {
-        anim.SetTrigger("Hit");
-        AudioManager.instance.PlaySfx(AudioManager.Sfx.Hit);
+        if (isInvincible || !isLive || isPet)
+            return;
+        // 자폭형은 TakeDamage로 죽지 않도록 막음
+        if (this is EnemySuicide suicideEnemy && suicideEnemy.IsExploding())
+            return;
+        health -= damage;
+        if (health > 0)
+        {
+            anim.SetTrigger("Hit");
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Hit);
+        }
+        else
+        {
+            Debug.Log($"{name} :: 사망 조건 진입");
+            isLive = false;
+            coll.enabled = false;
+            rigid.simulated = false;
+            spriter.sortingOrder = 1;
+            anim.ResetTrigger("AttackMelee");
+            anim.ResetTrigger("AttackMagic");
+            anim.ResetTrigger("Hit");
+            anim.SetBool("Dead", true);
+            anim.Play("Dead", 0, 0f); //버퍼 죽음 애니메이션 문제로 강제재생. 없어도 되야함
+            GameManager.instance.kill++;
+            GameManager.instance.coin += (3 + GameManager.instance.DayCount * 2);
+            GameManager.instance.GetExp();
+            WaveSpawner.instance.currentWaveKillCount++;
+            if (GameManager.instance.isLive)
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.Dead);
+        }
     }
-    else
-    {
-        Debug.Log($"{name} :: 사망 조건 진입");
-        isLive = false;
-        coll.enabled = false;
-        rigid.simulated = false;
-        spriter.sortingOrder = 1;
-        anim.ResetTrigger("AttackMelee");
-        anim.ResetTrigger("AttackMagic");
-        anim.ResetTrigger("Hit");
-        anim.SetBool("Dead", true);
-         anim.Play("Dead", 0, 0f); //버퍼 죽음 애니메이션 문제로 강제재생. 없어도 되야함
-        GameManager.instance.kill++;
-        GameManager.instance.coin += (3 + GameManager.instance.DayCount * 2);
-        GameManager.instance.GetExp();
-        WaveSpawner.instance.currentWaveKillCount++;
-        if (GameManager.instance.isLive)
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.Dead);
-    }
-}
-
     public void Caught()
     {
         if (agent != null)
@@ -148,30 +140,27 @@ public virtual void TakeDamage(float damage)
         if (agent != null)
             agent.enabled = true;
     }
-
-protected virtual void OnTriggerEnter2D(Collider2D collision)
-{
-    if (!isLive) return;
-
-    if (collision.CompareTag("Bullet"))
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        Bullet bullet = collision.GetComponent<Bullet>();
-        
-        if (bullet != null && bullet.owner == Bullet.BulletOwner.Player)
+        if (!isLive) return;
+        if (collision.CompareTag("Bullet"))
         {
-            TakeDamage(bullet.damage);
+            Bullet bullet = collision.GetComponent<Bullet>();
+            
+            if (bullet != null && bullet.owner == Bullet.BulletOwner.Player)
+            {
+                TakeDamage(bullet.damage);
+                StartCoroutine(KnockBack(GameManager.instance.player.transform.position));
+            }
+        }
+        if (collision.CompareTag("Catch"))
+        {
+            float dmg = 1f;
+            TakeDamage(dmg);
             StartCoroutine(KnockBack(GameManager.instance.player.transform.position));
+            if(canCaught)Caught();
         }
     }
-
-    if (collision.CompareTag("Catch"))
-    {
-        float dmg = 1f;
-        TakeDamage(dmg);
-        StartCoroutine(KnockBack(GameManager.instance.player.transform.position));
-        if(canCaught)Caught();
-    }
-}
     public virtual void Dead()
     {
         gameObject.SetActive(false);

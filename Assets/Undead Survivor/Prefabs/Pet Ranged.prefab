@@ -320,3 +320,4 @@ MonoBehaviour:
   attackDelay: 2
   bulletSpeed: 12
   damage: 8
+  returnToPlayer: 0

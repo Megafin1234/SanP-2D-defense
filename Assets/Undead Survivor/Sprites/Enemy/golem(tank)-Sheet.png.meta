@@ -1,0 +1,793 @@
+fileFormatVersion: 2
+guid: 49e72d209cc0ca7488eb1c6ac8c6aa4c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3488313774982918259
+    second: golem(tank)-Sheet_0
+  - first:
+      213: -2700121620911109829
+    second: golem(tank)-Sheet_1
+  - first:
+      213: 5087421399257752356
+    second: golem(tank)-Sheet_2
+  - first:
+      213: -8813793323188179993
+    second: golem(tank)-Sheet_3
+  - first:
+      213: 1558988036425116223
+    second: golem(tank)-Sheet_4
+  - first:
+      213: -1551569864269626809
+    second: golem(tank)-Sheet_5
+  - first:
+      213: -3069001316623992706
+    second: golem(tank)-Sheet_6
+  - first:
+      213: -8980148283713371941
+    second: golem(tank)-Sheet_7
+  - first:
+      213: -986214045511324343
+    second: golem(tank)-Sheet_8
+  - first:
+      213: 10452600601162984
+    second: golem(tank)-Sheet_9
+  - first:
+      213: 9096330411450391429
+    second: golem(tank)-Sheet_10
+  - first:
+      213: -2574295016643935800
+    second: golem(tank)-Sheet_11
+  - first:
+      213: 4624013451142869212
+    second: golem(tank)-Sheet_12
+  - first:
+      213: 5177708384463159751
+    second: golem(tank)-Sheet_13
+  - first:
+      213: 5390817595467693154
+    second: golem(tank)-Sheet_14
+  - first:
+      213: -7650777440538022498
+    second: golem(tank)-Sheet_15
+  - first:
+      213: 5636782526407458643
+    second: golem(tank)-Sheet_16
+  - first:
+      213: 6257636943215953589
+    second: golem(tank)-Sheet_17
+  - first:
+      213: -5313823547073065916
+    second: golem(tank)-Sheet_18
+  - first:
+      213: -3456934261999864259
+    second: golem(tank)-Sheet_19
+  - first:
+      213: -5275561745503289536
+    second: golem(tank)-Sheet_20
+  - first:
+      213: 6952404071113001173
+    second: golem(tank)-Sheet_21
+  - first:
+      213: 780657541058327016
+    second: golem(tank)-Sheet_22
+  - first:
+      213: -498200069598905658
+    second: golem(tank)-Sheet_23
+  - first:
+      213: 1575691526067655725
+    second: golem(tank)-Sheet_24
+  - first:
+      213: 7649262327448364181
+    second: golem(tank)-Sheet_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 8
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 3
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37075fe75eaf86030800000000000000
+      internalID: 3488313774982918259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 3
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b39cd3f01bd378ad0800000000000000
+      internalID: -2700121620911109829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 3
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 423aa7deec62a9640800000000000000
+      internalID: 5087421399257752356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 3
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7eba8a78bad1fa580800000000000000
+      internalID: -8813793323188179993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 3
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3ae338fb53a2a510800000000000000
+      internalID: 1558988036425116223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 3
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7420204dd67b77ae0800000000000000
+      internalID: -1551569864269626809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 0
+        width: 37
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e78bb631097b865d0800000000000000
+      internalID: -3069001316623992706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 0
+        width: 37
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd04eeef6ba106380800000000000000
+      internalID: -8980148283713371941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 0
+        width: 37
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94debc00d834052f0800000000000000
+      internalID: -986214045511324343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 0
+        width: 37
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e4bfc9b592252000800000000000000
+      internalID: 10452600601162984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 0
+        width: 45
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58b55169058ac3e70800000000000000
+      internalID: 9096330411450391429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 38
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c141e15254464cd0800000000000000
+      internalID: -2574295016643935800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 3
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd0bff71cbbcb2040800000000000000
+      internalID: 4624013451142869212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 0
+        width: 37
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c10d7ec75aead740800000000000000
+      internalID: 5177708384463159751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 0
+        width: 37
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26cf6c29a0800da40800000000000000
+      internalID: 5390817595467693154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 0
+        width: 37
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9da821147af2d590800000000000000
+      internalID: -7650777440538022498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 0
+        width: 37
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35f35a2c7dfd93e40800000000000000
+      internalID: 5636782526407458643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 0
+        width: 45
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b68fbd35a797d650800000000000000
+      internalID: 6257636943215953589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 41
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44c8a9543a18146b0800000000000000
+      internalID: -5313823547073065916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 0
+        width: 41
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d36fe95ba908600d0800000000000000
+      internalID: -3456934261999864259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 41
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04ff2a82b8079c6b0800000000000000
+      internalID: -5275561745503289536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 39
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d88ba1daa6eb7060800000000000000
+      internalID: 6952404071113001173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 3
+        width: 33
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e1f202c5e375da00800000000000000
+      internalID: 780657541058327016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 3
+        width: 33
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ca7b702da90619f0800000000000000
+      internalID: -498200069598905658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 3
+        width: 33
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d241bd6381bfdd510800000000000000
+      internalID: 1575691526067655725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golem(tank)-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 3
+        width: 33
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 594665d2f83a72a60800000000000000
+      internalID: 7649262327448364181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d60bda994fcb87e4b81918d2f35663c4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      golem(tank)-Sheet_0: 3488313774982918259
+      golem(tank)-Sheet_1: -2700121620911109829
+      golem(tank)-Sheet_10: 9096330411450391429
+      golem(tank)-Sheet_11: -2574295016643935800
+      golem(tank)-Sheet_12: 4624013451142869212
+      golem(tank)-Sheet_13: 5177708384463159751
+      golem(tank)-Sheet_14: 5390817595467693154
+      golem(tank)-Sheet_15: -7650777440538022498
+      golem(tank)-Sheet_16: 5636782526407458643
+      golem(tank)-Sheet_17: 6257636943215953589
+      golem(tank)-Sheet_18: -5313823547073065916
+      golem(tank)-Sheet_19: -3456934261999864259
+      golem(tank)-Sheet_2: 5087421399257752356
+      golem(tank)-Sheet_20: -5275561745503289536
+      golem(tank)-Sheet_21: 6952404071113001173
+      golem(tank)-Sheet_22: 780657541058327016
+      golem(tank)-Sheet_23: -498200069598905658
+      golem(tank)-Sheet_24: 1575691526067655725
+      golem(tank)-Sheet_25: 7649262327448364181
+      golem(tank)-Sheet_3: -8813793323188179993
+      golem(tank)-Sheet_4: 1558988036425116223
+      golem(tank)-Sheet_5: -1551569864269626809
+      golem(tank)-Sheet_6: -3069001316623992706
+      golem(tank)-Sheet_7: -8980148283713371941
+      golem(tank)-Sheet_8: -986214045511324343
+      golem(tank)-Sheet_9: 10452600601162984
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
