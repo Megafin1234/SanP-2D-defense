@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> party;
 
     public Texture2D crosshair;
+    public Image crosshair2;
     public Vector2 hotspot = new Vector2(16, 16);
 
     private bool isDayPhase = true;
@@ -113,6 +115,7 @@ public class GameManager : MonoBehaviour
 
     }
     void Update(){
+        crosshair2.transform.position = Input.mousePosition;
         if (!isLive)
             return;
 

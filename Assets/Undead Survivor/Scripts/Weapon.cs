@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ public class Weapon : MonoBehaviour
     Player player;
     bool canFire;
     bool canCatch;
+    int combo=0;
 
     void Awake()
     {
@@ -27,9 +29,9 @@ public class Weapon : MonoBehaviour
         if (!GameManager.instance.isLive)
             return;
         switch(id){
-            case 0: 
-                transform.Rotate(Vector3.back* speed* Time.deltaTime);
-                break;
+            // case 0: 
+            //     //transform.Rotate(Vector3.back* speed* Time.deltaTime);
+            //     break;
             default:
                 timer += Time.deltaTime;
 
@@ -52,8 +54,8 @@ public class Weapon : MonoBehaviour
         this.damage = damage * Character.Damage;
         this.count += count;
 
-        if (id ==0)
-            Batch();
+        // if (id ==0)
+        //     Batch();
         player.BroadcastMessage("ApplyGear", SendMessageOptions.DontRequireReceiver);
     }
     public void Init(ItemData data)
@@ -76,7 +78,7 @@ public class Weapon : MonoBehaviour
         switch(id){
             case 0: 
                 speed = 150*Character.WeaponSpeed;
-                Batch();
+                //Batch();
                 break;
             case 1: //총
                 speed = 0.5f* Character.WeaponRate;
@@ -136,9 +138,53 @@ public class Weapon : MonoBehaviour
 
     }
 
+    IEnumerator SlashShovel(){
+        Transform bullet;
+        if(transform.childCount>0){
+            bullet = transform.GetChild(0);
+            bullet.GetComponent<Bullet>().BulletActive(true);
+        }
+        else{
+            bullet = GameManager.instance.pool.Get(prefabId).transform;
+            bullet.parent = transform;
+        }
+        bullet.localPosition = Vector3.zero;
+        bullet.localRotation = Quaternion.identity;
+        { //돌리기
+        Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 dir = targetPos - transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        bullet.localRotation = Quaternion.Euler(0f, 0f, angle - 90f);
+        }
+        Vector3 rotVec= Vector3.forward * (combo==0?310:50);
+        bullet.Rotate(rotVec);
+        bullet.Translate(bullet.up * 1f, Space.World);
+        yield return new WaitForSeconds(0.05f);
+        bullet.localPosition = Vector3.zero;
+        //bullet.localRotation = Quaternion.identity;
+        rotVec = Vector3.forward * (combo==0?100:260);
+        // for(int i=0; i<4; i++){
+        //     rotVec = Vector3.forward * (combo==0?10+(i*10):350-(i*10));
+            bullet.Rotate(rotVec);
+            bullet.localPosition = Vector3.zero;
+            bullet.Translate(bullet.up * 1f, Space.World);
+        //     yield return new WaitForSeconds(0.05f);
+        // }
+        
+        yield return new WaitForSeconds(0.25f);
+        bullet.GetComponent<Bullet>().BulletActive(false);
+        //bullet.GetComponent<Bullet>().Init(damage, -100, Vector3.zero);
+        combo++;
+        combo%=2;
+    }
+
     public void MouseFire(){
         if(!canFire) return;
         canFire = false;
+        if(id==0){
+            StartCoroutine(SlashShovel());
+            return;
+        }
         Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 dir = targetPos - transform.position;
         dir.z = 0;
