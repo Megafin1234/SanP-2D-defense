@@ -103,7 +103,7 @@ public class EnemyBossVoid : EnemyBase, EnemyBase.IAttackable
                 float rad = angle * Mathf.Deg2Rad;
                 Vector3 dir = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad), 0).normalized;
 
-                GameObject bullet = GameManager.instance.pool.Get(3);
+                GameObject bullet = GameManager.instance.pool.Get(6);
                 bullet.transform.position = transform.position;
                 bullet.transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
 
@@ -161,7 +161,7 @@ public class EnemyBossVoid : EnemyBase, EnemyBase.IAttackable
     // 공통 불렛 발사
     void FireBullet(Vector3 dir,float speed = 10f)
     {
-        GameObject bullet = GameManager.instance.pool.Get(3);
+        GameObject bullet = GameManager.instance.pool.Get(7);
         bullet.transform.position = transform.position;
         bullet.transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
 
