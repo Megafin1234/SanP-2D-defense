@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   UnitName: 
-  level: 0
-  speed: 0
-  health: 0
-  maxHealth: 0
+  level: 100
+  speed: 10
+  health: 222
+  maxHealth: 222
   attackDelay: 1
   damage: 10
   sprite: {fileID: 0}

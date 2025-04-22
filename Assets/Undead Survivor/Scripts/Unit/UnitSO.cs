@@ -12,7 +12,7 @@ public class UnitSO : ScriptableObject
         Utility
     }
 
-    [Header("Unit Information")]
+    [Header("Unit Information")]//유닛을 소환할 때 기본 프리팹에 덮어씌울 정보들.
     public UnitType type;
     public string UnitName;
     public int level;
