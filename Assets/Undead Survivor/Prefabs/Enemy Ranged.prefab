@@ -218,6 +218,7 @@ MonoBehaviour:
   health: 10
   maxHealth: 10
   spriteType: 0
+  enemyType: 0
   isInvincible: 0
   isLive: 0
   isPet: 0

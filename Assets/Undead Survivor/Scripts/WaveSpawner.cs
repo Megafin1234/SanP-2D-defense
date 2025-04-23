@@ -85,7 +85,7 @@ public class WaveSpawner : MonoBehaviour
         {
             int dataIndex = allowedIndices[Random.Range(0, allowedIndices.Count)];
             WaveSpawnData spawnData = waveSpawnData[dataIndex];
-            Spawn(spawnData);
+            Spawn(spawnData, dataIndex);
             yield return new WaitForSeconds(spawnData.spawnTime); 
         }
 
@@ -112,7 +112,7 @@ public class WaveSpawner : MonoBehaviour
         return new List<int>();
     }
 
-    void Spawn(WaveSpawnData data)
+    void Spawn(WaveSpawnData data,int Idx)
     {
         int prefabIndex = GetEnemyPrefabIndex(data.type);
         GameObject enemy = GameManager.instance.pool.Get(prefabIndex);
@@ -122,6 +122,7 @@ public class WaveSpawner : MonoBehaviour
         enemy.transform.position = spawnPosition + offset;
 
         enemy.GetComponent<EnemyBase>().Init(data.ToSpawnData());
+        enemy.GetComponent<EnemyBase>().enemyIdx = Idx;
     }
 
     void SpawnBoss()

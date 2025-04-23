@@ -9,6 +9,7 @@ public abstract class EnemyBase : MonoBehaviour
     public float health;
     public float maxHealth;
     public int spriteType;
+    public int enemyType;
     public bool isInvincible = false;
 
     public bool isLive;
@@ -16,7 +17,7 @@ public abstract class EnemyBase : MonoBehaviour
     public bool isPet;
     public bool canCaught=false;
 
-    public int enemyIdx;
+    public int enemyIdx;//이걸로 적 소환, 펫 소환 다 관리함.
     public NavMeshAgent agent;
     public RuntimeAnimatorController[] animCon;
     public GameObject activeSpeedIcon;
@@ -122,7 +123,7 @@ public abstract class EnemyBase : MonoBehaviour
             agent.enabled = false;
         if (Random.Range(0, 5) >= 3)
         {
-            GameManager.instance.GetPet(enemyIdx, transform);
+            GameManager.instance.GetPet(enemyType,enemyIdx, transform);
             WaveSpawner.instance.currentWaveKillCount++;
             GameManager.instance.GetExp();
             Dead();//나는 죽는다. 
