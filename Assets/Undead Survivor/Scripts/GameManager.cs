@@ -50,8 +50,9 @@ public class GameManager : MonoBehaviour
     public GameObject merchant;
     public GameObject merchantInteraction;
     public List<GameObject> pets;
-
     public List<GameObject> party;
+
+    public List<UnitSO> unitSOList;
 
     public Texture2D crosshair;
     public Image crosshair2;
@@ -244,11 +245,20 @@ public void ActivateNightTimer()
         }
     }
 
-    public void GetPet(int idx, Transform originTransform){
-        GameObject newPet = Instantiate(pets[idx]); // 부모 없이 생성
+    public void GetPet(int type, int idx, Transform originTransform){
+        idx = 0;
+        GameObject newPet = Instantiate(pets[type]); // 부모 없이 생성
         newPet.transform.SetParent(player.transform); // 부모를 플레이어로 설정
         newPet.transform.position = originTransform.position; // 위치를 originTransform과 동일하게 설정
         party.Add(newPet);
+        newPet.name = unitSOList[idx].UnitName;
+        //newPet의 데이터를 SO 리스트의 idx번 데이터에서 전부 가져와 덮어씌우기
+        newPet.GetComponent<EnemyBase>().name = unitSOList[idx].UnitName;
+        //레벨 설정
+        newPet.GetComponent<EnemyBase>().speed = unitSOList[idx].speed;
+        newPet.GetComponent<EnemyBase>().health = unitSOList[idx].health;
+        //newPet.GetComponent<EnemyBase>().Sprite = unitSOList[idx].sprite;
+        //newPet.GetComponent<EnemyBase>().speed = unitSOList[idx].speed;
         newPet.SetActive(true);
     }
 

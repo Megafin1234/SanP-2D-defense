@@ -217,11 +217,12 @@ MonoBehaviour:
   health: 10
   maxHealth: 10
   spriteType: 0
+  enemyType: 0
   isInvincible: 0
   isLive: 0
   isPet: 0
   canCaught: 0
-  enemyIdx: 0
+  enemyIdx: 1
   agent: {fileID: 0}
   animCon:
   - {fileID: 22100000, guid: 050556270436d4f4288557291a1a99c0, type: 2}
