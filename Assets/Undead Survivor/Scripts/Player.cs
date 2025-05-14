@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
@@ -102,18 +103,35 @@ void OnEnable()
         }
     }
 
+    IEnumerator FadeAndDestroy(SpriteRenderer renderer, GameObject obj)
+    {
+        float elapsed = 0f;
+        float duration = trailLifetime; // 사라지는 데 걸리는 시간
+        Color startColor = renderer.color;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(startColor.a, 0f, elapsed / duration);
+            renderer.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+            yield return null;
+        }
+
+        Destroy(obj); // 완전히 사라지면 삭제
+    }
+
     void CreateTrail()
     {
         GameObject trail = new GameObject("Trail"); // 잔상 오브젝트 생성
         SpriteRenderer trailSprite = trail.AddComponent<SpriteRenderer>(); // SpriteRenderer 추가
         trailSprite.sprite = spriter.sprite; // 현재 스프라이트 복사
-        trailSprite.color = new Color(1f, 0.5f, 0.5f, 0.3f); // 색상 설정
+        trailSprite.color = new Color(1f, 0.5f, 0.5f, 1f); // 색상 설정
         trail.transform.position = transform.position;
         trail.transform.rotation = transform.rotation;
         trail.transform.localScale = transform.localScale;
         trailSprite.flipX = spriter.flipX;
 
-        Destroy(trail, trailLifetime + trailInterval*2 - trailIntervalReal*2); // 일정 시간 후 잔상 제거
+        StartCoroutine(FadeAndDestroy(trailSprite, trail));
     }
 
     void LateUpdate()
