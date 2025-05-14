@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
                 StartNightPhase();
             });
         });
-        merchant.SetActive(false);//유닛상인 비활성화
+        //merchant.SetActive(false);//유닛상인 비활성화
     }
 
     public void NightToDay()
@@ -199,7 +199,7 @@ public class GameManager : MonoBehaviour
                 StartDayPhase();
             });
         });
-        merchant.SetActive(true);//유닛상인 활성화
+        //merchant.SetActive(true);//유닛상인 활성화
     }
 
     public void StartDayPhase()

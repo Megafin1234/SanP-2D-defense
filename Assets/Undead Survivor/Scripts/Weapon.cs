@@ -140,6 +140,7 @@ public class Weapon : MonoBehaviour
 
     IEnumerator SlashShovel(){
         Transform bullet;
+        Vector3 dir;
         if(transform.childCount>0){
             bullet = transform.GetChild(0);
             bullet.GetComponent<Bullet>().BulletActive(true);
@@ -152,7 +153,8 @@ public class Weapon : MonoBehaviour
         bullet.localRotation = Quaternion.identity;
         { //돌리기
         Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 dir = targetPos - transform.position;
+        dir = targetPos - transform.position;
+        dir.z = 0;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         bullet.localRotation = Quaternion.Euler(0f, 0f, angle - 90f);
         }
@@ -170,6 +172,17 @@ public class Weapon : MonoBehaviour
             bullet.Translate(bullet.up * 1f, Space.World);
         //     yield return new WaitForSeconds(0.05f);
         // }
+
+        {
+            dir = dir.normalized;
+            Transform slash     = GameManager.instance.pool.Get(7).transform;
+            slash.position      = transform.position;
+            slash.rotation      = Quaternion.FromToRotation(Vector3.up, dir);  //목표방향으로 회전하는 함수
+            slash.localScale    = new Vector3(2.2f,2.2f,2.2f);
+            slash.Translate(slash.up * 1.2f, Space.World);
+            slash.GetComponent<Bullet>().owner = Bullet.BulletOwner.Player;
+            slash.GetComponent<Bullet>().Init(damage, 0, dir, 0);
+        }
         
         yield return new WaitForSeconds(0.25f);
         bullet.GetComponent<Bullet>().BulletActive(false);
