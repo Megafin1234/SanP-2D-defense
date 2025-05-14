@@ -6,10 +6,11 @@ using System.Collections;
 public class TutorialManager : MonoBehaviour
 {
     public Text instructionText;
+    public Button endTutorialButton;
 
     private int step = 0;
     private bool moved, attacked, dashed;
-
+    private bool isProcessingStep = false;
     void Start()
     {
         ShowStep(); // 첫 메시지 표시
@@ -17,6 +18,7 @@ public class TutorialManager : MonoBehaviour
 
     void Update()
     {
+        if (isProcessingStep) return; 
         switch (step)
         {
             case 0: // 이동
@@ -66,9 +68,19 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator NextStep()
     {
+        isProcessingStep = true;
         instructionText.text = "잘하셨습니다!";
         yield return new WaitForSeconds(1f); 
         step++;
         ShowStep();
+        isProcessingStep = false;
     }
+
+    public void EndTutorial()
+    {
+        PlayerPrefs.SetInt("CameFromTutorial", 1);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("SampleScene");
+    }
+
 }
