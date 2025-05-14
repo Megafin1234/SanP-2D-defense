@@ -119,6 +119,8 @@ public class GameManager : MonoBehaviour
         crosshair2.transform.position = Input.mousePosition;
         if (!isLive)
             return;
+        if (SceneManager.GetActiveScene().name == "Tutorial")
+            return; 
 
         if(WaveSpawner.instance.currentWave >= WaveSpawner.instance.monstersPerWave.Length){
             GameVictory();
