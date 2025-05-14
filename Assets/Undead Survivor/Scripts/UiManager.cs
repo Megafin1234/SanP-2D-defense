@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+
 
 public class UIManager : MonoBehaviour
 {
@@ -30,6 +32,11 @@ public class UIManager : MonoBehaviour
     }
     void Start()
     {
+        if (PlayerPrefs.GetInt("CameFromTutorial", 0) == 1)
+            {
+                mainMenuPanel.SetActive(false); // 메인메뉴 자동 숨김
+                PlayerPrefs.DeleteKey("CameFromTutorial"); // 플래그 제거
+            }
         mapSpriteDict = new Dictionary<MapType, Sprite>();
         foreach (var data in mapSprites)
         {
@@ -74,12 +81,27 @@ public class UIManager : MonoBehaviour
         clickEffectA.SetActive(false);
     }
 
+    public void GoToTutorialScene()
+    {
+        SceneManager.LoadScene("Tutorial");
+        clickEffectC.SetActive(true);
+        StartCoroutine(EndDelay());
+    }
+    public void GoToMainScene()
+    {
+        PlayerPrefs.SetInt("CameFromTutorial", 1); // 튜토리얼에서 돌아옴 표시
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("SampleScene");
+        clickEffectC.SetActive(true);
+        StartCoroutine(EndDelay());
+    }
+
     public void TutorialEnd()
     {
         clickEffectC.SetActive(true);
         StartCoroutine(EndDelay());
     }
-        private IEnumerator EndDelay()
+    private IEnumerator EndDelay()
     {
         yield return new WaitForSeconds(0.5f); 
         mainMenuPanel.SetActive(false);
