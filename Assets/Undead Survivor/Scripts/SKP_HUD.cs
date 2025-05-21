@@ -3,14 +3,15 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
 
-public class SKP_ITEM
+[System.Serializable]
+public class SKP_Item
 {
     public int id;
     public string name;
     public string desc;
     public List<string> attributes;
     public int maxStack;
-    public SKP_ITEM(string name, string desc, int maxStack = 64)
+    public SKP_Item(string name, string desc, int maxStack = 64)
     {
         this.name = name;
         this.desc = desc;
@@ -19,7 +20,7 @@ public class SKP_ITEM
     }
     public override bool Equals(object obj)
     {
-        if (obj is not SKP_ITEM other) return false;
+        if (obj is not SKP_Item other) return false;
         return id == other.id &&
                name == other.name &&
                desc == other.desc &&
@@ -28,8 +29,10 @@ public class SKP_ITEM
     }
 }
 
+
 public class SKP_HUD : MonoBehaviour
 {
+    public SKP_InventorySlot mouseSlot = new SKP_InventorySlot();
 
     void Start()
     {
