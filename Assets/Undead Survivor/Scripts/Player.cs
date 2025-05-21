@@ -26,8 +26,11 @@ public class Player : MonoBehaviour
     float trailTimer;
     float trailIntervalReal;
     Vector2 dashVec;
-    
+
     public List<GameObject> party;
+
+    public delegate void Skill(int level);
+    List<Skill> skills = new List<Skill>();
 
     void Awake()
     {
@@ -37,15 +40,18 @@ public class Player : MonoBehaviour
         scanner = GetComponent<Scanner>();
         hands = GetComponentsInChildren<Hand>(true);
         dashWaiting = 0;
-    }
-void OnEnable()
-{
-    speed *= Character.Speed;
-    anim.runtimeAnimatorController = animCon[GameManager.instance.playerId];
 
-}
-    void Update(){
-        if(!GameManager.instance.isLive)
+        skills.Add(skillTest);
+    }
+    void OnEnable()
+    {
+        speed *= Character.Speed;
+        anim.runtimeAnimatorController = animCon[GameManager.instance.playerId];
+
+    }
+    void Update()
+    {
+        if (!GameManager.instance.isLive)
             return;
     }
     void FixedUpdate()
@@ -53,7 +59,7 @@ void OnEnable()
         if (!GameManager.instance.isLive)
             return;
         Vector2 nextVec;
-        if (dashTime>0) // 대시 중이면 대시 속도로 이동
+        if (dashTime > 0) // 대시 중이면 대시 속도로 이동
         {
             Vector2 dragForce = -dashVec.normalized * dragCoefficient * dashVec.magnitude * Time.fixedDeltaTime;
             dashVec += dragForce;
@@ -67,11 +73,41 @@ void OnEnable()
                 trailIntervalReal += 0.01f;
             }
         }
-        else{
+        else
+        {
             nextVec = inputVec * speed * Time.fixedDeltaTime;
         }
         dashWaiting -= Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
+    }
+
+    void useSkill(int skillID, int level)
+    {
+        if (skillID >= 0 && skillID < skills.Count)
+        {
+            skills[skillID](level);  // 선택한 함수 실행
+        }
+        else
+        {
+            Debug.Log("스킬 실행 실패: 잘못된 인덱스(ID)");
+        }
+    }
+
+    void OnQSkill()
+    {
+        useSkill(GameManager.instance.equipSkillIDs[0], GameManager.instance.equipSkillLvls[0]);
+    }
+    void OnESkill()
+    {
+        useSkill(GameManager.instance.equipSkillIDs[1], GameManager.instance.equipSkillLvls[1]);
+    }
+    void OnXSkill()
+    {
+        useSkill(GameManager.instance.equipSkillIDs[2], GameManager.instance.equipSkillLvls[2]);
+    }
+    void OnCSkill()
+    {
+        useSkill(GameManager.instance.equipSkillIDs[3], GameManager.instance.equipSkillLvls[3]);
     }
     void OnMove(InputValue value)
     {
@@ -80,16 +116,19 @@ void OnEnable()
         inputVec = value.Get<Vector2>();
     }
 
-    void OnAttack(){
+    void OnAttack()
+    {
         GameManager.instance.weapon.MouseFire();
     }
 
-    void OnCatch(){
+    void OnCatch()
+    {
         GameManager.instance.weapon.TryCatch();
     }
 
-    void OnDash(){
-        if (dashWaiting<=0) // 이제 마우스로 대시하니까 안움직여도 대시 가능 ㅋㅋ
+    void OnDash()
+    {
+        if (dashWaiting <= 0) // 이제 마우스로 대시하니까 안움직여도 대시 가능 ㅋㅋ
         {
             dashWaiting = dashCoolDown;
             dashTime = dashDuration;
@@ -138,46 +177,55 @@ void OnEnable()
     {
         if (!GameManager.instance.isLive)
             return;
-        anim.SetFloat("Speed",inputVec.magnitude);
-        
-        if (inputVec.x != 0 && dashTime<=0){
+        anim.SetFloat("Speed", inputVec.magnitude);
+
+        if (inputVec.x != 0 && dashTime <= 0)
+        {
             spriter.flipX = inputVec.x < 0;
         }
     }
 
     public void TakeDamage(float amount)
-{
-    if (!GameManager.instance.isLive)
-        return;
-
-    GameManager.instance.health -= amount;
-
-    if (GameManager.instance.health < 0)
     {
-        for (int index = 2; index < transform.childCount; index++)
-        {
-            transform.GetChild(index).gameObject.SetActive(false);
-        }
+        if (!GameManager.instance.isLive)
+            return;
 
-        anim.SetTrigger("Dead");
-        GameManager.instance.GameOver();
+        GameManager.instance.health -= amount;
+
+        if (GameManager.instance.health < 0)
+        {
+            for (int index = 2; index < transform.childCount; index++)
+            {
+                transform.GetChild(index).gameObject.SetActive(false);
+            }
+
+            anim.SetTrigger("Dead");
+            GameManager.instance.GameOver();
+        }
     }
-}
 
     void OnCollisionStay2D(Collision2D collision)
     {
         if (!GameManager.instance.isLive)
             return;
-        if (collision.gameObject.CompareTag("Enemy")) {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
             GameManager.instance.health -= Time.deltaTime * 10;
         }
 
-        if(GameManager.instance.health <0){
-            for (int index=2;index < transform.childCount;index++){
+        if (GameManager.instance.health < 0)
+        {
+            for (int index = 2; index < transform.childCount; index++)
+            {
                 transform.GetChild(index).gameObject.SetActive(false);
             }
             anim.SetTrigger("Dead");
             GameManager.instance.GameOver();
         }
+    }
+
+    void skillTest(int level)
+    {
+        Debug.Log($"스킬 실행, 레벨:{level}");
     }
 }

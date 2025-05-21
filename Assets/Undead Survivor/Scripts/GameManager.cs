@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     public int coin;
     public int exp;
     public int[] nextExp = { 3, 5, 10, 100, 150, 210, 360, 450, 600};
+    public int[] equipSkillIDs = { 0, 0, 0, 0 }; // Q, E, X, C
+    public int[] equipSkillLvls = { 0, 1, 2, 3 }; // Q, E, X, C
 
     [Header("#HUD References")]
     public GameObject dayTimerHUD; 
