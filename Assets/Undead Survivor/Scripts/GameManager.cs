@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     public int coin;
     public int exp;
     public int[] nextExp = { 3, 5, 10, 100, 150, 210, 360, 450, 600};
+    public int[] equipSkillIDs = { 0, 0, 0, 0 }; // Q, E, X, C
+    public int[] equipSkillLvls = { 0, 1, 2, 3 }; // Q, E, X, C
 
     [Header("#HUD References")]
     public GameObject dayTimerHUD; 
@@ -120,6 +122,8 @@ public class GameManager : MonoBehaviour
         crosshair2.transform.position = Input.mousePosition;
         if (!isLive)
             return;
+        if (SceneManager.GetActiveScene().name == "Tutorial")
+            return; 
 
         if(WaveSpawner.instance.currentWave >= WaveSpawner.instance.monstersPerWave.Length){
             GameVictory();
@@ -166,7 +170,7 @@ public class GameManager : MonoBehaviour
                 StartNightPhase();
             });
         });
-        merchant.SetActive(false);//유닛상인 비활성화
+        //merchant.SetActive(false);//유닛상인 비활성화
     }
 
     public void NightToDay()

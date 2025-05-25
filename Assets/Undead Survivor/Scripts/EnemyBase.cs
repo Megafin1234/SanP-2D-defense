@@ -143,6 +143,7 @@ public abstract class EnemyBase : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         if (agent != null)
             agent.enabled = true;
+        rigid.linearVelocity = Vector2.zero;
     }
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {

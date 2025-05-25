@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Bullet : MonoBehaviour
 {
@@ -9,23 +10,56 @@ public class Bullet : MonoBehaviour
     {
         Player,
         Enemy,
-        Pet
+        Pet,
+        Void
     }
 
     public BulletOwner owner = BulletOwner.Player; // 기본은 플레이어 탄환
     Rigidbody2D rigid;
+    SpriteRenderer spriter;
+    public enum BulletType{
+        bullet,
+        trace
+    }
+    BulletType bulletType = BulletType.bullet;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        spriter = GetComponent<SpriteRenderer>();
+    }
+
+    IEnumerator 잔상소멸(){
+        // yield return new WaitForSeconds(0.3f);
+        // gameObject.SetActive(false);
+        float time = 0f;
+        float duration = 0.2f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, time / duration);
+            spriter.color = new Color(1f, 1f, 1f, alpha);
+            yield return null;
+        }
+
+        gameObject.SetActive(false);
+        
     }
 
     public void Init(float damage, int per, Vector3 dir, float customSpeed = -1f)  //탄속은 bulletComp.Init(rangedDamage, 0, dir, 6f); 이걸 다른 스크립트에 추가해 조절하면됨
     {
         this.damage = damage;
         this.per = per;
+        
+        spriter.color = new Color(1,1,1,1);
 
-        float finalSpeed = (customSpeed > 0) ? customSpeed : 15f;
+        float finalSpeed = (customSpeed >= 0) ? customSpeed : 15f;
+
+        if(customSpeed==0){
+            bulletType = BulletType.trace;
+            StartCoroutine(잔상소멸());
+        }
 
         if (per >= 0)
             rigid.linearVelocity = dir * finalSpeed;
@@ -43,7 +77,7 @@ public class Bullet : MonoBehaviour
                 if (per != -100)
                 {
                     per--;
-                    if (per < 0)
+                    if (per < 0 && bulletType!=BulletType.trace)
                     {
                         rigid.linearVelocity = Vector2.zero;
                         gameObject.SetActive(false);
