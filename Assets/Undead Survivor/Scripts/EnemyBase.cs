@@ -15,7 +15,8 @@ public abstract class EnemyBase : MonoBehaviour
     public bool isLive;
 
     public bool isPet;
-    public bool canCaught=false;
+    public bool isBoss;
+    public bool canCaught = false;
 
     public int enemyIdx;//이걸로 적 소환, 펫 소환 다 관리함.
     public NavMeshAgent agent;
@@ -69,20 +70,20 @@ public abstract class EnemyBase : MonoBehaviour
         spriter.flipX = target.position.x < transform.position.x;
         Act(); // 하위 클래스에서 공격 로직 구현
     }
-    public virtual void Init(SpawnData data)
+    public virtual void Init(EnemySO myData)
     {
-        spriteType = data.spriteType;
-        anim.runtimeAnimatorController = animCon[spriteType];
-        speed = data.speed;
-        maxHealth = data.health;
-        health = data.health;
+        anim.runtimeAnimatorController = myData.animCon;
+        speed = myData.speed;
+        maxHealth = myData.health;
+        health = myData.health;
         if (agent != null)
             agent.speed = speed;
-        if (data.isBoss)
+        if (myData.isBoss)
         {
             transform.localScale *= 3f;
             spriter.sortingOrder = 1;
         }
+        enemyIdx = myData.enemyIdx;
     }
     public virtual void TakeDamage(float damage)
     {
@@ -119,11 +120,13 @@ public abstract class EnemyBase : MonoBehaviour
     }
     public void Caught()
     {
+        if (isBoss) return;//보스는 일단  포획 안되게 해뒀음.
+        
         if (agent != null)
             agent.enabled = false;
-        if (Random.Range(0, 5) >= 3)
+        if (Random.Range(0, 5) >= 3)//포획 성공시
         {
-            GameManager.instance.GetPet(enemyType,enemyIdx, transform);
+            GameManager.instance.GetPet(enemyIdx, transform);
             WaveSpawner.instance.currentWaveKillCount++;
             GameManager.instance.GetExp();
             Dead();//나는 죽는다. 

@@ -49,10 +49,11 @@ public class GameManager : MonoBehaviour
     public Weapon weapon;
     public GameObject merchant;
     public GameObject merchantInteraction;
-    public List<GameObject> pets;
+    public List<GameObject> unitTypePrefabs;
     public List<GameObject> party;
 
     public List<UnitSO> unitSOList;
+    public List<EnemySO> enemySOList;
 
     public Texture2D crosshair;
     public Image crosshair2;
@@ -199,7 +200,7 @@ public class GameManager : MonoBehaviour
                 StartDayPhase();
             });
         });
-        merchant.SetActive(true);//유닛상인 활성화
+        //merchant.SetActive(true);//유닛상인 활성화
     }
 
     public void StartDayPhase()
@@ -245,9 +246,24 @@ public void ActivateNightTimer()
         }
     }
 
-    public void GetPet(int type, int idx, Transform originTransform){
-        idx = 0;
-        GameObject newPet = Instantiate(pets[type]); // 부모 없이 생성
+    public void GetPet(int idx, Transform originTransform){
+        int type=0;
+        switch (unitSOList[idx].type)
+        {
+            case UnitSO.UnitType.Melee:
+                type = 0;
+                break;
+            case UnitSO.UnitType.Ranged:
+                type = 1;
+                break;
+            case UnitSO.UnitType.Buff:
+                type = 2;
+                break;
+            case UnitSO.UnitType.Utility:
+                type = 3;
+                break;
+        }
+        GameObject newPet = Instantiate(unitTypePrefabs[type]); //타입에 맞게 생성
         newPet.transform.SetParent(player.transform); // 부모를 플레이어로 설정
         newPet.transform.position = originTransform.position; // 위치를 originTransform과 동일하게 설정
         party.Add(newPet);
@@ -257,8 +273,8 @@ public void ActivateNightTimer()
         //레벨 설정
         newPet.GetComponent<EnemyBase>().speed = unitSOList[idx].speed;
         newPet.GetComponent<EnemyBase>().health = unitSOList[idx].health;
-        //newPet.GetComponent<EnemyBase>().Sprite = unitSOList[idx].sprite;
-        //newPet.GetComponent<EnemyBase>().speed = unitSOList[idx].speed;
+        newPet.GetComponent<Animator>().runtimeAnimatorController = unitSOList[idx].overrideController;
+        newPet.GetComponent<EnemyBase>().speed = unitSOList[idx].speed;
         newPet.SetActive(true);
     }
 
