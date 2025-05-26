@@ -84,15 +84,16 @@ public class WaveSpawner : MonoBehaviour
         for (int i = 0; i < monstersPerWave[waveIndex]; i++)
         {
             int dataIndex = allowedIndices[Random.Range(0, allowedIndices.Count)];
-            WaveSpawnData spawnData = waveSpawnData[dataIndex];
-            Spawn(spawnData, dataIndex);
-            yield return new WaitForSeconds(spawnData.spawnTime); 
+            // WaveSpawnData spawnData = waveSpawnData[dataIndex];
+            // Spawn(spawnData, dataIndex);
+            Spawn(dataIndex);
+            yield return new WaitForSeconds(0.2f); 
         }
 
         if ((waveIndex + 1) % 4 == 0 && !bossSpawned)
         {
             yield return new WaitForSeconds(2f); // 약간 지연 효과
-            SpawnBoss(); 
+            //SpawnBoss(); 
         }
 
         int totalExpectedKills = monstersPerWave[waveIndex] + (bossSpawned ? 1 : 0);
@@ -112,41 +113,58 @@ public class WaveSpawner : MonoBehaviour
         return new List<int>();
     }
 
-    void Spawn(WaveSpawnData data,int Idx)
+    void Spawn(int Idx)
     {
-        int prefabIndex = GetEnemyPrefabIndex(data.type);
-        GameObject enemy = GameManager.instance.pool.Get(prefabIndex);
-
+        GameObject enemy = null;
+        //int prefabIndex = GetEnemyPrefabIndex(data.type);
+        switch (GameManager.instance.enemySOList[Idx].type)//유닛 타입에 따라 프리팹 생성(추후 수정 가능)
+        {
+            case EnemySO.UnitType.Melee:
+                enemy = GameManager.instance.pool.Get(10);//풀매니저의 10번이 밀리니까. 근데 이 부분도 수정 필요
+                break;
+            case EnemySO.UnitType.Ranged:
+                enemy = GameManager.instance.pool.Get(11);
+                break;
+            case EnemySO.UnitType.Buff:
+                enemy = GameManager.instance.pool.Get(13);
+                break;
+            case EnemySO.UnitType.Utility:
+                enemy = GameManager.instance.pool.Get(12);
+                break;
+            case EnemySO.UnitType.Boss:
+                enemy = GameManager.instance.pool.Get(14);
+                break;
+        }
         Vector3 spawnPosition = spawnPoint[currentSpawnIndex].position;
         Vector3 offset = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0);
         enemy.transform.position = spawnPosition + offset;
 
-        enemy.GetComponent<EnemyBase>().Init(data.ToSpawnData());
+        enemy.GetComponent<EnemyBase>().Init(GameManager.instance.enemySOList[Idx]);
         enemy.GetComponent<EnemyBase>().enemyIdx = Idx;
     }
 
-    void SpawnBoss()
-    {
-        MapType currentMap = Reposition.instance.currentMap;
+    // void SpawnBoss()
+    // {
+    //     MapType currentMap = Reposition.instance.currentMap;
 
-        if (!bossSpawnDataDict.TryGetValue(currentMap, out WaveSpawnData bossData))
-        {
-            return;
-        }
+    //     if (!bossSpawnDataDict.TryGetValue(currentMap, out WaveSpawnData bossData))
+    //     {
+    //         return;
+    //     }
 
-        int bossPrefabIndex = GetEnemyPrefabIndex(bossData.type); // 기존 EnemyType 사용
-        GameObject boss = GameManager.instance.pool.Get(bossPrefabIndex);
+    //     int bossPrefabIndex = GetEnemyPrefabIndex(bossData.type); // 기존 EnemyType 사용
+    //     GameObject boss = GameManager.instance.pool.Get(bossPrefabIndex);
 
-        Vector3 spawnPosition = spawnPoint[currentSpawnIndex].position;
-        boss.transform.position = spawnPosition;
+    //     Vector3 spawnPosition = spawnPoint[currentSpawnIndex].position;
+    //     boss.transform.position = spawnPosition;
 
-        SpawnData spawnStruct = bossData.ToSpawnData();
-        //spawnStruct.isBoss = true; 
+    //     SpawnData spawnStruct = bossData.ToSpawnData();
+    //     //spawnStruct.isBoss = true; 
 
-        boss.GetComponent<EnemyBase>().Init(spawnStruct);
+    //     boss.GetComponent<EnemyBase>().Init(spawnStruct);
 
-        bossSpawned = true;
-    }
+    //     bossSpawned = true;
+    // }
 
     public void NtoDbuttons() //밤> 낮 전환시 버튼이 안나오는 오류 해결 위해 gamemanager>startDayPhaze에서 아래 코드들을 통제
     {

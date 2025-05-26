@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3557a8a30ad92c64ab5847f506785ff1, type: 3}
+  m_Name: Enemy 13
+  m_EditorClassIdentifier: 
+  enemyIdx: 0
+  type: 0
+  UnitName: 
+  level: 0
+  speed: 2
+  health: 10
+  maxHealth: 10
+  attackDelay: 1
+  damage: 10
+  isBoss: 0
+  sprite: {fileID: 0}
+  animCon: {fileID: 22100000, guid: 0528fd4c2c33a9b489965a799f0b34c0, type: 2}
+  passiveSkills: []
+  passiveSkillRequiredLevels: 
+  activeSkills: []
+  activeSkillRequiredLevels: 

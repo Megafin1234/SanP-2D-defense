@@ -309,6 +309,7 @@ MonoBehaviour:
   isInvincible: 0
   isLive: 0
   isPet: 0
+  isBoss: 0
   canCaught: 0
   enemyIdx: 0
   agent: {fileID: 0}

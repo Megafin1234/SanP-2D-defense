@@ -23,11 +23,11 @@ public class Spawner : MonoBehaviour
             Spawn();
         } 
     }*/
-    void Spawn()
+    void Spawn()//어디에서도 참조하고 있지 않은 함수 - > 지워도 되는거?
     {
         GameObject enemy = GameManager.instance.pool.Get(0);
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
-        enemy.GetComponent<EnemyBase>().Init(spawnData[level]);
+        //enemy.GetComponent<EnemyBase>().Init(spawnData[level]);
     }
 }
 
