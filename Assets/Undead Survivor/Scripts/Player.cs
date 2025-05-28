@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     public List<GameObject> party;
 
     public delegate void Skill(int level);
-    List<Skill> skills = new List<Skill>();
+    List<Skill> skills = new List<Skill>(); //얘가 스킬 목록임
 
     void Awake()
     {
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         hands = GetComponentsInChildren<Hand>(true);
         dashWaiting = 0;
 
-        skills.Add(skillTest);
+        skills.Add(skillTest); //이렇게 추가 사사삭 해서 스킬쓰기
     }
     void OnEnable()
     {
@@ -79,6 +79,12 @@ public class Player : MonoBehaviour
         }
         dashWaiting -= Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
+    }
+    
+    void OnInv()
+    {
+        Debug.Log("OnInv");
+        GameManager.instance.inventoryScript.InvToggle();
     }
 
     void useSkill(int skillID, int level)

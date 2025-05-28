@@ -28,20 +28,73 @@ public class SKP_ITEM
     }
 }
 
+
 public class SKP_HUD : MonoBehaviour
 {
 
+    public GameObject slotPrefab;
+    public Transform itemGroupTransform;
+    public int slotCount = 20;
+
     void Start()
     {
-
+        InitSlots();
+        gameObject.SetActive(false);
     }
     void Update()
     {
 
     }
 
-    void OnInv()
+    void InitSlots()
     {
-        Debug.Log("HIHIHIHIHIHI");
+        for (int i = 0; i < slotCount; i++)
+        {
+            GameObject slot = Instantiate(slotPrefab, itemGroupTransform);
+            slot.name = $"Slot {i}";
+        }
+    }
+
+    public void InvToggle()
+    {
+        Debug.Log("InvToggle");
+        if (gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+            OnInvClose();
+        }
+        else
+        {
+            gameObject.SetActive(true);
+            OnInvOpen();
+        }
+    }
+
+    public void InvOpen()
+    {
+        if (!gameObject.activeSelf)
+        {
+            gameObject.SetActive(true);
+            OnInvOpen();
+        }
+    }
+
+    public void InvClose()
+    {
+        if (gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+            OnInvClose();
+        }
+    }
+
+    void OnInvOpen()
+    {
+
+    }
+
+    void OnInvClose()
+    {
+        
     }
 }

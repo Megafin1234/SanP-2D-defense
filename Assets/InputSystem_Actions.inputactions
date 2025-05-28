@@ -130,6 +130,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Inv",
+                    "type": "Button",
+                    "id": "79dbf476-d83b-4dbd-afea-7c4be717ea28",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -504,6 +513,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "CSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c888bd6-decd-4962-8579-a00ef020a62d",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Inv",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
