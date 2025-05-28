@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
     
     void OnInv()
     {
-        Debug.Log("OnInv");
+        //Debug.Log("OnInv");
         GameManager.instance.inventoryScript.InvToggle();
     }
 

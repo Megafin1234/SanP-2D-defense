@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public SKP_HUD inventoryScript;
+    public SKP_Inv inventoryScript;
     [Header("#Game Control")]
     public bool isLive;
     public float dayPhaseTimer;  
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
     void Awake(){
         instance = this;
         Cursor.SetCursor(crosshair, hotspot, CursorMode.Auto); 
-        inventoryScript = inventoryHUD.GetComponent<SKP_HUD>();
+        inventoryScript = inventoryHUD.GetComponent<SKP_Inv>();
     }
     public void GameStart(int id)
     {
