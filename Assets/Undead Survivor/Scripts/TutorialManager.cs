@@ -83,13 +83,13 @@ public class TutorialManager : MonoBehaviour
                 instructionText.text = "다음 웨이브 시작 버튼을 눌러보세요!";
                 nextWaveButton.gameObject.SetActive(true);//사실 이미 액티브긴함
                 break;
-            case 4:
+            /*case 4:
                 instructionText.text = "몬스터를 처치해보세요!";
                 break;
             case 5:
                 instructionText.text = "웨이브를 모두 클리어해보세요!";
-                break;
-            case 6:
+                break; */
+            case 4:
                 instructionText.text = "튜토리얼이 끝났습니다!";
                 instructionText.text += "\n[튜토리얼 종료] 버튼을 눌러 게임으로 돌아가세요.";
                 break;
