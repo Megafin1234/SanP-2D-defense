@@ -28,6 +28,8 @@ public class EnemySO : ScriptableObject
     public Sprite sprite;
     public RuntimeAnimatorController animCon;//애니메이션컨트롤러
 
+    public List<skp_item_temp> possibleDrops; /////////////////////////////////
+
     [Header("Passive Skills")]
     public List<Skill> passiveSkills = new List<Skill>();//델리게이트 리스트로 스킬 구현할 것.
     public List<int> passiveSkillRequiredLevels = new List<int>();//스킬별 요구레벨(습득조건)

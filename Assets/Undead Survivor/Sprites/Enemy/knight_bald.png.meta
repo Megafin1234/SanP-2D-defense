@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 9ad604218ffa2a1428f22db8f8ebfc5e
+guid: 580511a1d3b145b4589475c53a05ce19
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8357058551547443303
-    second: knight_armed_0
+      213: -1322407737764320017
+    second: knight_bald_0
   - first:
-      213: -4945006481223551973
-    second: knight_armed_1
+      213: -2499238505810773374
+    second: knight_bald_1
   - first:
-      213: 1730440681528935888
-    second: knight_armed_2
+      213: -9206141923961474928
+    second: knight_bald_2
   - first:
-      213: -1511211795128779189
-    second: knight_armed_3
+      213: 6881334956300866662
+    second: knight_bald_3
   - first:
-      213: -2334625557030567770
-    second: knight_armed_4
+      213: 6133312152323559715
+    second: knight_bald_4
   - first:
-      213: 8506976356290719830
-    second: knight_armed_5
+      213: -7491896095968162520
+    second: knight_bald_5
   - first:
-      213: 107483489184700735
-    second: knight_armed_6
+      213: -450955623339276368
+    second: knight_bald_6
   - first:
-      213: 7364967438742886302
-    second: knight_armed_7
+      213: -3817718558279808743
+    second: knight_bald_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -121,7 +121,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knight_armed_0
+      name: knight_bald_0
       rect:
         serializedVersion: 2
         x: 8
@@ -136,14 +136,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 768302c997c3af370800000000000000
-      internalID: 8357058551547443303
+      spriteID: fec645e3b2dd5ade0800000000000000
+      internalID: -1322407737764320017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_armed_1
+      name: knight_bald_1
       rect:
         serializedVersion: 2
         x: 41
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b147aaa1ececf5bb0800000000000000
-      internalID: -4945006481223551973
+      spriteID: 28abb2c02dbe05dd0800000000000000
+      internalID: -2499238505810773374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_armed_2
+      name: knight_bald_2
       rect:
         serializedVersion: 2
         x: 74
@@ -180,14 +180,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d5ca6fa1a2c30810800000000000000
-      internalID: 1730440681528935888
+      spriteID: 090f17642b63d3080800000000000000
+      internalID: -9206141923961474928
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_armed_3
+      name: knight_bald_3
       rect:
         serializedVersion: 2
         x: 106
@@ -202,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b4ef7fa01e8170be0800000000000000
-      internalID: -1511211795128779189
+      spriteID: 6649ac21fa96f7f50800000000000000
+      internalID: 6881334956300866662
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_armed_4
+      name: knight_bald_4
       rect:
         serializedVersion: 2
         x: 140
@@ -224,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6a005addc6eb99fd0800000000000000
-      internalID: -2334625557030567770
+      spriteID: 32115d728e6ed1550800000000000000
+      internalID: 6133312152323559715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_armed_5
+      name: knight_bald_5
       rect:
         serializedVersion: 2
         x: 173
@@ -246,14 +246,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 650fa559ce9de0670800000000000000
-      internalID: 8506976356290719830
+      spriteID: 82d8ea9c130770890800000000000000
+      internalID: -7491896095968162520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_armed_6
+      name: knight_bald_6
       rect:
         serializedVersion: 2
         x: 206
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f39d218f9abdd7100800000000000000
-      internalID: 107483489184700735
+      spriteID: 0b7c565ff32edb9f0800000000000000
+      internalID: -450955623339276368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_armed_7
+      name: knight_bald_7
       rect:
         serializedVersion: 2
         x: 239
@@ -290,8 +290,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e9796904dde953660800000000000000
-      internalID: 7364967438742886302
+      spriteID: 919c059c23db40bc0800000000000000
+      internalID: -3817718558279808743
       vertices: []
       indices: 
       edges: []
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d0f901cb6e46c4e44b2ed0b7a4b2f6d8
+    spriteID: eb8dfcea4c4c4894282db2a827aad248
     internalID: 0
     vertices: []
     indices: 
@@ -310,14 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      knight_armed_0: 8357058551547443303
-      knight_armed_1: -4945006481223551973
-      knight_armed_2: 1730440681528935888
-      knight_armed_3: -1511211795128779189
-      knight_armed_4: -2334625557030567770
-      knight_armed_5: 8506976356290719830
-      knight_armed_6: 107483489184700735
-      knight_armed_7: 7364967438742886302
+      knight_bald_0: -1322407737764320017
+      knight_bald_1: -2499238505810773374
+      knight_bald_2: -9206141923961474928
+      knight_bald_3: 6881334956300866662
+      knight_bald_4: 6133312152323559715
+      knight_bald_5: -7491896095968162520
+      knight_bald_6: -450955623339276368
+      knight_bald_7: -3817718558279808743
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
