@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 9ad604218ffa2a1428f22db8f8ebfc5e
+guid: 355617994bd14624dac9ad22385f56da
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8357058551547443303
-    second: knight_armed_0
+      213: 6594603699599502552
+    second: clown_0
   - first:
-      213: -4945006481223551973
-    second: knight_armed_1
+      213: 2763954904775634219
+    second: clown_1
   - first:
-      213: 1730440681528935888
-    second: knight_armed_2
+      213: 4994258414075552032
+    second: clown_2
   - first:
-      213: -1511211795128779189
-    second: knight_armed_3
+      213: 1433433934713897156
+    second: clown_3
   - first:
-      213: -2334625557030567770
-    second: knight_armed_4
+      213: 3036753812775530641
+    second: clown_4
   - first:
-      213: 8506976356290719830
-    second: knight_armed_5
+      213: -2940530314470319842
+    second: clown_5
   - first:
-      213: 107483489184700735
-    second: knight_armed_6
+      213: -2832822836231408507
+    second: clown_6
   - first:
-      213: 7364967438742886302
-    second: knight_armed_7
+      213: -5033442435760880955
+    second: clown_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -121,13 +121,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knight_armed_0
+      name: clown_0
       rect:
         serializedVersion: 2
         x: 8
         y: 0
         width: 15
-        height: 25
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,20 +136,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 768302c997c3af370800000000000000
-      internalID: 8357058551547443303
+      spriteID: 8dcea15002db48b50800000000000000
+      internalID: 6594603699599502552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_armed_1
+      name: clown_1
       rect:
         serializedVersion: 2
         x: 41
         y: 0
         width: 15
-        height: 25
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b147aaa1ececf5bb0800000000000000
-      internalID: -4945006481223551973
+      spriteID: b2da952875a8b5620800000000000000
+      internalID: 2763954904775634219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_armed_2
+      name: clown_2
       rect:
         serializedVersion: 2
         x: 74
         y: 0
         width: 15
-        height: 25
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,20 +180,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d5ca6fa1a2c30810800000000000000
-      internalID: 1730440681528935888
+      spriteID: 021aa7f119b2f4540800000000000000
+      internalID: 4994258414075552032
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_armed_3
+      name: clown_3
       rect:
         serializedVersion: 2
         x: 106
         y: 0
         width: 17
-        height: 25
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,20 +202,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b4ef7fa01e8170be0800000000000000
-      internalID: -1511211795128779189
+      spriteID: 4c0cc97a19494e310800000000000000
+      internalID: 1433433934713897156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_armed_4
+      name: clown_4
       rect:
         serializedVersion: 2
         x: 140
         y: 0
         width: 15
-        height: 25
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,20 +224,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6a005addc6eb99fd0800000000000000
-      internalID: -2334625557030567770
+      spriteID: 1907cc8d087b42a20800000000000000
+      internalID: 3036753812775530641
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_armed_5
+      name: clown_5
       rect:
         serializedVersion: 2
         x: 173
         y: 0
         width: 15
-        height: 25
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,20 +246,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 650fa559ce9de0670800000000000000
-      internalID: 8506976356290719830
+      spriteID: e199ab232432137d0800000000000000
+      internalID: -2940530314470319842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_armed_6
+      name: clown_6
       rect:
         serializedVersion: 2
         x: 206
         y: 0
         width: 15
-        height: 25
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,20 +268,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f39d218f9abdd7100800000000000000
-      internalID: 107483489184700735
+      spriteID: 584ffcea3aacfa8d0800000000000000
+      internalID: -2832822836231408507
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_armed_7
+      name: clown_7
       rect:
         serializedVersion: 2
         x: 239
         y: 0
         width: 15
-        height: 25
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,8 +290,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e9796904dde953660800000000000000
-      internalID: 7364967438742886302
+      spriteID: 5c28813e5ce952ab0800000000000000
+      internalID: -5033442435760880955
       vertices: []
       indices: 
       edges: []
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d0f901cb6e46c4e44b2ed0b7a4b2f6d8
+    spriteID: 2ee0250e008cb4d409e7ff99aed94498
     internalID: 0
     vertices: []
     indices: 
@@ -310,14 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      knight_armed_0: 8357058551547443303
-      knight_armed_1: -4945006481223551973
-      knight_armed_2: 1730440681528935888
-      knight_armed_3: -1511211795128779189
-      knight_armed_4: -2334625557030567770
-      knight_armed_5: 8506976356290719830
-      knight_armed_6: 107483489184700735
-      knight_armed_7: 7364967438742886302
+      clown_0: 6594603699599502552
+      clown_1: 2763954904775634219
+      clown_2: 4994258414075552032
+      clown_3: 1433433934713897156
+      clown_4: 3036753812775530641
+      clown_5: -2940530314470319842
+      clown_6: -2832822836231408507
+      clown_7: -5033442435760880955
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

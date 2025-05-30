@@ -11,6 +11,8 @@ public abstract class EnemyBase : MonoBehaviour
     public int spriteType;
     public int enemyType;
     public bool isInvincible = false;
+    [SerializeField] private GameObject dropItemPrefab; // 드랍 프리팹 연결
+    public EnemySO enemySO; // Init()에서 세팅됨
 
     public bool isLive;
 
@@ -76,6 +78,7 @@ public abstract class EnemyBase : MonoBehaviour
         speed = myData.speed;
         maxHealth = myData.health;
         health = myData.health;
+        enemySO = myData; //////////
         if (agent != null)
             agent.speed = speed;
         if (myData.isBoss)
@@ -102,6 +105,7 @@ public abstract class EnemyBase : MonoBehaviour
         {
             Debug.Log($"{name} :: 사망 조건 진입");
             isLive = false;
+            DropItem();
             coll.enabled = false;
             rigid.simulated = false;
             spriter.sortingOrder = 1;
@@ -145,13 +149,29 @@ public abstract class EnemyBase : MonoBehaviour
             agent.enabled = true;
         rigid.linearVelocity = Vector2.zero;
     }
+    
+    public virtual void DropItem()
+    {
+        if (enemySO == null || enemySO.possibleDrops == null || enemySO.possibleDrops.Count == 0)
+            return;
+
+        int dropIndex = Random.Range(0, enemySO.possibleDrops.Count);/////////드랍될 아이템의 정보를 enemySO 내부 배열 중에서 랜덤선택
+        skp_item_temp itemToDrop = enemySO.possibleDrops[dropIndex]; 
+
+        Vector3 dropPos = transform.position + new Vector3(Random.Range(-0.3f, 0.3f), 0.2f, 0f);
+        GameObject drop = Instantiate(dropItemPrefab, dropPos, Quaternion.identity);
+
+        DroppedItem dropComp = drop.GetComponent<DroppedItem>();
+        dropComp.itemData = itemToDrop;
+        dropComp.quantity = 1;
+    }
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (!isLive) return;
         if (collision.CompareTag("Bullet"))
         {
             Bullet bullet = collision.GetComponent<Bullet>();
-            
+
             if (bullet != null && bullet.owner == Bullet.BulletOwner.Player)
             {
                 TakeDamage(bullet.damage);
@@ -163,7 +183,7 @@ public abstract class EnemyBase : MonoBehaviour
             float dmg = 1f;
             TakeDamage(dmg);
             StartCoroutine(KnockBack(GameManager.instance.player.transform.position));
-            if(canCaught)Caught();
+            if (canCaught) Caught();
         }
     }
     public virtual void Dead()
