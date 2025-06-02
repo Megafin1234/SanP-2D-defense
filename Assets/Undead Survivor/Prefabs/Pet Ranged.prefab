@@ -308,8 +308,11 @@ MonoBehaviour:
   spriteType: 0
   enemyType: 0
   isInvincible: 0
+  dropItemPrefab: {fileID: 0}
+  enemySO: {fileID: 0}
   isLive: 0
   isPet: 0
+  isBoss: 0
   canCaught: 0
   enemyIdx: 0
   agent: {fileID: 0}

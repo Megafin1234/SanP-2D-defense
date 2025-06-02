@@ -20,7 +20,7 @@ MonoBehaviour:
   maxHealth: 10
   attackDelay: 1
   damage: 10
-  sprite: {fileID: 613658156, guid: 1bc6097228993f045852159e71f81d5b, type: 3}
+  sprite: {fileID: 7256903271243442651, guid: 446da88c53199c14eaf0b53ec7900649, type: 3}
   overrideController: {fileID: 22100000, guid: 1182df31f789c204fa6f7195b2d92a8c, type: 2}
   passiveSkills: []
   passiveSkillRequiredLevels: 

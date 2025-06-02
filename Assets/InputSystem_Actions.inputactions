@@ -130,6 +130,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PetInven",
+                    "type": "Button",
+                    "id": "fc89a866-07ac-43d3-a736-9df7e62c5df0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -504,6 +513,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "CSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e95f5a0d-a8f0-486d-96f1-0c2e96e5af86",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "PetInven",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

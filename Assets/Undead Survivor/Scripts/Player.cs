@@ -123,7 +123,10 @@ public class Player : MonoBehaviour
 
     void OnCatch()
     {
-        GameManager.instance.weapon.TryCatch();
+        if (GameManager.instance.canCatch == true)
+        {
+            GameManager.instance.weapon.TryCatch();
+        }
     }
 
     void OnDash()
@@ -139,6 +142,18 @@ public class Player : MonoBehaviour
             //dashVec = inputVec.normalized * dashSpeed * Time.fixedDeltaTime;
             trailIntervalReal = trailInterval;
             trailTimer = 0;
+        }
+    }
+
+    void OnPetInven()
+    {
+        if (!GameManager.instance.petInven.activeSelf)
+        {
+            GameManager.instance.OpenPetInventory();
+        }
+        else
+        {
+            GameManager.instance.ClosePetInventory();
         }
     }
 

@@ -13,6 +13,7 @@ public abstract class EnemyBase : MonoBehaviour
     public bool isInvincible = false;
     [SerializeField] private GameObject dropItemPrefab; // 드랍 프리팹 연결
     public EnemySO enemySO; // Init()에서 세팅됨
+    public Sprite sprite;
 
     public bool isLive;
 
@@ -124,7 +125,7 @@ public abstract class EnemyBase : MonoBehaviour
     }
     public void Caught()
     {
-        if (isBoss) return;//보스는 일단  포획 안되게 해뒀음.
+        if (!GameManager.instance.canCatch || isBoss) return;//보스는 일단  포획 안되게 해뒀음. 이번 스테이지에서 이미 잡았어도 포획 안됨.
         
         if (agent != null)
             agent.enabled = false;
