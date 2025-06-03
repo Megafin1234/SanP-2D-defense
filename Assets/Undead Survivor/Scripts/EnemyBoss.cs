@@ -22,6 +22,21 @@ public class EnemyBossVoid : EnemyBase, EnemyBase.IAttackable
     public float GetAttackPower() => meleeDamage;
     public void SetAttackPower(float value) => meleeDamage = value;
 
+    public virtual void Init(SpawnData data)
+    {
+        spriteType = data.spriteType;
+        anim.runtimeAnimatorController = animCon[spriteType];
+        speed = data.speed;
+        maxHealth = data.health;
+        health = data.health;
+        if (agent != null)
+            agent.speed = speed;
+        if (data.isBoss)
+        {
+            transform.localScale *= 3f;
+            spriter.sortingOrder = 1;
+        }
+    }
     protected override void Act()
     {
         if (!isLive) return;
@@ -49,11 +64,11 @@ public class EnemyBossVoid : EnemyBase, EnemyBase.IAttackable
                 case 0:
                     FireBurstPattern(); break;
                 case 1:
-                    StartCoroutine(FireWhirlPattern());; break;
+                    StartCoroutine(FireWhirlPattern()); ; break;
                 case 2:
                     StartCoroutine(FireMultiShotPattern()); break;
                 case 3:
-                StartCoroutine(FireWhirlPattern_Powered());; break;
+                    StartCoroutine(FireWhirlPattern_Powered()); ; break;
             }
 
             bulletCycleTimer = patternDelays[bulletPatternIndex];

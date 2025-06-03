@@ -89,6 +89,23 @@ public abstract class EnemyBase : MonoBehaviour
         }
         enemyIdx = myData.enemyIdx;
     }
+
+    public virtual void Init(SpawnData data)
+    {
+        spriteType = data.spriteType;
+        anim.runtimeAnimatorController = animCon[spriteType];
+        speed = data.speed;
+        maxHealth = data.health;
+        health = data.health;
+        if (agent != null)
+            agent.speed = speed;
+        if (data.isBoss)
+        {
+            transform.localScale *= 3f;
+            spriter.sortingOrder = 1;
+        }
+    }
+
     public virtual void TakeDamage(float damage)
     {
         if (isInvincible || !isLive || isPet)

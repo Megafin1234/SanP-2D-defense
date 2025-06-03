@@ -93,7 +93,7 @@ public class WaveSpawner : MonoBehaviour
         if ((waveIndex + 1) % 4 == 0 && !bossSpawned)
         {
             yield return new WaitForSeconds(2f); // 약간 지연 효과
-            //SpawnBoss(); 
+            SpawnBoss(); 
         }
 
         int totalExpectedKills = monstersPerWave[waveIndex] + (bossSpawned ? 1 : 0);
@@ -143,28 +143,28 @@ public class WaveSpawner : MonoBehaviour
         enemy.GetComponent<EnemyBase>().enemyIdx = Idx;
     }
 
-    // void SpawnBoss()
-    // {
-    //     MapType currentMap = Reposition.instance.currentMap;
+    void SpawnBoss()
+    {
+        MapType currentMap = Reposition.instance.currentMap;
 
-    //     if (!bossSpawnDataDict.TryGetValue(currentMap, out WaveSpawnData bossData))
-    //     {
-    //         return;
-    //     }
+        if (!bossSpawnDataDict.TryGetValue(currentMap, out WaveSpawnData bossData))
+        {
+            return;
+        }
 
-    //     int bossPrefabIndex = GetEnemyPrefabIndex(bossData.type); // 기존 EnemyType 사용
-    //     GameObject boss = GameManager.instance.pool.Get(bossPrefabIndex);
+        int bossPrefabIndex = GetEnemyPrefabIndex(bossData.type); // 기존 EnemyType 사용
+        GameObject boss = GameManager.instance.pool.Get(bossPrefabIndex);
 
-    //     Vector3 spawnPosition = spawnPoint[currentSpawnIndex].position;
-    //     boss.transform.position = spawnPosition;
+        Vector3 spawnPosition = spawnPoint[currentSpawnIndex].position;
+        boss.transform.position = spawnPosition;
 
-    //     SpawnData spawnStruct = bossData.ToSpawnData();
-    //     //spawnStruct.isBoss = true; 
+        SpawnData spawnStruct = bossData.ToSpawnData();
+        //spawnStruct.isBoss = true; 
 
-    //     boss.GetComponent<EnemyBase>().Init(spawnStruct);
+        boss.GetComponent<EnemyBase>().Init(spawnStruct);
 
-    //     bossSpawned = true;
-    // }
+        bossSpawned = true;
+    }
 
     public void NtoDbuttons() //밤> 낮 전환시 버튼이 안나오는 오류 해결 위해 gamemanager>startDayPhaze에서 아래 코드들을 통제
     {
