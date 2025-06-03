@@ -310,6 +310,7 @@ MonoBehaviour:
   isInvincible: 0
   dropItemPrefab: {fileID: 0}
   enemySO: {fileID: 0}
+  sprite: {fileID: 0}
   isLive: 0
   isPet: 0
   isBoss: 0
