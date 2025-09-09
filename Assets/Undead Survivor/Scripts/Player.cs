@@ -109,6 +109,17 @@ public class Player : MonoBehaviour
     {
         useSkill(GameManager.instance.equipSkillIDs[3], GameManager.instance.equipSkillLvls[3]);
     }
+    void OnInventory()
+    {
+        if (GameManager.instance.inventoryPanel != null && GameManager.instance.inventoryPanel.activeSelf)
+        {
+            GameManager.instance.CloseInventory();
+        }
+        else
+        {
+            GameManager.instance.OpenInventory();
+        }
+    }
     void OnMove(InputValue value)
     {
         // if (!GameManager.instance.isLive) //이거 있으면 일시정지했다가 풀릴때 무빙 이상하게쳐서 지워용

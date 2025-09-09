@@ -67,11 +67,18 @@ public class GameManager : MonoBehaviour
     public Vector2 hotspot = new Vector2(16, 16);
 
     private bool isDayPhase = true;
+    [Header("#Inventory UI")]
+    public GameObject inventoryPanel;
 
     void Awake()
     {
         instance = this;
         Cursor.SetCursor(crosshair, hotspot, CursorMode.Auto);
+        // Ensure inventory toggle listener exists in the scene
+        if (GetComponent<InventoryToggle>() == null)
+        {
+            gameObject.AddComponent<InventoryToggle>();
+        }
     }
     public void GameStart(int id)
     {
@@ -319,6 +326,54 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    void EnsureInventoryPanel()
+    {
+        if (inventoryPanel != null) return;
+        // Try find by name
+        var found = GameObject.Find("InventoryPanel");
+        if (found != null)
+        {
+            inventoryPanel = found;
+            if (inventoryPanel.GetComponent<InventoryUI>() == null)
+                inventoryPanel.AddComponent<InventoryUI>();
+            return;
+        }
+        // Try find by tag
+        var tagged = GameObject.FindWithTag("InventoryPanel");
+        if (tagged != null)
+        {
+            inventoryPanel = tagged;
+            if (inventoryPanel.GetComponent<InventoryUI>() == null)
+                inventoryPanel.AddComponent<InventoryUI>();
+        }
+    }
+
+    public void OpenInventory()
+    {
+        Stop();
+        EnsureInventoryPanel();
+        if (inventoryPanel != null)
+        {
+            inventoryPanel.SetActive(true);
+            var ui = inventoryPanel.GetComponent<InventoryUI>();
+            if (ui != null)
+                ui.Refresh();
+        }
+        else
+        {
+            Debug.LogWarning("[Inventory] inventoryPanel is not assigned/found. Game paused, but no panel to show.");
+        }
+    }
+
+    public void CloseInventory()
+    {
+        if (inventoryPanel != null)
+        {
+            inventoryPanel.SetActive(false);
+        }
+        Resume();
+    }
+
 
     public void OpenPetInventory()
     {
@@ -354,5 +409,10 @@ public class GameManager : MonoBehaviour
             petInvenDetailButtons[i].SetActive(false);
         }
         petInven.SetActive(false);
+    }
+
+    public void resetTimeScale()
+    {
+        Time.timeScale = 1f;
     }
 }

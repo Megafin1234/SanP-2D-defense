@@ -24,6 +24,8 @@ MonoBehaviour:
   isBoss: 0
   sprite: {fileID: 0}
   animCon: {fileID: 22100000, guid: 2e038cb92bae7ca439db7d509503f427, type: 2}
+  possibleDrops:
+  - {fileID: 11400000, guid: 5ce718d52830ddc41811bee04bb592b1, type: 2}
   passiveSkills: []
   passiveSkillRequiredLevels: 
   activeSkills: []
