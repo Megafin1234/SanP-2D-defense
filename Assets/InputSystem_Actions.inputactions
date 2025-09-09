@@ -96,7 +96,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "QSkill",
+                    "name": "Skill1",
                     "type": "Button",
                     "id": "84422abc-f651-40f0-8763-66c9aee7401a",
                     "expectedControlType": "",
@@ -105,7 +105,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ESkill",
+                    "name": "Skill2",
                     "type": "Button",
                     "id": "6d6d1dd5-1a74-4f02-b558-2d002961e0ae",
                     "expectedControlType": "",
@@ -114,7 +114,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "XSkill",
+                    "name": "Skill3",
                     "type": "Button",
                     "id": "d72a3760-6e0f-428c-a3ef-7a7eb8bad5d3",
                     "expectedControlType": "",
@@ -123,7 +123,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "CSkill",
+                    "name": "Skill4",
                     "type": "Button",
                     "id": "cc5c20f1-8ea2-4afc-a09c-e146dd36368f",
                     "expectedControlType": "",
@@ -475,44 +475,44 @@
                 {
                     "name": "",
                     "id": "56790e8e-343d-4b7a-8d7b-b78ea2742b5d",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "QSkill",
+                    "action": "Skill1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "f7991142-9a54-467a-826e-f3e1660ff1f6",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "ESkill",
+                    "action": "Skill2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "f6d83460-fc61-4e07-8ee4-5870b5a6c8b6",
-                    "path": "<Keyboard>/x",
+                    "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "XSkill",
+                    "action": "Skill3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "9db7711b-6e15-4b8d-835a-b9d30f11990a",
-                    "path": "<Keyboard>/c",
+                    "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "CSkill",
+                    "action": "Skill4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

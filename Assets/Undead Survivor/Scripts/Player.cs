@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public Hand[] hands;
     public RuntimeAnimatorController[] animCon;
     public float dragCoefficient;
+    public Sprite fireNovaSprite; // 원형 불길 표시용 스프라이트
+    public Color fireNovaColor = new Color(1f, 0.5f, 0f, 0.6f); // 기본 불길 색상/알파
 
     Rigidbody2D rigid;
     SpriteRenderer spriter;
@@ -42,6 +44,7 @@ public class Player : MonoBehaviour
         dashWaiting = 0;
 
         skills.Add(skillTest);
+        skills.Add(skillFireNova);
     }
     void OnEnable()
     {
@@ -93,19 +96,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnQSkill()
+    void OnSkill1()
     {
         useSkill(GameManager.instance.equipSkillIDs[0], GameManager.instance.equipSkillLvls[0]);
     }
-    void OnESkill()
+    void OnSkill2()
     {
         useSkill(GameManager.instance.equipSkillIDs[1], GameManager.instance.equipSkillLvls[1]);
     }
-    void OnXSkill()
+    void OnSkill3()
     {
         useSkill(GameManager.instance.equipSkillIDs[2], GameManager.instance.equipSkillLvls[2]);
     }
-    void OnCSkill()
+    void OnSkill4()
     {
         useSkill(GameManager.instance.equipSkillIDs[3], GameManager.instance.equipSkillLvls[3]);
     }
@@ -250,8 +253,83 @@ public class Player : MonoBehaviour
         }
     }
 
+    // 스킬 목록
     void skillTest(int level)
     {
-        Debug.Log($"스킬 실행, 레벨:{level}");
+        Debug.Log($"테스트 스킬 실행, 레벨:{level}");
+    }
+
+    void skillFireNova(int level){
+        StartCoroutine(FireNovaCoroutine(level));
+    }
+
+    IEnumerator FireNovaCoroutine(int level)
+    {
+        float duration = 1.5f + 0.25f * level;
+        float tickInterval = 0.1f;
+        float elapsed = 0f;
+        float tickTimer = 0f;
+        float startRadius = 0.5f + 0.1f * level;
+        float endRadius = 3.0f + 0.5f * level;
+        float baseDps = 20f;
+        float damagePerTick = (baseDps + 5f * level) * tickInterval;
+
+        // VFX 생성 (스프라이트가 지정된 경우에만)
+        GameObject vfx = null;
+        SpriteRenderer vfxSr = null;
+        if (fireNovaSprite != null)
+        {
+            vfx = new GameObject("FireNovaVFX");
+            vfx.transform.position = transform.position;
+            vfxSr = vfx.AddComponent<SpriteRenderer>();
+            vfxSr.sprite = fireNovaSprite;
+            vfxSr.color = fireNovaColor;
+            vfxSr.sortingLayerID = spriter.sortingLayerID;
+            vfxSr.sortingOrder = spriter.sortingOrder - 1; // 플레이어 아래쪽에
+        }
+
+        while (elapsed < duration)
+        {
+            float t = Mathf.Clamp01(elapsed / duration);
+            float radius = Mathf.Lerp(startRadius, endRadius, t);
+
+            // VFX 스케일/투명도 업데이트 (매 프레임)
+            if (vfxSr != null && vfxSr.sprite != null)
+            {
+                Vector2 spriteSize = vfxSr.sprite.bounds.size;
+                float diameter = radius * 2f;
+                float scaleX = spriteSize.x > 0f ? diameter / spriteSize.x : 1f;
+                float scaleY = spriteSize.y > 0f ? diameter / spriteSize.y : 1f;
+                vfx.transform.position = transform.position;
+                vfx.transform.localScale = new Vector3(scaleX, scaleY, 1f);
+
+                Color c = fireNovaColor;
+                c.a = Mathf.Lerp(fireNovaColor.a, 0f, t);
+                vfxSr.color = c;
+            }
+
+            // 데미지는 틱 간격으로만 적용
+            tickTimer += Time.deltaTime;
+            if (tickTimer >= tickInterval)
+            {
+                Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius);
+                for (int i = 0; i < hits.Length; i++)
+                {
+                    Collider2D hit = hits[i];
+                    if (hit == null) continue;
+                    if (!hit.gameObject.CompareTag("Enemy")) continue;
+                    EnemyBase enemy = hit.GetComponent<EnemyBase>();
+                    if (enemy != null)
+                        enemy.TakeDamage(damagePerTick);
+                }
+                tickTimer -= tickInterval;
+            }
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        if (vfx != null)
+            Destroy(vfx);
     }
 }
