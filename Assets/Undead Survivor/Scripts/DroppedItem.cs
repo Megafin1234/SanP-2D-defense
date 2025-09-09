@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DroppedItem : MonoBehaviour
 {
-    public skp_item_temp itemData;  // 드랍 아이템 정보
+    public ItemSO itemData;  // 드랍 아이템 정보
     public int quantity = 1;
 
     private void OnTriggerEnter2D(Collider2D other)

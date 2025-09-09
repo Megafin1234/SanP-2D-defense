@@ -174,7 +174,7 @@ public abstract class EnemyBase : MonoBehaviour
             return;
 
         int dropIndex = Random.Range(0, enemySO.possibleDrops.Count);/////////드랍될 아이템의 정보를 enemySO 내부 배열 중에서 랜덤선택
-        skp_item_temp itemToDrop = enemySO.possibleDrops[dropIndex]; 
+        ItemSO itemToDrop = enemySO.possibleDrops[dropIndex]; 
 
         Vector3 dropPos = transform.position + new Vector3(Random.Range(-0.3f, 0.3f), 0.2f, 0f);
         GameObject drop = Instantiate(dropItemPrefab, dropPos, Quaternion.identity);

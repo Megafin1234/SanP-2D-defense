@@ -8,7 +8,7 @@ public class InventoryManager : MonoBehaviour
 	[System.Serializable]
 	public class InventoryStack
 	{
-		public skp_item_temp itemData;
+		public ItemSO itemData;
 		public int quantity;
 	}
 
@@ -28,7 +28,7 @@ public class InventoryManager : MonoBehaviour
 		Instance = this;
 	}
 
-	public bool AddItem(skp_item_temp item, int amount)
+	public bool AddItem(ItemSO item, int amount)
 	{
 		if (amount <= 0 || item == null)
 			return false;

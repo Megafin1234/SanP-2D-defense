@@ -28,7 +28,7 @@ public class EnemySO : ScriptableObject
     public Sprite sprite;
     public RuntimeAnimatorController animCon;//애니메이션컨트롤러
 
-    public List<skp_item_temp> possibleDrops; /////////////////////////////////
+    public List<ItemSO> possibleDrops; /////////////////////////////////
 
     [Header("Passive Skills")]
     public List<Skill> passiveSkills = new List<Skill>();//델리게이트 리스트로 스킬 구현할 것.
