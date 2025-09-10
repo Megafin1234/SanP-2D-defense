@@ -15,6 +15,6 @@ MonoBehaviour:
   id: 0
   itemName: sample
   description: "\uC0D8\uD50C"
-  icon: {fileID: -1997803578, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  icon: {fileID: -3500846326792045590, guid: 88850c5db9b667147a9fa8cc5e6ff911, type: 3}
   itemType: 0
   maxStack: 1
