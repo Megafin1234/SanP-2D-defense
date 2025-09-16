@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
 
     private int currentIndex = 0;
     private Coroutine typingCoroutine;
-    private float typeSpeed = 0.1f; // 타자기 효과 속도 (고정)
+    private float typeSpeed = 0.07f; // 타자기 효과 속도 (고정)
 
     [Header("Effects")]
     public GameObject nightPhaseText; 
