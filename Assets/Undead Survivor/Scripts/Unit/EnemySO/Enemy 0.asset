@@ -26,6 +26,8 @@ MonoBehaviour:
   animCon: {fileID: 9100000, guid: f2855d618fc8d9c499189d3f39b9cbbc, type: 2}
   possibleDrops:
   - {fileID: 11400000, guid: 5ce718d52830ddc41811bee04bb592b1, type: 2}
+  - {fileID: 11400000, guid: 6342fb114e2831341858e45384642842, type: 2}
+  - {fileID: 11400000, guid: f167da76bdddc0c479651f9cbc350b92, type: 2}
   passiveSkills: []
   passiveSkillRequiredLevels: 
   activeSkills: []
