@@ -219,6 +219,7 @@ MonoBehaviour:
   spriteType: 0
   enemyType: 0
   isInvincible: 0
+  disableFlipX: 0
   dropItemPrefab: {fileID: 3796661989982938140, guid: e57654daf6c3a48419bfe699b40eff62,
     type: 3}
   enemySO: {fileID: 0}

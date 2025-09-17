@@ -11,6 +11,8 @@ public abstract class EnemyBase : MonoBehaviour
     public int spriteType;
     public int enemyType;
     public bool isInvincible = false;
+
+    public bool disableFlipX = false;
     [SerializeField] private GameObject dropItemPrefab; // 드랍 프리팹 연결
     public EnemySO enemySO; // Init()에서 세팅됨
     public Sprite sprite;
@@ -70,7 +72,10 @@ public abstract class EnemyBase : MonoBehaviour
         if (agent.enabled){
             agent.SetDestination(target.position);
         }
-        spriter.flipX = target.position.x < transform.position.x;
+                // flipX를 적용할지 여부를 플래그로 제어
+        if (!disableFlipX)
+            spriter.flipX = target.position.x < transform.position.x;
+
         Act(); // 하위 클래스에서 공격 로직 구현
     }
     public virtual void Init(EnemySO myData)
@@ -135,36 +140,56 @@ public abstract class EnemyBase : MonoBehaviour
             GameManager.instance.kill++;
             GameManager.instance.coin += (3 + GameManager.instance.DayCount * 2);
             GameManager.instance.GetExp();
-            WaveSpawner.instance.currentWaveKillCount++;
+            if (!TutorialManager.isTutorial && WaveSpawner.instance != null){
+                WaveSpawner.instance.currentWaveKillCount++;
+            }
             if (GameManager.instance.isLive)
                 AudioManager.instance.PlaySfx(AudioManager.Sfx.Dead);
         }
     }
     public void Caught()
     {
-        if (!GameManager.instance.canCatch || isBoss) return;//보스는 일단  포획 안되게 해뒀음. 이번 스테이지에서 이미 잡았어도 포획 안됨.
-        
+        if (isBoss) return; // 보스는 포획 불가
+
         if (agent != null)
             agent.enabled = false;
 
-        if (TutorialManager.isTutorial || Random.Range(0, 5) >= 3)
+        // 튜토리얼이면 무조건 성공
+        if (TutorialManager.isTutorial)
         {
-        GameManager.instance.GetPet(enemyIdx, transform);
-        /*WaveSpawner.instance.currentWaveKillCount++;
-        GameManager.instance.GetExp(); */
-        Dead();
+            Debug.Log("[튜토리얼] 포획 성공!");
+            Debug.Log($"[튜토리얼] enemyIdx={enemyIdx}");
+            Debug.Log($"[튜토리얼] unitSOList[{enemyIdx}] = {GameManager.instance.unitSOList[enemyIdx].UnitName}");
+            Debug.Log($"[튜토리얼] Animator = {GameManager.instance.unitSOList[enemyIdx].overrideController}");
+            Debug.Log($"[튜토리얼] Sprite = {GameManager.instance.unitSOList[enemyIdx].sprite}");
+            GameManager.instance.GetPet(enemyIdx, transform); // 펫 소환
+            Debug.Log("[튜토리얼] GetPet 호출 완료");   
+            
+            Debug.Log("[튜토리얼] Dead() 호출 직전");
+            Dead();
+            Debug.Log("[튜토리얼] Dead() 호출 직후");
+        }
+        else
+        {
+            // 원래 랜덤 성공 로직
+            if (Random.Range(0, 5) >= 3)
+            {
+                Debug.Log("[본편] 포획 성공!");
+                GameManager.instance.GetPet(enemyIdx, transform);
+                WaveSpawner.instance.currentWaveKillCount++;
+                GameManager.instance.GetExp();
+                Dead();
+            }
+            else
+            {
+                Debug.Log("[본편] 포획 실패");
+            }
         }
 
-        if (Random.Range(0, 5) >= 3)//포획 성공시
-        {
-            GameManager.instance.GetPet(enemyIdx, transform);
-            WaveSpawner.instance.currentWaveKillCount++;
-            GameManager.instance.GetExp();
-            Dead();//나는 죽는다. 
-        }
         if (agent != null)
             agent.enabled = true;
     }
+
     protected IEnumerator KnockBack(Vector3 source)
     {
         if (agent != null)

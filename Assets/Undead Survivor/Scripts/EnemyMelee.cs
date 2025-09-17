@@ -30,7 +30,6 @@ public class EnemyMelee : EnemyBase, EnemyBase.IAttackable
     {
         base.OnEnable();
         canCaught=true;
-        enemyIdx=0;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

@@ -34,7 +34,6 @@ public class EnemyRanged : EnemyBase, EnemyBase.IAttackable
     {
         base.OnEnable();
         canCaught=true;
-        enemyIdx=1;
     }
 
     void Shoot()
