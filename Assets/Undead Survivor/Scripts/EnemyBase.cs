@@ -146,6 +146,15 @@ public abstract class EnemyBase : MonoBehaviour
         
         if (agent != null)
             agent.enabled = false;
+
+        if (TutorialManager.isTutorial || Random.Range(0, 5) >= 3)
+        {
+        GameManager.instance.GetPet(enemyIdx, transform);
+        /*WaveSpawner.instance.currentWaveKillCount++;
+        GameManager.instance.GetExp(); */
+        Dead();
+        }
+
         if (Random.Range(0, 5) >= 3)//포획 성공시
         {
             GameManager.instance.GetPet(enemyIdx, transform);
