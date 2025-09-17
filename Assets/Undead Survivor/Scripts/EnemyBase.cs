@@ -182,6 +182,7 @@ public abstract class EnemyBase : MonoBehaviour
         DroppedItem dropComp = drop.GetComponent<DroppedItem>();
         dropComp.itemData = itemToDrop;
         dropComp.quantity = 1;
+        dropComp.sprite = enemySO.possibleDrops[dropIndex].icon; 
     }
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
