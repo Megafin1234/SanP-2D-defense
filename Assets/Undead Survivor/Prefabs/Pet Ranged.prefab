@@ -308,6 +308,7 @@ MonoBehaviour:
   spriteType: 0
   enemyType: 0
   isInvincible: 0
+  disableFlipX: 0
   dropItemPrefab: {fileID: 0}
   enemySO: {fileID: 0}
   sprite: {fileID: 0}

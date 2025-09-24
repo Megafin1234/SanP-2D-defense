@@ -526,6 +526,17 @@
                     "action": "PetInven",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9c514f38-1316-4ef1-9295-669a92acfb3d",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "PetInven",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

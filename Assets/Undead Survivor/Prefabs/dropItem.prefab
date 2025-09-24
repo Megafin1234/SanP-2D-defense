@@ -167,3 +167,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData: {fileID: 0}
   quantity: 1
+  sprite: {fileID: 0}
