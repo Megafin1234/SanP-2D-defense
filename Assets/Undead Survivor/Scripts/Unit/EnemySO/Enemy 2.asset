@@ -25,7 +25,8 @@ MonoBehaviour:
   sprite: {fileID: 0}
   animCon: {fileID: 22100000, guid: 12cfc8b2360c2fc4499d4f6f6607671a, type: 2}
   possibleDrops:
-  - {fileID: 11400000, guid: 5ce718d52830ddc41811bee04bb592b1, type: 2}
+  - {fileID: 11400000, guid: f167da76bdddc0c479651f9cbc350b92, type: 2}
+  - {fileID: 11400000, guid: 64e4d7c8437dbd248bc731418d77256e, type: 2}
   passiveSkills: []
   passiveSkillRequiredLevels: 
   activeSkills: []
