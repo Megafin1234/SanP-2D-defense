@@ -48,6 +48,16 @@ public class TutorialManager : MonoBehaviour
             targetEnemy.SetActive(false);
         }
 
+        if (endTutorialButton != null)
+        {
+            endTutorialButton.gameObject.SetActive(false);
+            endTutorialButton.onClick.RemoveAllListeners();
+            endTutorialButton.onClick.AddListener(() =>
+            {
+                UIManager.instance.StartPostTutorialCutscene();
+            });
+        }
+
         ShowStep();
     }
 
@@ -116,7 +126,9 @@ public class TutorialManager : MonoBehaviour
                 if (targetEnemy != null) targetEnemy.SetActive(true);
                 break;
             case 6:
-                instructionText.text = "튜토리얼이 끝났습니다!\n[튜토리얼 종료] 버튼을 눌러 게임을 시작하세요.";
+                instructionText.text = "튜토리얼이 끝났습니다!\n[계속하기] 버튼을 눌러 이야기를 진행하세요.";
+                if (endTutorialButton != null)
+                    endTutorialButton.gameObject.SetActive(true);
                 break;
         }
     }
@@ -130,12 +142,16 @@ public class TutorialManager : MonoBehaviour
         ShowStep();
         isProcessingStep = false;
     }
-
+    
     public void EndTutorial()
     {
         isTutorial = false;
-        PlayerPrefs.SetInt("CameFromTutorial", 1);
-        PlayerPrefs.Save();
-        SceneManager.LoadScene("SampleScene");
+        if (instructionText != null)
+            instructionText.gameObject.SetActive(false);
+        
+        AudioSource bgm = GameObject.Find("BgmPlayer").GetComponent<AudioSource>();
+        bgm.Pause();
+
+        UIManager.instance.StartPostTutorialCutscene();
     }
 }
