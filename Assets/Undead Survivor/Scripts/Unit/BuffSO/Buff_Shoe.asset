@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 048096feae4504d46bb6332ab848eee3, type: 3}
+  m_Name: Buff_Shoe
+  m_EditorClassIdentifier: 
+  buffType: 1
+  itemId: 301
+  itemName: "\uC774\uB3D9\uC18D\uB3C4 \uC99D\uAC00"
+  itemDesc: "\uC774\uB3D9\uC18D\uB3C4 {0}% \uC99D\uAC00"
+  itemIcon: {fileID: -966295699, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  rates:
+  - 0.12
+  - 0.2
+  - 0.28
+  - 0.36
+  - 0.45
