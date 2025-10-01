@@ -4,6 +4,7 @@ public class Gear : MonoBehaviour
 {
     public ItemData.ItemType type;
     public float rate;
+
     public void Init(ItemData data)
     {
         name = "Gear" + data.itemId;
@@ -14,13 +15,54 @@ public class Gear : MonoBehaviour
         rate = data.damages[0];
         ApplyGear();
     }
-    public void LevelUp(float rate)
+
+    // BuffSO 오버로드
+    public void Init(BuffSO so)
     {
-        this.rate = rate;
+        name = "Gear" + so.itemId;
+        transform.parent = GameManager.instance.player.transform;
+        transform.localPosition = Vector3.zero;
+
+        switch (so.buffType)
+        {
+            case BuffSO.BuffType.Glove:
+                type = ItemData.ItemType.Glove;
+                break;
+            case BuffSO.BuffType.Shoe:
+                type = ItemData.ItemType.Shoe;
+                break;
+            default:
+                type = ItemData.ItemType.Glove; // 기본값
+                break;
+        }
+
+        rate = (so.rates != null && so.rates.Length > 0) ? so.rates[0] : 0f;
         ApplyGear();
     }
-    void ApplyGear(){
-        switch (type){
+
+    public void LevelUp(float nextRate)
+    {
+        rate = nextRate;
+        ApplyGear();
+    }
+
+    // BuffSO 기반 레벨업
+    public void LevelUp(BuffSO so, int nextIndex)
+    {
+        float next = 0f;
+        if (so != null && so.rates != null && so.rates.Length > 0)
+        {
+            int idx = Mathf.Clamp(nextIndex, 0, so.rates.Length - 1);
+            next = so.rates[idx];
+        }
+        rate = next;
+        ApplyGear();
+    }
+
+    void ApplyGear()
+    {
+        switch (type)
+        {
             case ItemData.ItemType.Glove:
                 RateUp();
                 break;
@@ -29,25 +71,21 @@ public class Gear : MonoBehaviour
                 break;
         }
     }
+
+    // 변경: 모든 무기에 동일 공식(쿨다운 감소) 적용
     void RateUp()
     {
         Weapon[] weapons = transform.parent.GetComponentsInChildren<Weapon>();
-
-        foreach(Weapon weapon in weapons){
-            switch(weapon.id){
-                case 0:
-                    float speed = 150 * Character.WeaponSpeed;
-                    weapon.speed = speed +(speed*rate);
-                    break;
-                default:
-                    speed = 0.5f * Character.WeaponRate;
-                    weapon.speed = speed *(1f - rate);
-                    break;
-            }
+        foreach (Weapon weapon in weapons)
+        {
+            float baseDelay = 0.5f * Character.WeaponRate;
+            weapon.speed = baseDelay * (1f - rate);
         }
     }
-    void SpeedUp(){
-        float speed =3 * Character.Speed;
-        GameManager.instance.player.speed = speed + speed * rate;
+
+    void SpeedUp()
+    {
+        float baseMove = 3f * Character.Speed;
+        GameManager.instance.player.speed = baseMove + baseMove * rate;
     }
 }
