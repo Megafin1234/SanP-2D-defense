@@ -52,7 +52,7 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void OnEnable()
     {
         isLive = true;
-        isPet=false;
+        isPet = false;
         coll.enabled = true;
         rigid.simulated = true;
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
@@ -64,6 +64,9 @@ public abstract class EnemyBase : MonoBehaviour
             agent.enabled = true;
             agent.speed = speed;
         }
+        //도감 조우 등록
+        if (enemySO != null)
+            MonsterDexManager.Instance?.RegisterDiscovery(enemySO);
     }
     protected virtual void Update()
     {
@@ -128,6 +131,9 @@ public abstract class EnemyBase : MonoBehaviour
         {
             Debug.Log($"{name} :: 사망 조건 진입");
             isLive = false;
+
+            if (enemySO != null)  //도감 처치 등록
+                MonsterDexManager.Instance?.RegisterDefeat(enemySO);
             DropItem();
             coll.enabled = false;
             rigid.simulated = false;
@@ -175,6 +181,9 @@ public abstract class EnemyBase : MonoBehaviour
             if (Random.Range(0, 5) >= 3)
             {
                 Debug.Log("[본편] 포획 성공!");
+
+                if (enemySO != null) // 도감 포획 등록
+                    MonsterDexManager.Instance?.RegisterCapture(enemySO);
                 GameManager.instance.GetPet(enemyIdx, transform);
                 WaveSpawner.instance.currentWaveKillCount++;
                 GameManager.instance.GetExp();

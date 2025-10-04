@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ef5079e6226df4aabbb8f10bea5fe8, type: 3}
+  m_Name: MonsterDexDatabase
+  m_EditorClassIdentifier: 
+  entries:
+  - enemyData: {fileID: 11400000, guid: 14d1c8eb43939aa47bdb7c687ddccdf6, type: 2}
+    icon: {fileID: -493647738, guid: 3bcb7877229a5334da528f2f0872b5c3, type: 3}
+    description: "\uAE30\uBCF8 \uC880\uBE44\uB2E4."
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: de5caed7602e0954e9b7ab6723c47696, type: 2}
+    icon: {fileID: 66914582, guid: 3bcb7877229a5334da528f2f0872b5c3, type: 3}
+    description: "\uD654\uAC00 \uB09C \uC880\uBE44\uB2E4."
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
