@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyIdx: 0
   type: 1
-  UnitName: 
+  UnitName: "\uBC15\uC950"
   level: 0
   speed: 2
   health: 10
@@ -22,7 +22,7 @@ MonoBehaviour:
   attackDelay: 1
   damage: 10
   isBoss: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 2526245119218066668, guid: 0911befa614cea14da7f9b487e8fffae, type: 3}
   animCon: {fileID: 22100000, guid: 857bc66a68362434290e0a72867bcabe, type: 2}
   possibleDrops:
   - {fileID: 11400000, guid: 369bf10ca2e461048ab162c5787c0c5f, type: 2}

@@ -1,0 +1,199 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ef5079e6226df4aabbb8f10bea5fe8, type: 3}
+  m_Name: MonsterDexDatabase
+  m_EditorClassIdentifier: 
+  entries:
+  - enemyData: {fileID: 11400000, guid: 14d1c8eb43939aa47bdb7c687ddccdf6, type: 2}
+    icon: {fileID: -140220566, guid: 1bc6097228993f045852159e71f81d5b, type: 3}
+    description: "\uAE30\uBCF8 \uC880\uBE44\uB2E4."
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: de5caed7602e0954e9b7ab6723c47696, type: 2}
+    icon: {fileID: -493647738, guid: 3bcb7877229a5334da528f2f0872b5c3, type: 3}
+    description: "\uD654\uAC00 \uB09C \uC880\uBE44\uB2E4."
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: 0e81b2e778cd6094e8e2fe052e6aaeff, type: 2}
+    icon: {fileID: -2092964637, guid: 4104ee12b4d54f54b91b3ba875787837, type: 3}
+    description: "\uD574\uACE8"
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: f0acfc5cbde38c94f8284f5899cb21de, type: 2}
+    icon: {fileID: 1782705385, guid: d33598d781682e049a53a0a13104ef29, type: 3}
+    description: "\uBAA8\uC790 \uC4F4 \uD574\uACE8"
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: ce3e18ed37ea41742bf1b0425be1ee5e, type: 2}
+    icon: {fileID: 172626504, guid: c4d2ccab0c2ad7e47853b6e31a7ac7c2, type: 3}
+    description: "\uC0B4\uC544\uC788\uB294 \uBB18\uC9C0"
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: 7e258e6e8b02270418eebbfc4206d570, type: 2}
+    icon: {fileID: -8688392260014441854, guid: 08072a292d65ef04f9248548334ba989, type: 3}
+    description: "\uBC40"
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: 8fea13d6d4ef2e644b4fe1ab60a3d1bf, type: 2}
+    icon: {fileID: 3488313774982918259, guid: 49e72d209cc0ca7488eb1c6ac8c6aa4c, type: 3}
+    description: "\uACE8\uB818"
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: dd737e312425cd94daa0797f9151ebbc, type: 2}
+    icon: {fileID: 5952692474738800764, guid: baa3af34fa04d4e4c87f2e7097e423a9, type: 3}
+    description: "\uC2AC\uB77C\uC784"
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: cfd5cd72fe2315a43ab66f8dca384baa, type: 2}
+    icon: {fileID: 7618024960786977748, guid: edc38e466cf020343be2729d33b549b9, type: 3}
+    description: "\uC624\uC9D5\uC5B4"
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: 7a10396f476fea7469617465752101ab, type: 2}
+    icon: {fileID: -6461164764304969149, guid: 3df33c90a60f88648ab65e3d07bda88f, type: 3}
+    description: "\uCD09\uC218"
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: 7f0d14fce10028f4d99229e90b393ebc, type: 2}
+    icon: {fileID: 3744813035713167494, guid: a909a6c9fcce2cd488c72aeb5e13b985, type: 3}
+    description: "\uD654\uC5FC \uC815\uB839"
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: 2f45cab882f9fd04386109397ea32325, type: 2}
+    icon: {fileID: 7256903271243442651, guid: 446da88c53199c14eaf0b53ec7900649, type: 3}
+    description: "\uC11C\uB9AC \uC815\uB839"
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: 1f3a39f7fd2b70c4f96437d1cf3407fb, type: 2}
+    icon: {fileID: 6971364951064752323, guid: 4fad354965cf51e4188689b50b7a9311, type: 3}
+    description: "\uC11C\uB9AC \uC815\uB839"
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: d3772324078602247aedfa9db1093674, type: 2}
+    icon: {fileID: 6968891245351450137, guid: 4f3bda2cd8f30dd4ba98cf4f8fff4e7c, type: 3}
+    description: "\uC11C\uB9AC \uC815\uB839"
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: e1db0c741b12cbc4a9ca9c0aebcb45ab, type: 2}
+    icon: {fileID: 9005127632749871185, guid: 25693f8f37693c14fa2e555ab9e1d8cc, type: 3}
+    description: "\uC5BC\uC74C \uBBF8\uB77C"
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: 2ccfc3a00040ce7448a1ac797a3bc5da, type: 2}
+    icon: {fileID: 1151005158744226623, guid: 6f3fe5e492fc3324c8c13575d3524a02, type: 3}
+    description: "\uC880\uBE44"
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: ff7d4c2b7cf199b4f8e374c1c66a7a1e, type: 2}
+    icon: {fileID: 1193708172041675485, guid: ab0987a936dd5f94d9ea60687c095a60, type: 3}
+    description: "\uC880\uBE44\uAF43"
+    type: 0
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: 2b58e9c33f1efde4c87d386f291845e4, type: 2}
+    icon: {fileID: 5544905532057946175, guid: 8d962a2b513c36a4487025f04875fa90, type: 3}
+    description: "\uB178\uB780 \uC637\uC758 \uB9C8\uBC95\uC0AC"
+    type: 1
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: ec4badf81556e6e4fa8c91e26feacc31, type: 2}
+    icon: {fileID: 2526245119218066668, guid: 0911befa614cea14da7f9b487e8fffae, type: 3}
+    description: "\uBC15\uC950"
+    type: 1
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: 37f50b84c21de2945b6c6d9b2c16628d, type: 2}
+    icon: {fileID: -2547124265505979565, guid: 27756c9a96d1c07449ecd2b6f52e9276, type: 3}
+    description: "\uAC10\uC5FC\uB41C \uC880\uBE44"
+    type: 1
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: 956fbddc610bf1e4195a47b93182b8ad, type: 2}
+    icon: {fileID: -7151335025817718036, guid: 379a96aa083efea4a846c2a965df705b, type: 3}
+    description: "\uC2E0\uB3C4"
+    type: 2
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: c0e5159c45face24a8f7d1ffb6cd47b3, type: 2}
+    icon: {fileID: -4018474691228133916, guid: 683dcc520589b6a4cb939cc3bc9fd1bc, type: 3}
+    description: "\uACE0\uBE14\uB9B0 \uC790\uD3ED\uBCD1"
+    type: 3
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0
+  - enemyData: {fileID: 11400000, guid: bda2e8a054c28274f96576aab92648fd, type: 2}
+    icon: {fileID: -2613247888821195678, guid: 9c3a6a2f5b55160478c7c4d5b4bec82a, type: 3}
+    description: "\uC0B4\uC544\uC788\uB294 \uD3ED\uD0C4"
+    type: 3
+    isBoss: 0
+    isDiscovered: 0
+    isDefeated: 0
+    isCaptured: 0

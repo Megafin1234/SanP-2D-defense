@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyIdx: 0
   type: 3
-  UnitName: bomber
+  UnitName: "\uACE0\uBE14\uB9B0 \uD3ED\uD0C4\uBCD1"
   level: 0
   speed: 2
   health: 10
@@ -22,7 +22,7 @@ MonoBehaviour:
   attackDelay: 1
   damage: 10
   isBoss: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: -617729823686191633, guid: 6a921913ba341d9439c24f04e95fdf91, type: 3}
   animCon: {fileID: 22100000, guid: 618cffae628fbcf4481a052049a5b20c, type: 2}
   possibleDrops:
   - {fileID: 11400000, guid: 0b196b759c0ffcb45bdca6e7a1b403dc, type: 2}

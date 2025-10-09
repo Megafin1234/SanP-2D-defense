@@ -139,6 +139,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MonsterDex",
+                    "type": "Button",
+                    "id": "c3f8f4d2-1def-41b2-bd85-076aabc8ce86",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -535,6 +544,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "PetInven",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eded1e0b-6019-42ad-b779-2023ac06910f",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "MonsterDex",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

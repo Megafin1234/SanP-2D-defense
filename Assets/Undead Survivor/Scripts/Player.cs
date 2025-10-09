@@ -171,6 +171,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void OnMonsterDex()
+    {
+        if (UIManager.instance == null) return;
+
+        GameObject dexPanel = UIManager.instance.monsterDexPanel;
+        if (dexPanel == null) return;
+
+        bool isActive = dexPanel.activeSelf;
+        dexPanel.SetActive(!isActive);
+    }
+
     IEnumerator FadeAndDestroy(SpriteRenderer renderer, GameObject obj)
     {
         float elapsed = 0f;
