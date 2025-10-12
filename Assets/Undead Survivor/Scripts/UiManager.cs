@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     public GameObject mainMenuPanel;
     public GameObject tutorialPanel;
     public GameObject monsterDexPanel;
+    public GameObject inventoryPanel;
+    public GameObject WeaponSkillPanel;
 
     [Header("Buttons")]
     public Button storyButton;        // 새 게임 (스토리 컷씬 시작)

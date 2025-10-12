@@ -182,6 +182,30 @@ public class Player : MonoBehaviour
         dexPanel.SetActive(!isActive);
     }
 
+    public void OnInven()
+    {
+        if (UIManager.instance == null) return;
+
+        GameObject invenPanel = UIManager.instance.inventoryPanel;
+        if (invenPanel == null) return;
+
+        bool isActive = invenPanel.activeSelf;
+        invenPanel.SetActive(!isActive);
+    }
+
+    public void OnWeapon()
+    {
+        if (UIManager.instance == null) return;
+
+        GameObject invenPanel = UIManager.instance.WeaponSkillPanel;
+        if (invenPanel == null) return;
+
+        bool isActive = invenPanel.activeSelf;
+        invenPanel.SetActive(!isActive);
+    }
+
+
+
     IEnumerator FadeAndDestroy(SpriteRenderer renderer, GameObject obj)
     {
         float elapsed = 0f;
