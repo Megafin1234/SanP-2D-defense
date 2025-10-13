@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3557a8a30ad92c64ab5847f506785ff1, type: 3}
   m_Name: Enemy 15
   m_EditorClassIdentifier: 
-  enemyIdx: 0
+  enemyIdx: 15
   type: 0
   UnitName: "\uACE0\uC6D0 \uC880\uBE44"
   level: 0
