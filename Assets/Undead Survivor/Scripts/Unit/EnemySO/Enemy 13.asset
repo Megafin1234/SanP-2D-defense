@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyIdx: 0
   type: 0
-  UnitName: "\uC124\uC6D0 \uBBF8\uB77C"
+  UnitName: "\uBAA8\uB798 \uBBF8\uB77C"
   level: 0
   speed: 2
   health: 10

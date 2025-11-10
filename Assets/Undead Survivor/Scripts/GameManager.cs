@@ -368,12 +368,14 @@ public class GameManager : MonoBehaviour
     public void CloseInventory()
     {
         if (inventoryPanel != null)
-        {
             inventoryPanel.SetActive(false);
-        }
+
+        // 🔸 UIPageSwitcher와 상태 동기화
+        if (UIManager.instance != null && UIManager.instance.TryGetComponent(out UIPageSwitcher switcher))
+            switcher.CloseAll();
+
         Resume();
     }
-
 
     public void OpenPetInventory()
     {
@@ -409,6 +411,10 @@ public class GameManager : MonoBehaviour
             petInvenDetailButtons[i].SetActive(false);
         }
         petInven.SetActive(false);
+
+            // 🔸 UIPageSwitcher 동기화
+        if (UIManager.instance != null && UIManager.instance.TryGetComponent(out UIPageSwitcher switcher))
+            switcher.CloseAll();
     }
 
     public void resetTimeScale()
