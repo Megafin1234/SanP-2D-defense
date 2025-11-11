@@ -54,7 +54,7 @@ public class UIPageSwitcher : MonoBehaviour
         Time.timeScale = 0f;    // 필요 시 주석처리 가능
     }
 
-    void CloseAll()
+    public void CloseAll()
     {
         foreach (var p in pages)
             p.SetActive(false);

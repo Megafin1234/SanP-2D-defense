@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     public LevelUp uiLevelUp;
     public GameObject UnitShopPanel;
     public GameObject petInven;
+    public UIPageSwitcher pageSwitcher;
     public List<Button> petButtons;
     public List<GameObject> petInvenDetailButtons;
     public LevelUp stageLevelUp;
@@ -370,9 +371,8 @@ public class GameManager : MonoBehaviour
         if (inventoryPanel != null)
             inventoryPanel.SetActive(false);
 
-        // 🔸 UIPageSwitcher와 상태 동기화
-        if (UIManager.instance != null && UIManager.instance.TryGetComponent(out UIPageSwitcher switcher))
-            switcher.CloseAll();
+        if (pageSwitcher != null)
+            pageSwitcher.CloseAll();
 
         Resume();
     }
@@ -413,8 +413,8 @@ public class GameManager : MonoBehaviour
         petInven.SetActive(false);
 
             // 🔸 UIPageSwitcher 동기화
-        if (UIManager.instance != null && UIManager.instance.TryGetComponent(out UIPageSwitcher switcher))
-            switcher.CloseAll();
+        if (pageSwitcher != null)
+            pageSwitcher.CloseAll();
     }
 
     public void resetTimeScale()

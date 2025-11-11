@@ -69,20 +69,52 @@ public class AudioManager : MonoBehaviour
     }
     public void PlaySfx(Sfx sfx)
     {
-        for (int index =0; index < sfxPlayers.Length; index++){
-            int  loopIndex = (index + channelIndex) % sfxPlayers.Length;
+        for (int index = 0; index < sfxPlayers.Length; index++)
+        {
+            int loopIndex = (index + channelIndex) % sfxPlayers.Length;
 
-            if(sfxPlayers[loopIndex].isPlaying)
+            if (sfxPlayers[loopIndex].isPlaying)
                 continue;
-            int ranIndex =0;
-            if (sfx == Sfx.Hit || sfx==Sfx.Melee){
-                ranIndex = Random.Range(0,2);
+            int ranIndex = 0;
+            if (sfx == Sfx.Hit || sfx == Sfx.Melee)
+            {
+                ranIndex = Random.Range(0, 2);
             }
-                channelIndex = loopIndex;
+            channelIndex = loopIndex;
             sfxPlayers[loopIndex].clip = sfxClips[(int)sfx + ranIndex];
             sfxPlayers[loopIndex].Play();
             break;
         }
 
     }
+    public void SetBgmVolume(float volume)
+    {
+        bgmVolume = Mathf.Clamp01(volume);
+        if (bgmPlayer != null)
+        {
+            bgmPlayer.volume = bgmVolume;     // 🎯 실시간 반영
+            if (bgmPlayer.isPlaying)
+                bgmPlayer.volume = bgmVolume; // 재생 중에도 갱신
+        }
+    }
+
+    public void SetSfxVolume(float volume)
+    {
+        sfxVolume = Mathf.Clamp01(volume);
+
+        if (sfxPlayers != null)
+        {
+            foreach (var src in sfxPlayers)
+            {
+                if (src != null)
+                    src.volume = sfxVolume;   // 🎯 이미 재생 중인 효과음에도 적용
+            }
+        }
+    }
+
+    public float GetBgmVolume() => bgmVolume;
+    public float GetSfxVolume() => sfxVolume;
+
+
+
 }

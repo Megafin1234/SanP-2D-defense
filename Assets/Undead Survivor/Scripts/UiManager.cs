@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public GameObject monsterDexPanel;
     public GameObject inventoryPanel;
     public GameObject WeaponSkillPanel;
+    public GameObject settingPanel;
 
     [Header("Buttons")]
     public Button storyButton;        // 새 게임 (스토리 컷씬 시작)
@@ -21,6 +22,7 @@ public class UIManager : MonoBehaviour
     public Button goBackButton;       // 뒤로가기
     public Button nextCutsceneButton; // 컷씬 넘기기
     public Button tutorialButton;     // 튜토리얼 보기
+    public Button settingButton;
 
     // ▼ (추가) 선택지 버튼 (없어도 동작하도록 널가드/폴백 처리)
     public Button choiceAButton;
@@ -282,6 +284,17 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
         clickEffectC.SetActive(true);
         StartCoroutine(EndDelay());
+    }
+
+    public void OpenSettingPanel()
+    {
+        settingPanel.SetActive(true);
+    }
+
+    // 🔹 설정창 닫기
+    public void CloseSettingPanel()
+    {
+        settingPanel.SetActive(false);
     }
 
     private IEnumerator EndDelay()
