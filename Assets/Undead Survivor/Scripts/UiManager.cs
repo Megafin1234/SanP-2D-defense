@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     public GameObject inventoryPanel;
     public GameObject WeaponSkillPanel;
     public GameObject settingPanel;
+    public GameObject loadPanel;
 
     [Header("Buttons")]
     public Button storyButton;        // 새 게임 (스토리 컷씬 시작)
@@ -295,6 +296,16 @@ public class UIManager : MonoBehaviour
     public void CloseSettingPanel()
     {
         settingPanel.SetActive(false);
+    }
+    public void OpenLoadPanel()
+    {
+        loadPanel.SetActive(true);
+    }
+
+    // 🔹 설정창 닫기
+    public void CloseLoadPanel()
+    {
+        loadPanel.SetActive(false);
     }
 
     private IEnumerator EndDelay()
