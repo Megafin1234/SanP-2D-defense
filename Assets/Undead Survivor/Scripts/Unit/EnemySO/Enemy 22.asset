@@ -20,7 +20,7 @@ MonoBehaviour:
   health: 10
   maxHealth: 10
   attackDelay: 1
-  damage: 10
+  damage: 30
   isBoss: 0
   sprite: {fileID: -8469204400738329757, guid: 9c3a6a2f5b55160478c7c4d5b4bec82a, type: 3}
   animCon: {fileID: 22100000, guid: f35afe7da7947924dbbf4bc609e5c4df, type: 2}

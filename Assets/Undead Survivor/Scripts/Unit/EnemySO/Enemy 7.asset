@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 0
   UnitName: "\uC2AC\uB77C\uC784"
   level: 0
-  speed: 2
+  speed: 3
   health: 10
   maxHealth: 10
   attackDelay: 1

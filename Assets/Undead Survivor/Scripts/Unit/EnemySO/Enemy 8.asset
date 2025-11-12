@@ -16,11 +16,11 @@ MonoBehaviour:
   type: 0
   UnitName: "\uC624\uC9D5\uC5B4"
   level: 0
-  speed: 2
-  health: 10
-  maxHealth: 10
+  speed: 1.8
+  health: 40
+  maxHealth: 40
   attackDelay: 1
-  damage: 10
+  damage: 20
   isBoss: 0
   sprite: {fileID: 7618024960786977748, guid: edc38e466cf020343be2729d33b549b9, type: 3}
   animCon: {fileID: 22100000, guid: 90fd4d9dcd694f24091f036ff577d46e, type: 2}

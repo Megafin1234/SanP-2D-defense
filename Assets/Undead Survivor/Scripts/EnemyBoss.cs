@@ -3,8 +3,8 @@ using System.Collections;
 
 public class EnemyBossVoid : EnemyBase, EnemyBase.IAttackable
 {
-    public float meleeDamage = 15f;
-    public float rangedDamage = 5f;
+    public float meleeDamage = 20f;
+    public float rangedDamage = 10f;
 
     public float attackDelay = 2f;
 
@@ -83,7 +83,7 @@ public class EnemyBossVoid : EnemyBase, EnemyBase.IAttackable
     {
         Debug.Log("보스 페이즈 2 진입");
         meleeDamage += 20f;
-        rangedDamage += 5f;
+        rangedDamage += 10f;
         StartCoroutine(FireWhirlPattern_Powered());
         bulletPatternIndex = Random.Range(0, 4);
     }
