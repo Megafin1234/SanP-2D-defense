@@ -448,4 +448,52 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void EnterCutscene()
+    {
+        isCutsceneActive = true;
+
+        // 플레이어 입력 차단
+        if (player != null)
+        {
+            var input = player.GetComponent<PlayerInput>();
+            if (input != null)
+                input.enabled = false;
+        }
+
+        // UI 입력 차단 (UIPageSwitcher, InventoryToggle)
+        UIPageSwitcher[] switchers = 
+            Object.FindObjectsByType<UIPageSwitcher>(FindObjectsSortMode.None);
+        foreach (var s in switchers)
+            s.enabled = false;
+
+        InventoryToggle[] toggles = 
+            Object.FindObjectsByType<InventoryToggle>(FindObjectsSortMode.None);
+        foreach (var t in toggles)
+            t.enabled = false;
+    }
+
+    public void ExitCutscene()
+    {
+        isCutsceneActive = false;
+
+        // PlayerInput 복원
+        if (player != null)
+        {
+            var input = player.GetComponent<PlayerInput>();
+            if (input != null)
+                input.enabled = true;
+        }
+
+        // UI 입력 복원
+        UIPageSwitcher[] switchers = 
+            Object.FindObjectsByType<UIPageSwitcher>(FindObjectsSortMode.None);
+        foreach (var s in switchers)
+            s.enabled = true;
+
+        InventoryToggle[] toggles = 
+            Object.FindObjectsByType<InventoryToggle>(FindObjectsSortMode.None);
+        foreach (var t in toggles)
+            t.enabled = true;
+    }
+
 }
