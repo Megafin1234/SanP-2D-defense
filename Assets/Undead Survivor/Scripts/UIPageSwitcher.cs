@@ -10,6 +10,10 @@ public class UIPageSwitcher : MonoBehaviour
 
     void Update()
     {
+        // 🔹 컷씬 중에는 ESC, P, I, K, Tab 등 모든 메뉴 입력 무시
+        if (GameManager.instance != null && GameManager.instance.isCutsceneActive)
+            return;
+
         // ESC 또는 P로 펫인벤 열기/닫기
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
@@ -19,15 +23,12 @@ public class UIPageSwitcher : MonoBehaviour
                 OpenPage(1);
         }
 
-        // 단축키로 바로 진입 (이제는 isMenuOpen도 true 설정)
         if (Input.GetKeyDown(KeyCode.I)) OpenPage(0);
         if (Input.GetKeyDown(KeyCode.K)) OpenPage(2);
         if (Input.GetKeyDown(KeyCode.Tab)) OpenPage(3);
 
-        // 메뉴 열려 있을 때만 전환 가능
         if (!isMenuOpen) return;
 
-        // 좌우 페이지 전환
         if (Input.GetKeyDown(KeyCode.A))
             ChangePage(-1);
         else if (Input.GetKeyDown(KeyCode.D))

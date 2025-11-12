@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using UnityEngine.UI;
+using UnityEngine.InputSystem; 
+
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +21,10 @@ public class GameManager : MonoBehaviour
     public float dayPhaseDuration = 180f;
     public float nightPhaseDuration = 120f;
     public bool canCatch = true;
+
+    public bool isCutsceneActive = false;
+
+
 
 
     [Header("#Player Info")]
@@ -421,4 +427,25 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
     }
+
+    public void DisablePlayerInput()
+    {
+        if (player != null)
+        {
+            var input = player.GetComponent<PlayerInput>();
+            if (input != null)
+                input.enabled = false;
+        }
+    }
+
+    public void EnablePlayerInput()
+    {
+        if (player != null)
+        {
+            var input = player.GetComponent<PlayerInput>();
+            if (input != null)
+                input.enabled = true;
+        }
+    }
+
 }

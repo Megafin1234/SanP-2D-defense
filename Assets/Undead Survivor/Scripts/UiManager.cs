@@ -102,6 +102,9 @@ public class UIManager : MonoBehaviour
     //튜토리얼 종료 후: 씬 전환 대신 컷씬 이어붙이기 시작
     public void StartPostTutorialCutscene()
     {
+        GameManager.instance.EnterCutscene();
+        GameManager.instance.isCutsceneActive = false;
+        GameManager.instance.DisablePlayerInput();
         mainMenuPanel.SetActive(false);
         tutorialPanel.SetActive(true);
 
@@ -114,6 +117,9 @@ public class UIManager : MonoBehaviour
     // 기존: 메인에서 스토리 시작
     public void ShowTutorial()
     {
+        GameManager.instance.EnterCutscene();
+        GameManager.instance.isCutsceneActive = true;
+        GameManager.instance.DisablePlayerInput();
         clickEffectA.SetActive(true);
         StartCoroutine(TutDelay());
     }
@@ -273,6 +279,7 @@ public class UIManager : MonoBehaviour
 
     public void GoToTutorialScene()
     {
+        GameManager.instance.EnablePlayerInput();
         SceneManager.LoadScene("Tutorial");
         clickEffectC.SetActive(true);
         StartCoroutine(EndDelay());
@@ -280,6 +287,9 @@ public class UIManager : MonoBehaviour
 
     public void GoToMainScene()
     {
+        GameManager.instance.ExitCutscene();
+        GameManager.instance.isCutsceneActive = false;
+        GameManager.instance.EnablePlayerInput();
         PlayerPrefs.SetInt("CameFromTutorial", 1); // 튜토리얼에서 돌아옴 표시
         PlayerPrefs.Save();
         SceneManager.LoadScene("SampleScene");
